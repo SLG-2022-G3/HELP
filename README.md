@@ -41,35 +41,35 @@ HELP is an application that will help users who need any kind of assistance, whe
 * Register - User signs up or logs into their account
    * Upon Re-installing of the application, the user is prompted to log in to gain access to their profile information. 
    * ...
-* Messaging Screen - Chat for users to communicate (direct 1-on-1)
-   * Upon selecting music choice users matched and message screen opens
+   * 
+* Contacts Screen
+ * Allows user to update personal emergency contact list 
+ 
 * Profile Screen 
-   * Allows user to upload a photo and fill in information that is interesting to them and others
-* Song Selection Screen.
-   * Allows user to be able to choose their desired song, artist, genre of preference and begin listening and interacting with others.
-* Settings Screen
+   * Allows user to update personal health information.
+   *  Allows user to update predefined S.O.S Message.
    * Lets people change language, and app notification settings.
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* Music selection
+* Home
+* Contacts
 * Profile
-* Settings
+
 
 Optional:
-* Music/Encounter Queue
-* Discover (Top Choices)
+* 
+*
 
 **Flow Navigation** (Screen to Screen)
 * Forced Log-in -> Account creation if no log in is available
-* Music Selection (Or Queue if Optional) -> Jumps to Chat
-* Profile -> Text field to be modified. 
-* Settings -> Toggle settings
+* Contact -> Contact list 
+* Profile -> settings
 
 ## Wireframes
-<img src="URL" width=800><br>
+<img src="https://github.com/SLG-2022-G3/HELP/blob/main/Help.jpg" width=800><br>
 
 ### [BONUS] Digital Wireframes & Mockups
 <img src="URL" height=200>
