@@ -39,7 +39,7 @@ HELP is an application that will help users who need any kind of assistance, whe
 
 * Login 
 * Register - User signs up or logs into their account
-   * Upon Download/Reopening of the application, the user is prompted to log in to gain access to their profile information to be properly matched with another person. 
+   * Upon Re-installing of the application, the user is prompted to log in to gain access to their profile information. 
    * ...
 * Messaging Screen - Chat for users to communicate (direct 1-on-1)
    * Upon selecting music choice users matched and message screen opens
