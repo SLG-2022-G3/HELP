@@ -8,33 +8,32 @@
 
 ## Overview
 ### Description
-Tracks what music an individual listens to, and pairs them with others based on that music. Could be potentially used as a dating app, or just meeting new friends with similar music tastes.
+HELP is an application that will help users who need any kind of assistance, whether they are in danger or just need help. The application will allow them to send an S.O.S to a list of contacts pre-selected by the user
 
 ### App Evaluation
 - **Category:** Tools/ communications
-- **Mobile:** This app would be primarily developed for mobile but would perhaps be just as viable on a computer, such as tinder or other similar apps. Functionality wouldn't be limited to mobile devices, however mobile version could potentially have more features.
-- **Story:** Analyzes users music choices, and connects them to other users with similar choices. The user can then decide to message this person and befriend them if wanted
-- **Market:** Any individual could choose to use this app, and to keep it a safe environment, people would be organized into age groups.
+- **Mobile:** This app would be primarily developed for mobile but would perhaps be just as viable on a computer. Functionality wouldn't be limited to mobile devices, however mobile version could potentially have more features.
+- **Story:** The application allows users to send SOS messages to predefined contacts. Users can provide as well their personal health information, in case they are in an emergency situation that requires going to the Hospital.
+- **Market:** Any individual could choose to use this app.
 - **Habit:** Users can use it every time it's necessary to send an S.O.S urgently.
-- **Scope:** The application allows users to send SOS messages to predefined contacts. Users can provide as well their personal health information, in case they are in an emergency situation that requires going to the Hospital.
+- **Scope:** The application allows users to send SOS messages to predefined contacts. Then, Users can provide as well their personal health information, in case they are in an emergency situation that requires going to the Hospital.
 ## Product Spec
 ### 1. User Stories (Required and Optional)
 
 **Required Must-have Stories**
 
-* User logs in to access previous chats and preference settings
-* User picks what their favorite artist/genre/etc. (Think Spotify interface)
-* Matches have a chat window to get to know each other, with the ability to skip music and unmatch (Tinder Style).
-* Profile pages for each user
-* Settings (Accesibility, Notification, General, etc.)
+* User can login/sign up and see a list of added emergency contacts or emergency services (PNH, Pompiers...)
+* User can add/edit/remove emergency contacts
+* User can send a SOS to predefined users
+* User can share their live location anytime, but the sharing starts automatically after they press the SOS button.
+* A settings page allows the user to add and update critical personal health information (Blood type, known allergies...)
 
 **Optional Nice-to-have Stories**
 
-* Log of past songs/people with album art covers matching
-* Page of most played songs (i.e. songs that most users are connecting through)
-* Profile Add-On: Top music choices, etc.
-* Optional Shuffle Button (i.e. random encounter/random song)
-* Listening/Encounter Queue
+* Users can send invite links to their contacts, to start using the application.
+* User can use a predefined button shortcut to send an SOS to predefined Contacts, without opening the app.
+* User can see a history of sent SOS
+* User receives in-app notification, when their contacts see the SOS
 
 ### 2. Screen Archetypes
 
@@ -70,10 +69,10 @@ Optional:
 * Settings -> Toggle settings
 
 ## Wireframes
-<img src="https://i.imgur.com/9CrjH1K.jpg" width=800><br>
+<img src="URL" width=800><br>
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="https://i.imgur.com/lYHn37F.jpg" height=200>
+<img src="URL" height=200>
 
 ### [BONUS] Interactive Prototype
-<img src="https://i.imgur.com/AiKfE5g.gif" width=200>
+<img src="URL" width=200>
