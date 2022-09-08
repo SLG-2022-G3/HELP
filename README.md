@@ -76,9 +76,9 @@ Optional:
 <img src="https://github.com/SLG-2022-G3/HELP/blob/main/Help.jpg" width=800><br>
 
 ### [BONUS] Digital Wireframes & Mockups
-Comming Soon
-<img src="URL" height=200>
+
+<img src="https://github.com/SLG-2022-G3/HELP/blob/main/HELP.jpg" width=1080>
 
 ### [BONUS] Interactive Prototype
-Comming Soon
-<img src="URL" width=200>
+
+<img src="https://github.com/SLG-2022-G3/HELP/blob/main/HELP.gif" width=200>
