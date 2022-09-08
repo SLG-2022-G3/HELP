@@ -47,7 +47,7 @@ HELP is an application that will help users who need any kind of assistance, whe
    * ...
    * 
 * Contacts Screen
- * Allows user to update personal emergency contact list 
+   * Allows user to update personal emergency contact list 
  
 * Profile Screen 
    * Allows user to update personal health information.
