@@ -82,3 +82,64 @@ Optional:
 ### [BONUS] Interactive Prototype
 
 <img src="https://github.com/SLG-2022-G3/HELP/blob/main/HELP.gif" width=200>
+
+## Schema
+
+### Models
+
+#### User
+
+
+| Property          |     Type      |     Description                                                                   |
+| ------------------| ------------- | ----------------------------------------------------------------------------------|
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+
+#### Contacts
+
+| Property          |     Type      |     Description                                                                   |
+| ------------------| ------------- | ----------------------------------------------------------------------------------|
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+
+#### SOS
+
+| Property          |     Type      |     Description                                                                   |
+| ------------------| ------------- | ----------------------------------------------------------------------------------|
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+| Content Cell      | Content Cell  |                                                                                   |
+
+### Networking
+
+#### List of network requests by screen
+
+* Login 
+   * ()
+   * ()
+* Register - User signs up or logs into their account
+   * ()
+   * ()
+* SOS Screen
+   * ()
+   * ()
+* Contacts Screen
+   * ()
+   * ()
+* Profile Screen 
+   * ()
+   * ()
+   * ()
+
+#### [OPTIONNAL] Existing API Endpoints
