@@ -127,20 +127,23 @@ Optional:
 #### List of network requests by screen
 
 * Login 
-   * ()
-   * ()
+   * (Read/GET) Read existing User Information
+   
 * Register - User signs up or logs into their account
-   * ()
-   * ()
+   * (Create/POST) Create new User
+   
 * SOS Screen
    * ()
    * ()
 * Contacts Screen
-   * ()
-   * ()
+   * (Create/POST) User can add new Contact to to his Emergency Contact List
+   * (Read/GET) User can see already selected
+   * (Update/PUT) 
+   * (Delete/DELETE) User can delete contact from list
 * Profile Screen 
-   * ()
-   * ()
-   * ()
+   * (Create/POST) User can add Health personal Information 
+   * (Read/GET) Query logged in user object
+   * (Update/PUT) Logged in user can update profile Information
+   * (Delete/DELETE) User can Delete selected profile Information
 
 #### [OPTIONNAL] Existing API Endpoints
