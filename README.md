@@ -93,12 +93,14 @@ Optional:
 
 | Property          |     Type      |     Description                                                                   |
 | ------------------| ------------- | ----------------------------------------------------------------------------------|
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
+| objectID          | String        |     unique id for the user (default field)                                        |
+| username          | String        |     unique username for the user (required)                                       |
+| telephone         | Number        |     phone number of the user (required)                                           |
+| password          | String        |     password of the user  (required)                                              |
+| email             | String        |     email of the user account                                                     |
+| ********          | ********      |                                                                                   |
+| createdAt         | DateTime      |     date when user is created (default field)                                     |
+| updatedAt         | DateTime      |     date when user info is last updated (default field)                           |
 
 #### Contacts
 
