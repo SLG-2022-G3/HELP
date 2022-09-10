@@ -78,7 +78,7 @@ Optional:
 
 ### [BONUS] Digital Wireframes & Mockups
 
-<img src="https://github.com/SLG-2022-G3/HELP/blob/master/HELP.jpg" width=1080>
+<img src="https://github.com/SLG-2022-G3/HELP/blob/master/HELP%20(1).jpg" width=1080>
 
 ### [BONUS] Interactive Prototype
 
