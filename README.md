@@ -74,15 +74,15 @@ Optional:
 * Profile -> settings
 
 ## Wireframes
-<img src="https://github.com/SLG-2022-G3/HELP/blob/main/Help.jpg" width=800><br>
+<img src="https://github.com/SLG-2022-G3/HELP/blob/master/Help.jpg" width=800><br>
 
 ### [BONUS] Digital Wireframes & Mockups
 
-<img src="https://github.com/SLG-2022-G3/HELP/blob/main/HELP.jpg" width=1080>
+<img src="https://github.com/SLG-2022-G3/HELP/blob/master/HELP.jpg" width=1080>
 
 ### [BONUS] Interactive Prototype
 
-<img src="https://github.com/SLG-2022-G3/HELP/blob/main/HELP.gif" width=200>
+<img src="https://github.com/SLG-2022-G3/HELP/blob/master/HELP.gif" width=200>
 
 ## Schema
 
