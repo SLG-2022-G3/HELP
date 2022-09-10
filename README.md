@@ -82,7 +82,7 @@ Optional:
 
 ### [BONUS] Interactive Prototype
 
-<img src="https://github.com/SLG-2022-G3/HELP/blob/master/HELP.gif" width=200>
+<img src="https://github.com/SLG-2022-G3/HELP/blob/master/Prototype.gif" width=200>
 
 ## Schema
 
