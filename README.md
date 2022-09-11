@@ -31,7 +31,7 @@ HELP is an application that will help users who need any kind of assistance, whe
 * User can remove emergency contacts
 * User can send a SOS to predefined contacts
 * User can share their live location anytime, but the sharing starts automatically after they press the SOS button.
-* A settings page allows the user to add and update critical personal health information (Blood type, known allergies...)
+* A Profile page allows the user to add and update critical personal health information (Blood type, known allergies...)
 
 **Optional Nice-to-have Stories**
 
@@ -44,16 +44,14 @@ HELP is an application that will help users who need any kind of assistance, whe
 
 * Login 
 * Register - User signs up or logs into their account
-   * Upon Re-installing of the application, the user is prompted to log in to gain access to their profile information. 
-   * ...
-   * 
+    
 * Contacts Screen
    * Allows user to update personal emergency contact list 
  
 * Profile Screen 
    * Allows user to update personal health information.
-   *  Allows user to update predefined S.O.S Message.
-   * Lets people change language, and app notification settings.
+   * Allows user to add/update predefined S.O.S Message.
+   * Lets people change language, and app notification settings. (Bonus)
 
 ### 3. Navigation
 
@@ -74,15 +72,15 @@ Optional:
 * Profile -> settings
 
 ## Wireframes
-<img src="https://github.com/SLG-2022-G3/HELP/blob/main/Help.jpg" width=800><br>
+<img src="https://github.com/SLG-2022-G3/HELP/blob/master/Help.jpg" width=800><br>
 
 ### [BONUS] Digital Wireframes & Mockups
 
-<img src="https://github.com/SLG-2022-G3/HELP/blob/main/HELP.jpg" width=1080>
+<img src="https://github.com/SLG-2022-G3/HELP/blob/master/HELP%20(1).jpg" width=1080>
 
 ### [BONUS] Interactive Prototype
 
-<img src="https://github.com/SLG-2022-G3/HELP/blob/main/HELP.gif" width=200>
+<img src="https://github.com/SLG-2022-G3/HELP/blob/master/Prototype.gif" width=200>
 
 ## Schema
 
@@ -93,34 +91,39 @@ Optional:
 
 | Property          |     Type      |     Description                                                                   |
 | ------------------| ------------- | ----------------------------------------------------------------------------------|
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
+| objectID          | String        |     unique id for the user (default field)                                        |
+| username          | String        |     unique username for the user (required)                                       |
+| password          | String        |     password of the user  (required)                                              |
+| telephone         | Number        |     phone number of the user (required)                                           |
+| email             | String        |     email of the user account                                                     |
+| profilePicture    | File          |     User can add a Profile Picture                                                |
+| personalInfo      | String        |     User can Some personnal health information                                    |
+| sosMessage        | String        |     User can predefined the SOS Message                                           |
+| createdAt         | DateTime      |     date when user is created (default field)                                     |
+| updatedAt         | DateTime      |     date when user info is last updated (default field)                           |
 
 #### Contacts
 
 | Property          |     Type      |     Description                                                                   |
 | ------------------| ------------- | ----------------------------------------------------------------------------------|
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
+| objectID          | String        |     unique id for the contact (default field)                                     |
+| name              | String        |     name for the selected contact (required)                                      |
+| telephone         | Number        |     phone number of the contact (required)                                        |
+| relationship      | String        |     User can tell about his/her relationship with the contact                     |
+| profilePicture    | File          |     User can add an optionnal profile picture for the contact                     |
+| createdAt         | DateTime      |     date when contact is created (default field)                                  |
+| updatedAt         | DateTime      |     date when contact info is last updated (default field)                        |
 
 #### SOS
 
 | Property          |     Type      |     Description                                                                   |
 | ------------------| ------------- | ----------------------------------------------------------------------------------|
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
-| Content Cell      | Content Cell  |                                                                                   |
+| objectID          | String        |     unique id for the contact (default field)                                     |
+| name              | String        |     name for the selected contact (required)                                      |
+| recipient         | String        |     contact that will receive the SOS (required)                                  |
+| SOSBody           | String        |     The message that will be sent to the contact   (Required)                     |
+| createdAt         | DateTime      |     date when SOS is sent (default field)                                         |
+| updatedAt         | DateTime      |     date when SOS info is last updated (default field)                            |
 
 ### Networking
 
@@ -133,13 +136,14 @@ Optional:
    * (Create/POST) Create new User
    
 * SOS Screen
-   * ()
-   * ()
+   * (create/POST) User can send a predefined Message very quickly and easy
+   
 * Contacts Screen
    * (Create/POST) User can add new Contact to to his Emergency Contact List
    * (Read/GET) User can see already selected
-   * (Update/PUT) 
+   * (Update/PUT) User can edit Contact's information
    * (Delete/DELETE) User can delete contact from list
+   
 * Profile Screen 
    * (Create/POST) User can add Health personal Information 
    * (Read/GET) Query logged in user object
