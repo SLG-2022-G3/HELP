@@ -7,7 +7,7 @@
 1. [Wireframes](#Wireframes)
 1. [Schema](#Schema)
 
-## Overview
+## Overview..
 ### Description
 HELP is an application that will help users who need any kind of assistance, whether they are in danger or just need help. The application will allow them to send an S.O.S to a list of contacts pre-selected by the user
 
