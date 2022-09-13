@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.action_profile:
-                        // Toast.makeText(MainActivity.this, "Pwofil mwen", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Pwofil mwen", Toast.LENGTH_SHORT).show();
                         fragment = new ProfileFragment();
                         break;
                 }

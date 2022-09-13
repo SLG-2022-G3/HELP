@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/btn_sos_background.xml" value="0.1745" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/button_state.xml" value="0.2595" />
+        <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/fr_sos.xml" value="0.1" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/ic_contacts.xml" value="0.1" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/ic_home.xml" value="0.1" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/ic_home_filled.xml" value="0.1195" />
@@ -14,6 +16,7 @@
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/fragment_profile.xml" value="0.15081521739130435" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/fragment_sos.xml" value="0.15081521739130435" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.275" />
+        <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/mipmap-anydpi-v26/btn_sos.xml" value="0.1" />
         <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/sos/app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
     </option>
