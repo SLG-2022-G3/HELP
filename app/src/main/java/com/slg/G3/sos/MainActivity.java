@@ -32,23 +32,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 // Begin the transaction
-               Fragment fragment;
+               Fragment fragment = new Fragment();
                 switch (item.getItemId()){
-                    default:
+                    //default:
                     case R.id.action_home:
                         // Select SOS Fragment
-                        Toast.makeText(MainActivity.this, "SOS", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "SOS", Toast.LENGTH_SHORT).show();
                         fragment = new SosFragment();
                         break;
 
                     case R.id.action_contacts:
                         // Select Contacts Fragment
-                        Toast.makeText(MainActivity.this, "Kontak ijans", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Kontak ijans", Toast.LENGTH_SHORT).show();
                         fragment = new ContactsFragment();
                         break;
 
                     case R.id.action_profile:
-                        Toast.makeText(MainActivity.this, "Pwofil mwen", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Pwofil mwen", Toast.LENGTH_SHORT).show();
                         fragment = new ProfileFragment();
                         break;
                 }
@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             });
+        // Set default Selecltion
+        bottomNavigationView.setSelectedItemId(R.id.action_home);
         }
 
     }
