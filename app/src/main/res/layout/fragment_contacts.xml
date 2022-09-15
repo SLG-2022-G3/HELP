@@ -12,11 +12,11 @@
         android:layout_height="match_parent"
         android:id="@+id/rlayout">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/rvContacts"
-            android:layout_below="@+id/tvCHeader"/>
+
+
+
+
+
 
 
         <TextView
@@ -25,32 +25,70 @@
             android:layout_height="wrap_content"
             android:text="KONTAK IJANS"
             android:layout_alignParentTop="true"
-            android:textSize="28sp"
+            android:textSize="24sp"
             android:fontFamily="sans-serif-medium"
             android:textColor="@color/black"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rvContacts"
+            android:layout_below="@+id/tvCHeader"
+            android:padding="1dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAddContacts"
+            android:background="@drawable/rounded_corner2"
+            android:layout_below="@+id/rvContacts"
+            android:clickable="true"
+            android:padding="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_add"
+                android:layout_marginStart="30dp"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AJOUTE KONTAK"
+                android:textSize="18dp"
+                android:textColor="@color/gray_text"
+                android:layout_centerInParent="true"
+                />
+
+
+        </RelativeLayout>
+
+
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rvEmergServContacts"
+            android:layout_below="@+id/btnAddContacts"
+            android:layout_above="@+id/btnSOS"
             />
-           <GridLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:layout_below="@id/rvContacts"
-               android:layout_above="@id/btnSOS"/>
-
-
-
-
 
         <pl.droidsonroids.gif.GifImageView
-                    android:id="@+id/btnSOS"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:clickable="true"
-                    android:src="@drawable/btn_sos" />
+            android:id="@+id/btnSOS"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:src="@drawable/btn_sos" />
 
 
     </RelativeLayout>

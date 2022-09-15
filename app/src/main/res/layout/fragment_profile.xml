@@ -17,11 +17,10 @@
             android:layout_height="wrap_content"
             android:text="PWOFIL"
             android:layout_alignParentTop="true"
-            android:textSize="28sp"
+            android:textSize="24sp"
             android:fontFamily="sans-serif-medium"
             android:textColor="@color/black"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"/>
 
         <ImageView
@@ -31,21 +30,21 @@
             android:src="@drawable/profile_pic"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/tvPHeader"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"/>
 
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvPHeader"
-            android:layout_marginTop="15dp"
+            android:layout_alignTop="@+id/ivProfilePic"
+            android:layout_marginTop="2dp"
             android:layout_toEndOf="@id/ivProfilePic"
             android:fontFamily="sans-serif-medium"
             android:text="Mwen rele"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvDescription"
@@ -53,11 +52,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvName"
             android:layout_toEndOf="@id/ivProfilePic"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
             android:text="Kek enfomasyon sou sante, maladi kwonik, aleji, elatriye"
             android:textColor="@color/gray_text"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
 
 
@@ -67,8 +66,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnEMsg"
-            android:layout_below="@id/tvDescription"
-            android:layout_marginTop="30dp"
+            android:layout_below="@id/ivProfilePic"
+            android:layout_marginTop="15dp"
             android:padding="2dp"
             android:clickable="true">
 
@@ -86,15 +85,15 @@
                 android:layout_alignStart="@+id/shape1"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="0dp"
-                android:id="@+id/iconMsg"
-                />
+                android:id="@+id/iconMsg" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mesaj Ijans"
+                android:fontFamily="sans-serif-light"
                 android:textColor="@color/black"
                 android:layout_marginStart="15dp"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:layout_toEndOf="@id/iconMsg"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
@@ -127,8 +126,9 @@
                 android:layout_height="wrap_content"
                 android:text="Chwazi Lang"
                 android:textColor="@color/black"
+                android:fontFamily="sans-serif-light"
                 android:layout_marginStart="15dp"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:layout_toEndOf="@id/iconLang"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
@@ -154,15 +154,15 @@
                 android:layout_alignStart="@+id/shape3"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="0dp"
-                android:id="@+id/iconFFriends"
-                />
+                android:id="@+id/iconFFriends" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jwenn zanmi"
+                android:fontFamily="sans-serif-light"
                 android:textColor="@color/black"
                 android:layout_marginStart="15dp"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:layout_toEndOf="@id/iconFFriends"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
@@ -196,7 +196,8 @@
                 android:text="Pataje aplikasyon an"
                 android:textColor="@color/black"
                 android:layout_marginStart="15dp"
-                android:textSize="24sp"
+                android:fontFamily="sans-serif-light"
+                android:textSize="20sp"
                 android:layout_toEndOf="@id/iconShare"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
@@ -229,8 +230,9 @@
                 android:layout_height="wrap_content"
                 android:text="Paramèt"
                 android:textColor="@color/black"
+                android:fontFamily="sans-serif-light"
                 android:layout_marginStart="15dp"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:layout_toEndOf="@id/iconSettings"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
