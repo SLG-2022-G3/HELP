@@ -23,22 +23,22 @@ HELP is an application that will help users who need any kind of assistance, whe
 
 **Required Must-have Stories**
 
-* User can login.
-* User can sign up.
-* User can see a list of added emergency contacts or emergency services (PNH, Pompiers...)
-* User can add emergency contacts
-* User can edit emergency contacts
-* User can remove emergency contacts
-* User can send a SOS to predefined contacts
-* User can share their live location anytime, but the sharing starts automatically after they press the SOS button.
-* A Profile page allows the user to add and update critical personal health information (Blood type, known allergies...)
+- [ ] User can login.
+- [ ] User can sign up.
+- [ ] User can see a list of added emergency contacts or emergency services (PNH, Pompiers...)
+- [ ] User can add emergency contacts
+- [ ] User can edit emergency contacts
+- [ ] User can remove emergency contacts
+- [ ] User can send a SOS to predefined contacts
+- [ ] User can share their live location anytime, but the sharing starts automatically after they press the SOS button.
+- [ ] A Profile page allows the user to add and update critical personal health information (Blood type, known allergies...)
 
 **Optional Nice-to-have Stories**
 
-* Users can send invite links to their contacts, to start using the application.
-* User can use a predefined button shortcut to send an SOS to predefined Contacts, without opening the app.
-* User can see a history of sent SOS
-* User receives in-app notification, when their contacts see the SOS
+- [ ] Users can send invite links to their contacts, to start using the application.
+- [ ] User can use a predefined button shortcut to send an SOS to predefined Contacts, without opening the app.
+- [ ] User can see a history of sent SOS
+- [ ] User receives in-app notification, when their contacts see the SOS
 
 ### 2. Screen Archetypes
 
