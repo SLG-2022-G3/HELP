@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.SosFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fr_sos"
+                android:id="@+id/box"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="Peze bouton sa pou w voye yon mesaj SOS"
+            android:layout_alignTop="@+id/box"
+            android:layout_alignStart="@+id/box"
+            android:layout_alignEnd="@+id/box"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:id="@+id/line1"
+            android:textSize="26dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="• Mesaj la pral jwenn kontak ki nan lis Kontak Ijans ou a"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_below="@+id/line1"
+            android:layout_marginTop="8dp"
+            android:id="@+id/line3"
+            android:textSize="18dp"
+            android:textColor="#1C1C1C"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:id="@+id/line5"
+            android:text="• Ou ka chanje mesaj SOS la nan Paramèt yo"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_below="@+id/line3"
+            android:layout_marginTop="5dp"
+            android:textSize="18dp"
+            android:textColor="#1C1C1C"/>
+
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/btnSOS"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/line5"
+            android:layout_marginTop="-30dp"
+            android:layout_marginBottom="0dp"
+            android:clickable="true"
+            android:src="@drawable/btn_sos" />
+
+
+
+
+
+
+    </RelativeLayout>
+
+</FrameLayout>
