@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -14,6 +15,10 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.slg.G3.sos.R;
+import com.slg.G3.sos.adapters.ContactAdapter;
+import com.slg.G3.sos.models.Contact;
+
+import java.util.List;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -27,9 +32,11 @@ public class ContactsFragment extends Fragment {
     private RecyclerView rvEmerServContacts;
     private GifImageView btnSOS;
     private RelativeLayout btnAddContact;
+    private List<Contact> contacts;
 
 
     // TODO: Rename and change types of parameters
+
 
 
     public ContactsFragment() {
@@ -60,8 +67,13 @@ public class ContactsFragment extends Fragment {
         rvContacts = view.findViewById(R.id.rvContacts);
 
         //Create ContactsAdapter
+        ContactAdapter contactAdapter = new ContactAdapter(this, contacts);
+
         //Set adapter on recyclerview
+        rvContacts.setAdapter(contactAdapter);
+
         //Set a Layout Manager
+        rvContacts.setLayoutManager(new LinearLayoutManager(getContext()));
 
         rvEmerServContacts = view.findViewById(R.id.rvEmergServContacts);
 

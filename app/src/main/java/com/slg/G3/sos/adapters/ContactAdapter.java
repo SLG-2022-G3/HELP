@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.slg.G3.sos.R;
+import com.slg.G3.sos.fragments.ContactsFragment;
 import com.slg.G3.sos.models.Contact;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
     private List<Contact> contacts;
 
 
-    public ContactAdapter (Context context, List<Contact> contacts){
+    public ContactAdapter (ContactsFragment context, List<Contact> contacts){
         this.context = context;
         this.contacts = contacts;
     }
