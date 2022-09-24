@@ -1,31 +1,31 @@
-//package com.slg.G3.sos.fragments;
-//
-//import android.os.Bundle;
-//
-//import androidx.annotation.NonNull;
-//import androidx.annotation.Nullable;
-//import androidx.fragment.app.Fragment;
-//import androidx.recyclerview.widget.LinearLayoutManager;
-//import androidx.recyclerview.widget.RecyclerView;
-//
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//import android.widget.RelativeLayout;
-//import android.widget.Toast;
-//
-//import com.slg.G3.sos.R;
+package com.slg.G3.sos.fragments;
+
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.slg.G3.sos.R;
 //import com.slg.G3.sos.adapters.ContactAdapter;
-//import com.slg.G3.sos.models.Contact;
-//
-//import java.util.List;
-//
-//import pl.droidsonroids.gif.GifImageView;
-//
-///**
-//
-// */
-//public class ContactsFragment extends Fragment {
+
+
+import java.util.List;
+
+import pl.droidsonroids.gif.GifImageView;
+
+
+
+
+public class ContactsFragment extends Fragment {
 //
 //    public static final String TAG ="Contacts Fragment";
 //    private RecyclerView rvContacts;
@@ -97,4 +97,4 @@
 //            }
 //        });
 //    }
-//}
+}

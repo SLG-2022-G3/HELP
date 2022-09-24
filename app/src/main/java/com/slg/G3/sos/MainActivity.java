@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_contacts:
                         // Select Contacts Fragment
                         //Toast.makeText(MainActivity.this, "Kontak ijans", Toast.LENGTH_SHORT).show();
-                        fragment = new ContactsFragment();
+                        fragment = new ContactsFragment() ;
                         break;
 
                     case R.id.action_profile:

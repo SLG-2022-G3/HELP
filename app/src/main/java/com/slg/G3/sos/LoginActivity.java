@@ -2,6 +2,7 @@ package com.slg.G3.sos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -54,12 +55,19 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e(TAG, "issue with login", e);
                     return;
                 }
-                Toast.makeText(LoginActivity.this, "You are logged in", Toast.LENGTH_SHORT).show();
-
+//TODO: Navigate to feed activity if the user is signed in properly
+                goMainActivity();
+                Toast.makeText(LoginActivity.this, "Login Success!", Toast.LENGTH_SHORT).show();
             }
 
     });
 
 
 }
+    private void goMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+
+    }
 }
