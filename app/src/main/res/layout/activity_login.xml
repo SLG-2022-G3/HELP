@@ -30,10 +30,12 @@
         android:ems="10"
         android:hint="enter password here"
         android:inputType="textPassword" />
+
     <Button
+        android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/log_in"
-        android:layout_marginTop="300dp"/>
+        android:layout_marginTop="300dp"
+        android:text="@string/log_in" />
 
 </RelativeLayout>
