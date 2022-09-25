@@ -104,7 +104,6 @@ public class ContactsFragment extends Fragment {
         btnAddContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Opsyon sa pako disponib", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), CreateContactActivity.class);
                 startActivity(intent);
             }
