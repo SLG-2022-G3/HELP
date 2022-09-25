@@ -5,15 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-//import com.slg.G3.sos.fragments.ContactsFragment;
+import com.slg.G3.sos.fragments.ContactsFragment;
 import com.slg.G3.sos.fragments.ProfileFragment;
 import com.slg.G3.sos.fragments.SosFragment;
 
@@ -43,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new SosFragment();
                         break;
 
-//                    case R.id.action_contacts:
-//                        // Select Contacts Fragment
-//                        //Toast.makeText(MainActivity.this, "Kontak ijans", Toast.LENGTH_SHORT).show();
-//                        fragment = new ContactsFragment();
-//                        break;
+                    case R.id.action_contacts:
+                        // Select Contacts Fragment
+                        //Toast.makeText(MainActivity.this, "Kontak ijans", Toast.LENGTH_SHORT).show();
+                        fragment = new ContactsFragment() ;
+                        break;
 
                     case R.id.action_profile:
                         //Toast.makeText(MainActivity.this, "Pwofil mwen", Toast.LENGTH_SHORT).show();

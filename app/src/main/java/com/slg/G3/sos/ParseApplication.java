@@ -3,6 +3,8 @@ package com.slg.G3.sos;
 import android.app.Application;
 
 import com.parse.Parse;
+import com.parse.ParseObject;
+import com.slg.G3.sos.models.Contact;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -11,6 +13,10 @@ public class ParseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Register your parse models
+        ParseObject.registerSubclass(Contact.class);
+
 
         // Use for monitoring Parse network traffic
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -26,5 +32,7 @@ public class ParseApplication extends Application {
                 .clientKey("QdCHqYbsuk70zVHy9xIzjFVjZ9DrjNiZbRQLMRJT") // ⚠️ TYPE IN A VALID CLIENT KEY HERE
                 .clientBuilder(builder)
                 .server("https://parseapi.back4app.com").build());  // ⚠️ TYPE IN A VALID SERVER URL HERE
+
+
     }
 }
