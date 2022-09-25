@@ -5,10 +5,11 @@ import com.parse.ParseUser;
 
 public class User extends ParseUser {
 
-    public static final String KEY_EMAIL = "email";
+    public static final String KEY_EMAIL = "persoInfo";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_SOS = "sosMessage";
+    public static final String KEY_INFO_PERSO = "email";
     public static final String KEY_TELEPHONE = "telephone";
     public static final String KEY_PROFILE_IMAGE = "profilePicture";
 
@@ -39,6 +40,13 @@ public class User extends ParseUser {
     }
     public void setSos(String sos) {
         put(KEY_SOS, sos);
+    }
+
+    public String getInfo(){
+        return getString(KEY_INFO_PERSO);
+    }
+    public void setInfo(String info) {
+        put(KEY_INFO_PERSO, info);
     }
 
     public String getTelephone(){

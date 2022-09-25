@@ -15,6 +15,11 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.slg.G3.sos.R;
 //import com.slg.G3.sos.adapters.ContactAdapter;
 import com.slg.G3.sos.adapters.ContactAdapter;
@@ -22,7 +27,7 @@ import com.slg.G3.sos.models.Contact;
 //import com.slg.G3.sos.adapters.ContactAdapter;
 
 
-import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import pl.droidsonroids.gif.GifImageView;
@@ -68,6 +73,9 @@ public class ContactsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         rvContacts = view.findViewById(R.id.rvContacts);
 
+        //Create Data Source
+        contacts = new ArrayList<>();
+
         //Create ContactsAdapter
         contactAdapter = new ContactAdapter(this, contacts);
 
@@ -78,6 +86,7 @@ public class ContactsFragment extends Fragment {
         rvContacts.setLayoutManager(new LinearLayoutManager(getContext()));
 
        queryContacts();
+
 
   /*      rvEmerServContacts = view.findViewById(R.id.rvEmergServContacts);
 
@@ -103,8 +112,27 @@ public class ContactsFragment extends Fragment {
         });
     }
 
+
     private void queryContacts() {
         // Specify which class to query
+        ParseQuery<Contact> query = ParseQuery.getQuery(Contact.class);
+        //query.whereEqualTo(Contact.KEY_USER, ParseUser.getCurrentUser());
+        //Specify the object ID
+        query.findInBackground(new FindCallback<Contact>() {
+            @Override
+            public void done(List<Contact> objects, ParseException e) {
+                if (e !=null){
+                    Log.e(TAG, "Issues with getting Contacts", e);
+                    return;
+                } for(Contact contact : contacts){
+                    Log.i(TAG, "Contact's name : "+ contact.getName() + "Phone Number : "+ contact.getNumber());
+                }
+
+               // contacts.clear();
+                contacts.addAll(contacts);
+                contactAdapter.notifyDataSetChanged();
+            }
+        });
 
 
 

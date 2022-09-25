@@ -6,14 +6,14 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 
-@ParseClassName("Contact")
+@ParseClassName("Contacts")
 public class Contact extends ParseObject {
 
     public static final String KEY_NAME = "name";
     public static final String KEY_IMAGE = "profilePhoto";
     public static final String KEY_USER = "user";
     public static final String KEY_PHONE = "phone";
-    //public static final String KEY_UPDATED_AT = "updatedAt";
+
 
     public String getName(){
         return getString(KEY_NAME);
