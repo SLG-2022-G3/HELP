@@ -30,6 +30,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+     //   if (ParseUser.getCurrentUser() !=null) {
+     //       goMainActivity();
+
+       // }
+
 
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
@@ -73,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e(TAG, "issue with login", e);
                     return;
                 }
+
                 Toast.makeText(LoginActivity.this, "You are logged in", Toast.LENGTH_SHORT).show();
                 goMainActivity();
 
@@ -89,6 +95,5 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 
 }

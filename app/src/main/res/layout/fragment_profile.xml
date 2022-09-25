@@ -41,7 +41,6 @@
             android:layout_marginTop="2dp"
             android:layout_toEndOf="@id/ivProfilePic"
             android:fontFamily="sans-serif-medium"
-            android:text="Mwen rele"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -53,7 +52,6 @@
             android:layout_toEndOf="@id/ivProfilePic"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="5dp"
-            android:text="Kek enfomasyon sou sante, maladi kwonik, aleji, elatriye"
             android:textColor="@color/gray_text"
             android:textSize="16sp" />
 
