@@ -2,6 +2,7 @@ package com.slg.G3.sos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -47,17 +48,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // user can sign up on button click
+        // here we want to go to sign activity when button is pressed
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(TAG, "Signup button pressed");
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                SignUpUser(username,password);
-
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
+
+
 
     }
 
@@ -73,6 +74,8 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 Toast.makeText(LoginActivity.this, "You are logged in", Toast.LENGTH_SHORT).show();
+                goMainActivity();
+
 
             }
 
@@ -81,24 +84,10 @@ public class LoginActivity extends AppCompatActivity {
 
 }
 
-    private void SignUpUser(String username, String password) {
-        Log.i(TAG, "attempt to Signup: " + username);
-
-        //create parse user
-        ParseUser user = new ParseUser();
-        //core properties
-        user.setUsername(username);
-        user.setPassword(password);
-        //sign up in background
-        user.signUpInBackground(new SignUpCallback() {
-            @Override
-            public void done(ParseException e) {
-                Toast.makeText(LoginActivity.this, "Yay! You are sucessfully signed up.", Toast.LENGTH_SHORT).show();
-
-
-            }
-        });
-
+    private void goMainActivity() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 
