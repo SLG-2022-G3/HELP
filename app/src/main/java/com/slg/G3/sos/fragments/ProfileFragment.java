@@ -1,6 +1,7 @@
 package com.slg.G3.sos.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
+import com.slg.G3.sos.LoginActivity;
+import com.slg.G3.sos.MainActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.User;
 
@@ -42,6 +45,8 @@ public class ProfileFragment extends Fragment {
     private RelativeLayout btnShare;
     private RelativeLayout btnSettings;
     private RelativeLayout btnLogout;
+    private ImageView ivLogout;
+    private TextView tvLogout;
 
     Context context;
 
@@ -94,6 +99,8 @@ public class ProfileFragment extends Fragment {
         tvDescription = view.findViewById(R.id.tvDescription);
 
         btnLogout = view.findViewById(R.id.btnLogout);
+        tvLogout = view.findViewById(R.id.tvLogout);
+        ivLogout = view.findViewById(R.id.ivLogout);
 
 
 
@@ -106,8 +113,27 @@ public class ProfileFragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Opsyon sa pako disponib", Toast.LENGTH_SHORT).show();
+                ParseUser.logOut();
+                ParseUser currentUser = ParseUser.getCurrentUser();
+
+                goLoginActivity();
+                //Toast.makeText(getContext(), "Opsyon sa pako disponib", Toast.LENGTH_SHORT).show();
             }
         });
+        tvLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ParseUser.logOut();
+                ParseUser currentUser = ParseUser.getCurrentUser();
+
+                goLoginActivity();
+                //Toast.makeText(getContext(), "Opsyon sa pako disponib", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void goLoginActivity() {
+        Intent intent = new Intent(getContext(), LoginActivity.class);
+        startActivity(intent);
     }
 }
