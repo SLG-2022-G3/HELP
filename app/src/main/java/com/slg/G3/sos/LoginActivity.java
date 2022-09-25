@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String TAG = "LoginActivity";
@@ -21,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
+    private Button btnSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        btnSignup = findViewById(R.id.btnSignup);
 
         // user logs in when the button is pressed
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +46,22 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+        // user can sign up on button click
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "Signup button pressed");
+                String username = etUsername.getText().toString();
+                String password = etPassword.getText().toString();
+                SignUpUser(username,password);
+
+            }
+        });
+
     }
+
+
 
     private void loginUser(String username, String password) {
         Log.i(TAG, "attempt to login: " + username);
@@ -62,4 +80,26 @@ public class LoginActivity extends AppCompatActivity {
 
 
 }
+
+    private void SignUpUser(String username, String password) {
+        Log.i(TAG, "attempt to Signup: " + username);
+
+        //create parse user
+        ParseUser user = new ParseUser();
+        //core properties
+        user.setUsername(username);
+        user.setPassword(password);
+        //sign up in background
+        user.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                Toast.makeText(LoginActivity.this, "Yay! You are sucessfully signed up.", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+    }
+
+
 }
