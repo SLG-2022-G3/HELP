@@ -19,7 +19,6 @@
         android:id="@+id/tvContactName"
         android:layout_toEndOf="@+id/ivProfPic"
         tools:text="Steeve Rogers"
-        android:text="Steeve Rogers"
         android:textSize="24dp"
         android:fontFamily="sans-serif-black"
         android:textColor="@color/black"
@@ -39,7 +38,6 @@
         android:fontFamily="sans-serif"
         android:textColor="@color/gray_text"
         android:textSize="24dp"
-        android:text="+1 987 654 3210"
         tools:text="+1 987 654 3210" />
 
     <ImageButton
