@@ -1,5 +1,6 @@
 package com.slg.G3.sos.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,8 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.slg.G3.sos.CreateContactActivity;
+import com.slg.G3.sos.MainActivity;
 import com.slg.G3.sos.R;
 //import com.slg.G3.sos.adapters.ContactAdapter;
 import com.slg.G3.sos.adapters.ContactAdapter;
@@ -37,7 +40,7 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class ContactsFragment extends Fragment {
 
-    public static final String TAG ="Contacts Fragment";
+    public static final String TAG ="ContactsFragment";
     private RecyclerView rvContacts;
     private RecyclerView rvEmerServContacts;
     private GifImageView btnSOS;
@@ -102,6 +105,8 @@ public class ContactsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(), "Opsyon sa pako disponib", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), CreateContactActivity.class);
+                startActivity(intent);
             }
         });
         btnSOS.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +121,8 @@ public class ContactsFragment extends Fragment {
     private void queryContacts() {
         // Specify which class to query
         ParseQuery<Contact> query = ParseQuery.getQuery(Contact.class);
-        //query.whereEqualTo(Contact.KEY_USER, ParseUser.getCurrentUser());
+
+       //query.whereEqualTo(Contact.KEY_USER, ParseUser.getCurrentUser());
         //Specify the object ID
         query.findInBackground(new FindCallback<Contact>() {
             @Override

@@ -32,12 +32,12 @@
             android:layout_centerHorizontal="true" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvContacts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rvContacts"
-            android:layout_below="@+id/tvCHeader"
             android:layout_above="@+id/btnAddContacts"
-            android:padding="1dp"/>
+            android:layout_below="@+id/tvCHeader"
+            android:padding="1dp" />
 
         <RelativeLayout
             android:id="@+id/btnAddContacts"

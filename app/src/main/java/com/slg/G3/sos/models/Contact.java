@@ -6,7 +6,7 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 
-@ParseClassName("Contact")
+@ParseClassName("Contacts")
 public class Contact extends ParseObject {
 
     public static final String KEY_NAME = "name";
