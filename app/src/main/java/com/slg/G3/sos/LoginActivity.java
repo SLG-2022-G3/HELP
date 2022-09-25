@@ -2,6 +2,7 @@ package com.slg.G3.sos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String TAG = "LoginActivity";
@@ -21,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
+    private Button btnSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        btnSignup = findViewById(R.id.btnSignup);
 
         // user logs in when the button is pressed
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +47,22 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+        // here we want to go to sign activity when button is pressed
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+
     }
+
+
 
     private void loginUser(String username, String password) {
         Log.i(TAG, "attempt to login: " + username);
@@ -55,6 +74,8 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 Toast.makeText(LoginActivity.this, "You are logged in", Toast.LENGTH_SHORT).show();
+                goMainActivity();
+
 
             }
 
@@ -62,4 +83,12 @@ public class LoginActivity extends AppCompatActivity {
 
 
 }
+
+    private void goMainActivity() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
 }
