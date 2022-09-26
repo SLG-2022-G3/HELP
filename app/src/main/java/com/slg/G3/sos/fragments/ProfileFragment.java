@@ -102,12 +102,12 @@ public class ProfileFragment extends Fragment {
 
         btnLogout = view.findViewById(R.id.btnLogout);
 
-
-
-        ParseUser currentUser;
-
         tvName.setText(ParseUser.getCurrentUser().getUsername());
         tvDescription.setText(ParseUser.getCurrentUser().getEmail());
+        ParseFile parseFile = user.getProfileImage();
+        if (parseFile != null) {
+            Glide.with(context).load(parseFile.getUrl()).into(ivProfPic);
+        }
 
 
 

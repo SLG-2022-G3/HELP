@@ -6,16 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".CreateContactActivity">
 
-    <ImageView
-        android:id="@+id/ivContactPhoto"
+
+
+    <ImageButton
         android:layout_width="wrap_content"
+        android:id="@+id/ibAdd"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvAddContact"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/profile_pic" />
+        android:src="@drawable/ic_add"
+        android:layout_below="@id/ivContactPhoto"/>
 
     <TextView
         android:id="@+id/tvAddContact"
@@ -33,7 +31,7 @@
         android:layout_height="wrap_content"
         android:hint="Non"
         android:id="@+id/etContactName"
-        android:layout_below="@+id/ivContactPhoto"
+        android:layout_below="@+id/ibAdd"
         android:layout_marginTop="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
@@ -80,5 +78,16 @@
         android:backgroundTint="@color/gray_back"
         android:text="Anile"
         android:textColor="@color/black" />
+
+    <ImageView
+        android:id="@+id/ivContactPhoto"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvAddContact"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/profile_pic"
+        tools:srcCompat="@tools:sample/avatars"
+        android:focusable="true" />
 
 </RelativeLayout>
