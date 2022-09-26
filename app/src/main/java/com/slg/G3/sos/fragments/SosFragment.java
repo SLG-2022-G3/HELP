@@ -94,6 +94,13 @@ public class SosFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sos, container, false);
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         locationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
         btnSOS = view.findViewById(R.id.btnSOS);
@@ -132,12 +139,6 @@ public class SosFragment extends Fragment {
                 }
             }
         });
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
 
     }
@@ -173,7 +174,7 @@ public class SosFragment extends Fragment {
 
                 // When location service is enabled
                 // Get last location
-            locationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+           /* locationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
                 @Override
                 public void onComplete(@NonNull Task<Location> task) {
                     //Init location
@@ -237,7 +238,7 @@ public class SosFragment extends Fragment {
 
                     }
                 }
-            });
+            });*/
         }
         else {
             // When location service is not enable open location setting
@@ -251,7 +252,7 @@ public class SosFragment extends Fragment {
 
     }
 
-    protected void sendSOS() {
+  /*  protected void sendSOS() {
         //TODO: Code that retrieve the Predefined SOSMessage, and Emergency Contacts' Number
 
         //Check Permissions
@@ -266,7 +267,7 @@ public class SosFragment extends Fragment {
     }
 
 
-    /* private boolean checkPermission(){
+     private boolean checkPermission(){
         int result = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.SEND_SMS);
         if(result == PackageManager.PERMISSION_GRANTED){
             return true;

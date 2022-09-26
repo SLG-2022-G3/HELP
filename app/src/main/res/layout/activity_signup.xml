@@ -3,27 +3,95 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/tvSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="30dp"
+        android:layout_marginTop="50dp"
+        android:textSize="36sp"
+        android:text="ANREJISTRE"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/black"/>
+
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:hint="Enter username" />
+        android:layout_below="@+id/tvSignUp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Non itilizate"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:hint="Enter password" />
+        android:layout_below="@+id/etUsername"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Modpas"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/etPasswordConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etPassword"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Remete Modpas"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btnSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:text="Submit" />
+        android:layout_below="@id/etPasswordConfirm"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:paddingStart="65dp"
+        android:paddingEnd="65dp"
+        android:backgroundTint="@color/green"
+        android:shadowRadius="70"
+        android:text="ANrejistre" />
+
+    <TextView
+        android:id="@+id/tvNoAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSend"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="22sp"
+        android:text="Ou deja gen yon kont?"
+        android:fontFamily="sans-serif"
+        android:textStyle="normal"
+        android:textColor="@color/black"/>
+
+
+    <TextView
+        android:id="@+id/btnSignIn"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNoAccount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:textSize="22sp"
+        android:text="KONEKTE"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"
+        android:textColor="@color/gray_text"/>
 
 
 </RelativeLayout>

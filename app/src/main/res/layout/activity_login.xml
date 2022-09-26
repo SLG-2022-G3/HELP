@@ -28,7 +28,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Imel"
+        android:hint="Non Itilizate"
         android:inputType="textPersonName" />
 
     <EditText

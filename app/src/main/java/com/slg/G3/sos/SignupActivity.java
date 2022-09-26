@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class SignupActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private Button btnSend;
+    private TextView btnSignIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,18 @@ public class SignupActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnSend = findViewById(R.id.btnSend);
+        btnSignIn = findViewById(R.id.btnSignIn);
+
+
+        //User can go back to login by clicking on KONEKTE TV
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "Login link clicked");
+                goLoginActivity();
+
+            }
+        });
 
 
         // user can sign up on button click
@@ -71,13 +85,8 @@ public class SignupActivity extends AppCompatActivity {
                     // Sign up didn't succeed. Look at the ParseException
                     // to figure out what went wrong
                 }
-
-
-
             }
         });
-
-
     }
 
     private void goMainActivity() {
@@ -85,6 +94,9 @@ public class SignupActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
-
+    private void goLoginActivity() {
+        Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
