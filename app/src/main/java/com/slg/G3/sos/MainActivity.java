@@ -33,13 +33,10 @@ public class MainActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_READ_LOCATION);
-        }
-            BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
 
-            bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     // Begin the transaction
@@ -67,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
 
-            });
-            // Set default Selection
-            bottomNavigationView.setSelectedItemId(R.id.action_home);
-        }
-
-
+        });
+        // Set default Selection
+        bottomNavigationView.setSelectedItemId(R.id.action_home);
     }
+
+
+}
