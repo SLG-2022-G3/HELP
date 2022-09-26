@@ -23,10 +23,10 @@ HELP is an application that will help users who need any kind of assistance, whe
 
 **Required Must-have Stories**
 
-- [ ] User can login.
-- [ ] User can sign up.
-- [ ] User can see a list of added emergency contacts or emergency services (PNH, Pompiers...)
-- [ ] User can add emergency contacts
+- [X] User can login.
+- [X] User can sign up.
+- [X] User can see a list of added emergency contacts or emergency services (PNH, Pompiers...)
+- [X] User can add emergency contacts
 - [ ] User can edit emergency contacts
 - [ ] User can remove emergency contacts
 - [ ] User can send a SOS to predefined contacts
