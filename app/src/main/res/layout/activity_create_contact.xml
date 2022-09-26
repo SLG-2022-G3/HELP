@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".CreateContactActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tvAddContact"
+        android:id="@+id/ivContactPhoto"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/profile_pic"
+        android:focusable="true" />
+
     <TextView
         android:id="@+id/tvAddContact"
         android:layout_width="wrap_content"
@@ -22,7 +33,7 @@
         android:layout_height="wrap_content"
         android:hint="Non"
         android:id="@+id/etContactName"
-        android:layout_below="@+id/tvAddContact"
+        android:layout_below="@+id/ivContactPhoto"
         android:layout_marginTop="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
