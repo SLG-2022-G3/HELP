@@ -53,29 +53,29 @@ public class CreateContactActivity extends AppCompatActivity {
 
     //method to save contact to parse
     private void saveContact(String name, String phone) {
-    Contact contact = new Contact();
-    contact.setName(name);
-    contact.setNumber(phone);
-    contact.setUser(ParseUser.getCurrentUser());
-    contact.saveInBackground(new SaveCallback() {
-        @Override
-        public void done(ParseException e) {
+        Contact contact = new Contact();
+        contact.setName(name);
+        contact.setNumber(phone);
+        contact.setUser(ParseUser.getCurrentUser());
+        contact.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
 
-            if (e != null) {
-                Log.e(TAG, "error while saving");
+                if (e != null) {
+                    Log.e(TAG, "error while saving");
+                }
+                Log.i(TAG, "Contact saved successfully");
+                Toast.makeText(CreateContactActivity.this, "Contact saved", Toast.LENGTH_SHORT).show();
+
+                contactName.setText("");
+                contactPhone.setText("");
+
+
             }
-            Log.i(TAG, "Contact saved successfully");
-            Toast.makeText(CreateContactActivity.this, "Contact saved", Toast.LENGTH_SHORT).show();
+        });
 
-            contactName.setText("");
-            contactPhone.setText("");
-
-
-        }
-    });
-
-    Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
-    startActivity(intent);
+        Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
+        startActivity(intent);
 
     }
 

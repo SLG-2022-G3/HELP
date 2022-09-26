@@ -248,7 +248,6 @@
                 android:id="@+id/btnLogout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/ivLogout"
                 android:layout_centerInParent="true"
                 android:clickable="true"
                 android:src="@drawable/logout_btn_shape" />
@@ -258,12 +257,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="DEKONEKTE"
-                android:id="@+id/tvLogout"
                 android:textColor="@color/gray_text"
-                android:textSize="20sp"
-                android:layout_centerInParent="true"
-                android:clickable="true"/>
-
+                android:textSize="20sp" />
         </RelativeLayout>
 
 
@@ -277,7 +272,7 @@
 
 
 
-        </RelativeLayout>
+    </RelativeLayout>
 
 
-    </FrameLayout>
+</FrameLayout>

@@ -9,92 +9,34 @@
 
     <TextView
         android:id="@+id/tvLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="30dp"
-        android:layout_marginTop="50dp"
-        android:textSize="36sp"
-        android:text="KONEKTE"
-        android:fontFamily="sans-serif"
-        android:textColor="@color/black"/>
+        tools:text="login" />
 
     <EditText
         android:id="@+id/etUsername"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvLogin"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="160dp"
         android:ems="10"
-        android:hint="Imel"
+        android:hint="enter username here"
         android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etUsername"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="Modpas"
-        android:inputType="textPassword" />
-    <TextView
-        android:id="@+id/tvForgotPW"
-        android:clickable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etPassword"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="20dp"
-        android:textSize="20sp"
-        android:text="Ou bliye Modpas ou?"
-        android:fontFamily="sans-serif-light"
-        android:textStyle="italic"
-        android:textColor="@color/gray_text"/>
+        android:layout_marginTop="200dp"
+        android:ems="10"
+        android:hint="enter password here"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvForgotPW"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:paddingStart="65dp"
-        android:paddingEnd="65dp"
-        android:backgroundTint="@color/green"
-        android:shadowRadius="70"
-        android:text="KONEKTE" />
-
-    <TextView
-        android:id="@+id/tvNoAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnLogin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:textSize="22sp"
-        android:text="Ou pako gen yon kont?"
-        android:fontFamily="sans-serif"
-        android:textStyle="normal"
-        android:textColor="@color/black"/>
-    <TextView
-        android:id="@+id/tvRegister"
-        android:clickable="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvNoAccount"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:textSize="22sp"
-        android:text="ANREJISTRE"
-        android:fontFamily="sans-serif-medium"
-        android:textStyle="bold"
-        android:textColor="@color/gray_text"/>
+        android:layout_marginTop="300dp"
+        android:text="@string/log_in" />
 
     <Button
         android:id="@+id/btnSignup"
