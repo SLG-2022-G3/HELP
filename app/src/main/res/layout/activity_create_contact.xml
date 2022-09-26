@@ -32,19 +32,19 @@
         android:textSize="20dp"/>
 
     <EditText
+        android:id="@+id/etContactNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etContactNumber"
-        android:inputType="phone"
-        android:hint="Nimewo"
         android:layout_below="@+id/etContactName"
-        android:layout_marginTop="30dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
-        android:padding="10dp"
         android:background="@color/gray_back"
+        android:hint="Nimewo"
+        android:inputType="phone"
+        android:padding="10dp"
         android:textColor="@color/black"
-        android:textSize="20dp"/>
+        android:textSize="20dp" />
 
     <Button
         android:layout_width="wrap_content"

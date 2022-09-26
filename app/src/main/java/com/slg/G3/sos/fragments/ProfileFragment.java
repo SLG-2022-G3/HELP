@@ -16,6 +16,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.slg.G3.sos.LoginActivity;
 import com.slg.G3.sos.R;
@@ -94,6 +98,7 @@ public class ProfileFragment extends Fragment {
 
         tvName = view.findViewById(R.id.tvName);
         tvDescription = view.findViewById(R.id.tvDescription);
+        ivProfPic = view.findViewById(R.id.ivProfilePic);
 
         btnLogout = view.findViewById(R.id.btnLogout);
 
@@ -103,6 +108,9 @@ public class ProfileFragment extends Fragment {
 
         tvName.setText(ParseUser.getCurrentUser().getUsername());
         tvDescription.setText(ParseUser.getCurrentUser().getEmail());
+
+
+
 
 
         //User can log out when Dekonekte is clicked

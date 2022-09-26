@@ -33,7 +33,7 @@ public class CreateContactActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.tvAddContact);
         contactName = findViewById(R.id.etContactName);
-        contactPhone = findViewById(R.id.etContactPhone);
+        contactPhone = findViewById(R.id.etContactNumber);
         btnAdd = findViewById(R.id.btnContactSend);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -63,9 +63,11 @@ public class CreateContactActivity extends AppCompatActivity {
 
                 if (e != null) {
                     Log.e(TAG, "error while saving");
+                    Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre. Tanpri eseye anko!", Toast.LENGTH_LONG).show();
+
                 }
                 Log.i(TAG, "Contact saved successfully");
-                Toast.makeText(CreateContactActivity.this, "Contact saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CreateContactActivity.this, "Kontak la anrejistre!", Toast.LENGTH_LONG).show();
 
                 contactName.setText("");
                 contactPhone.setText("");
