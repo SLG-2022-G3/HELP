@@ -1,6 +1,7 @@
 package com.slg.G3.sos.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
+import com.slg.G3.sos.LoginActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.User;
 
@@ -41,7 +43,7 @@ public class ProfileFragment extends Fragment {
     private RelativeLayout btnFFriends;
     private RelativeLayout btnShare;
     private RelativeLayout btnSettings;
-    private RelativeLayout btnLogout;
+    private ImageView btnLogout;
 
     Context context;
 
@@ -106,7 +108,10 @@ public class ProfileFragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Opsyon sa pako disponib", Toast.LENGTH_SHORT).show();
+                ParseUser.logOut();
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
