@@ -1,5 +1,7 @@
 package com.slg.G3.sos.fragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,10 +11,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.ParseUser;
+import com.slg.G3.sos.LoginActivity;
+
+import com.slg.G3.sos.MainActivity;
+
 import com.slg.G3.sos.R;
+import com.slg.G3.sos.models.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,14 +35,23 @@ public class ProfileFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    public static final String TAG ="AccountFragment";
 
-    // TODO: Rename and change types of parameters
+    private ParseUser currentUser;
+    private ImageView ivProfPic;
+    private TextView tvName;
+    private TextView tvDescription;
     private RelativeLayout btnEMsg;
     private RelativeLayout btnLang;
     private RelativeLayout btnFFriends;
     private RelativeLayout btnShare;
     private RelativeLayout btnSettings;
-    private RelativeLayout btnLogout;
+    private ImageView btnLogout;
+
+
+    Context context;
+
+    User user;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -49,10 +68,10 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static ProfileFragment newInstance(String param1, String param2) {
         ProfileFragment fragment = new ProfileFragment();
-        //Bundle args = new Bundle();
-        //args.putString(ARG_PARAM1, param1);
-        //args.putString(ARG_PARAM2, param2);
-        //fragment.setArguments(args);
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -76,14 +95,39 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnLang = view.findViewById(R.id.btnLang);
+
+        tvName = view.findViewById(R.id.tvName);
+        tvDescription = view.findViewById(R.id.tvDescription);
+
+        btnLogout = view.findViewById(R.id.btnLogout);
+        tvLogout = view.findViewById(R.id.tvLogout);
+        ivLogout = view.findViewById(R.id.ivLogout);
 
 
-        btnLang.setOnClickListener(new View.OnClickListener() {
+
+        ParseUser currentUser;
+
+        tvName.setText(ParseUser.getCurrentUser().getUsername());
+        tvDescription.setText(ParseUser.getCurrentUser().getEmail());
+
+
+        //User can log out when Dekonekte is clicked
+
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Opsyon sa pako disponib", Toast.LENGTH_SHORT).show();
+                ParseUser.logOut();
+                ParseUser currentUser = ParseUser.getCurrentUser();
+
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
             }
         });
+    }
+
+    private void goLoginActivity() {
+        Intent intent = new Intent(getContext(), LoginActivity.class);
+        startActivity(intent);
     }
 }

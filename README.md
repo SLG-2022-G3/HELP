@@ -23,7 +23,7 @@ HELP is an application that will help users who need any kind of assistance, whe
 
 **Required Must-have Stories**
 
-- [ ] User can login.
+- [X] User can login.
 - [ ] User can sign up.
 - [ ] User can see a list of added emergency contacts or emergency services (PNH, Pompiers...)
 - [ ] User can add emergency contacts
@@ -31,7 +31,7 @@ HELP is an application that will help users who need any kind of assistance, whe
 - [ ] User can remove emergency contacts
 - [ ] User can send a SOS to predefined contacts
 - [ ] User can share their live location anytime, but the sharing starts automatically after they press the SOS button.
-- [ ] A Profile page allows the user to add and update critical personal health information (Blood type, known allergies...)
+- [X] A Profile page allows the user to add and update critical personal health information (Blood type, known allergies...)
 
 **Optional Nice-to-have Stories**
 
