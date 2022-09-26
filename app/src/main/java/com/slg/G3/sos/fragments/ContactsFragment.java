@@ -89,6 +89,10 @@ public class ContactsFragment extends Fragment {
         //Set a Layout Manager
         rvContacts.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        //update adapter
+        contactAdapter.notifyItemInserted(0);
+        rvContacts.smoothScrollToPosition(0);
+
        queryContacts();
 
 
@@ -121,9 +125,10 @@ public class ContactsFragment extends Fragment {
     private void queryContacts() {
         // Specify which class to query
         ParseQuery<Contact> query = ParseQuery.getQuery(Contact.class);
+        query.orderByDescending("createdAt");
         query.setLimit(5);
 
-       //query.whereEqualTo(Contact.KEY_USER, ParseUser.getCurrentUser());
+       query.whereEqualTo(Contact.KEY_USER, ParseUser.getCurrentUser());
         //Specify the object ID
         query.findInBackground(new FindCallback<Contact>() {
             @Override
@@ -144,4 +149,5 @@ public class ContactsFragment extends Fragment {
 
 
     }
+
 }

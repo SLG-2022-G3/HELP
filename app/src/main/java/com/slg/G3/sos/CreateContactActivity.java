@@ -74,6 +74,9 @@ public class CreateContactActivity extends AppCompatActivity {
         }
     });
 
+    Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
+    startActivity(intent);
+
     }
 
 

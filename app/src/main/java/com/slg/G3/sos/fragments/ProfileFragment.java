@@ -105,6 +105,9 @@ public class ProfileFragment extends Fragment {
         tvDescription.setText(ParseUser.getCurrentUser().getEmail());
 
 
+        //User can log out when Dekonekte is clicked
+
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
