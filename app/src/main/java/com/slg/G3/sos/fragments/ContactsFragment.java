@@ -64,7 +64,7 @@ public class ContactsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-//
+    //
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -91,7 +91,7 @@ public class ContactsFragment extends Fragment {
 
 
 
-       queryContacts();
+        queryContacts();
 
 
   /*      rvEmerServContacts = view.findViewById(R.id.rvEmergServContacts);
@@ -126,7 +126,7 @@ public class ContactsFragment extends Fragment {
         query.orderByDescending("createdAt");
         query.setLimit(5);
 
-       query.whereEqualTo(Contact.KEY_USER, ParseUser.getCurrentUser());
+        query.whereEqualTo(Contact.KEY_USER, ParseUser.getCurrentUser());
         //Specify the object ID
         query.findInBackground(new FindCallback<Contact>() {
             @Override
@@ -138,7 +138,7 @@ public class ContactsFragment extends Fragment {
                     Log.i(TAG, "Contact's name : "+ contact.getName() + "Phone Number : "+ contact.getNumber());
                 }
 
-               // contacts.clear();
+                // contacts.clear();
                 allcontact.addAll(contacts);
                 contactAdapter.notifyDataSetChanged();
             }

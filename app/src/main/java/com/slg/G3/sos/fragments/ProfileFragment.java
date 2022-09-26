@@ -18,9 +18,6 @@ import android.widget.Toast;
 
 import com.parse.ParseUser;
 import com.slg.G3.sos.LoginActivity;
-
-import com.slg.G3.sos.MainActivity;
-
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.User;
 
@@ -47,7 +44,6 @@ public class ProfileFragment extends Fragment {
     private RelativeLayout btnShare;
     private RelativeLayout btnSettings;
     private ImageView btnLogout;
-
 
     Context context;
 
@@ -79,8 +75,8 @@ public class ProfileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-           // mParam1 = getArguments().getString(ARG_PARAM1);
-           // mParam2 = getArguments().getString(ARG_PARAM2);
+            // mParam1 = getArguments().getString(ARG_PARAM1);
+            // mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -100,8 +96,6 @@ public class ProfileFragment extends Fragment {
         tvDescription = view.findViewById(R.id.tvDescription);
 
         btnLogout = view.findViewById(R.id.btnLogout);
-        tvLogout = view.findViewById(R.id.tvLogout);
-        ivLogout = view.findViewById(R.id.ivLogout);
 
 
 
@@ -119,15 +113,9 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 ParseUser.logOut();
                 ParseUser currentUser = ParseUser.getCurrentUser();
-
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
         });
-    }
-
-    private void goLoginActivity() {
-        Intent intent = new Intent(getContext(), LoginActivity.class);
-        startActivity(intent);
     }
 }
