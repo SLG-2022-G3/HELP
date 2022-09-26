@@ -25,8 +25,8 @@ public class Contact extends ParseObject {
     public String getNumber(){
         return getString(KEY_PHONE);
     }
-    public void setNumber(String phoneNumber) {
-        put(KEY_PHONE, phoneNumber);
+    public void setNumber(String phone) {
+        put(KEY_PHONE, phone);
     }
 
     public ParseFile getImage(){

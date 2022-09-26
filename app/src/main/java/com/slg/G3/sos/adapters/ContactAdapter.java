@@ -47,16 +47,17 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
     public int getItemCount() {
         return contacts.size();
     }
-    // Clean all elements of the recycler
-    public void clear() {
-        contacts.clear();
-        notifyDataSetChanged();
-    }
-    // Add a list of items -- change to type used
-    public void addAll(List<Contact> contacts) {
-        contacts.addAll(contacts);
-        notifyDataSetChanged();
-    }
+
+//    // Clean all elements of the recycler
+//    public void clear() {
+//        contacts.clear();
+//        notifyDataSetChanged();
+//    }
+//    // Add a list of items -- change to type used
+//    public void addAll(List<Contact> contacts) {
+//        contacts.addAll(contacts);
+//        notifyDataSetChanged();
+//    }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {

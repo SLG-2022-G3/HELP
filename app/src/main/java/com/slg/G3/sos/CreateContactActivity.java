@@ -45,12 +45,6 @@ public class CreateContactActivity extends AppCompatActivity {
 
                 saveContact(name, phone);
 
-                Intent intent = new Intent(CreateContactActivity.this, ContactsFragment.class);
-                startActivity(intent);
-                finish();
-
-
-
 
             }
         });
@@ -74,7 +68,7 @@ public class CreateContactActivity extends AppCompatActivity {
             Toast.makeText(CreateContactActivity.this, "Contact saved", Toast.LENGTH_SHORT).show();
 
             contactName.setText("");
-            contactName.setText("");
+            contactPhone.setText("");
 
 
         }
