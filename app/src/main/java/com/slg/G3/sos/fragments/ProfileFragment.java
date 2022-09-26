@@ -18,7 +18,9 @@ import android.widget.Toast;
 
 import com.parse.ParseUser;
 import com.slg.G3.sos.LoginActivity;
+
 import com.slg.G3.sos.MainActivity;
+
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.User;
 
@@ -44,9 +46,8 @@ public class ProfileFragment extends Fragment {
     private RelativeLayout btnFFriends;
     private RelativeLayout btnShare;
     private RelativeLayout btnSettings;
-    private RelativeLayout btnLogout;
-    private ImageView ivLogout;
-    private TextView tvLogout;
+    private ImageView btnLogout;
+
 
     Context context;
 
@@ -110,24 +111,17 @@ public class ProfileFragment extends Fragment {
         tvDescription.setText(ParseUser.getCurrentUser().getEmail());
 
 
+        //User can log out when Dekonekte is clicked
+
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ParseUser.logOut();
                 ParseUser currentUser = ParseUser.getCurrentUser();
 
-                goLoginActivity();
-                //Toast.makeText(getContext(), "Opsyon sa pako disponib", Toast.LENGTH_SHORT).show();
-            }
-        });
-        tvLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ParseUser.logOut();
-                ParseUser currentUser = ParseUser.getCurrentUser();
-
-                goLoginActivity();
-                //Toast.makeText(getContext(), "Opsyon sa pako disponib", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
             }
         });
     }

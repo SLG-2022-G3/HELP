@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String TAG = "LoginActivity";
@@ -23,8 +24,10 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
-    private TextView tvForgotPW;
-    private TextView tvRegister;
+
+    private Button btnSignup;
+
+  
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,31 +35,21 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        if (ParseUser.getCurrentUser() !=null) {
-            goMainActivity();
 
+        if (ParseUser.getCurrentUser() != null) {
+            goMainActivity();
         }
+
+
+      
 
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         tvForgotPW = findViewById(R.id.tvForgotPW);
         btnLogin = findViewById(R.id.btnLogin);
-        tvRegister = findViewById(R.id.tvRegister);
 
-        tvForgotPW.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, "Forgot PassWord");
-                //TODO: Call Method to go to Reset Password Screen
-            }
-        });
-        tvRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, "Register New Account");
-                //TODO: Call Method to go to Register Screen
-            }
-        });
+        btnSignup = findViewById(R.id.btnSignup);
+
 
         // user logs in when the button is pressed
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +64,22 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
+        // here we want to go to sign activity when button is pressed
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+
+
     }
+
+
 
     private void loginUser(String username, String password) {
         Log.i(TAG, "attempt to login: " + username);
@@ -82,19 +90,24 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e(TAG, "issue with login", e);
                     return;
                 }
-        //TODO: Navigate to feed activity if the user is signed in properly
+
+                Toast.makeText(LoginActivity.this, "You are logged in", Toast.LENGTH_SHORT).show();
+
                 goMainActivity();
-                Toast.makeText(LoginActivity.this, "Login Success!", Toast.LENGTH_SHORT).show();
+
+
             }
 
     });
 
 
 }
+
     private void goMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
-
     }
+
+
 }

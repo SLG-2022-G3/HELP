@@ -96,4 +96,11 @@
         android:textStyle="bold"
         android:textColor="@color/gray_text"/>
 
+    <Button
+        android:id="@+id/btnSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dp"
+        android:text="@string/sign_up" />
+
 </RelativeLayout>

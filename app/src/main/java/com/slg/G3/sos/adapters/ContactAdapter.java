@@ -47,6 +47,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
     public int getItemCount() {
         return contacts.size();
     }
+
     // Clean all elements of the recycler
     public void clear() {
         contacts.clear();

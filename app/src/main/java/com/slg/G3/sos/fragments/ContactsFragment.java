@@ -1,5 +1,6 @@
 package com.slg.G3.sos.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,8 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.slg.G3.sos.CreateContactActivity;
+import com.slg.G3.sos.MainActivity;
 import com.slg.G3.sos.R;
 //import com.slg.G3.sos.adapters.ContactAdapter;
 import com.slg.G3.sos.adapters.ContactAdapter;
@@ -37,12 +40,13 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class ContactsFragment extends Fragment {
 
-    public static final String TAG ="Contacts Fragment";
+    public static final String TAG ="ContactsFragment";
     private RecyclerView rvContacts;
     private RecyclerView rvEmerServContacts;
     private GifImageView btnSOS;
     private RelativeLayout btnAddContact;
-    protected List<Contact> contacts;
+    private RelativeLayout relativeLayout;
+    protected List<Contact> allcontact;
     protected ContactAdapter contactAdapter;
 
 
@@ -74,16 +78,18 @@ public class ContactsFragment extends Fragment {
         rvContacts = view.findViewById(R.id.rvContacts);
 
         //Create Data Source
-        contacts = new ArrayList<>();
+        allcontact = new ArrayList<>();
 
         //Create ContactsAdapter
-        contactAdapter = new ContactAdapter(this, contacts);
+        contactAdapter = new ContactAdapter(this, allcontact);
 
         //Set adapter on recyclerview
         rvContacts.setAdapter(contactAdapter);
 
         //Set a Layout Manager
         rvContacts.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
 
        queryContacts();
 
@@ -101,7 +107,8 @@ public class ContactsFragment extends Fragment {
         btnAddContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Opsyon sa pako disponib", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), CreateContactActivity.class);
+                startActivity(intent);
             }
         });
         btnSOS.setOnClickListener(new View.OnClickListener() {
@@ -116,11 +123,14 @@ public class ContactsFragment extends Fragment {
     private void queryContacts() {
         // Specify which class to query
         ParseQuery<Contact> query = ParseQuery.getQuery(Contact.class);
-        //query.whereEqualTo(Contact.KEY_USER, ParseUser.getCurrentUser());
+        query.orderByDescending("createdAt");
+        query.setLimit(5);
+
+       query.whereEqualTo(Contact.KEY_USER, ParseUser.getCurrentUser());
         //Specify the object ID
         query.findInBackground(new FindCallback<Contact>() {
             @Override
-            public void done(List<Contact> objects, ParseException e) {
+            public void done(List<Contact> contacts, ParseException e) {
                 if (e !=null){
                     Log.e(TAG, "Issues with getting Contacts", e);
                     return;
@@ -129,7 +139,7 @@ public class ContactsFragment extends Fragment {
                 }
 
                // contacts.clear();
-                contacts.addAll(contacts);
+                allcontact.addAll(contacts);
                 contactAdapter.notifyDataSetChanged();
             }
         });
@@ -137,4 +147,5 @@ public class ContactsFragment extends Fragment {
 
 
     }
+
 }
