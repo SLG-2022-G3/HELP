@@ -8,10 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.slg.G3.sos.fragments.ContactsFragment;
@@ -26,6 +28,7 @@ public class CreateContactActivity extends AppCompatActivity {
     private EditText contactPhone;
     private Button btnAdd;
     private Button btnCancel;
+    private ImageView ivContactPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,14 @@ public class CreateContactActivity extends AppCompatActivity {
         contactPhone = findViewById(R.id.etContactNumber);
         btnAdd = findViewById(R.id.btnContactSend);
         btnCancel = findViewById(R.id.btnCancel);
+        ivContactPhoto = findViewById(R.id.ivContactPhoto);
+
+        ivContactPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CreateContactActivity.this, "Opsyon sa poko ajoute", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // code to add contact when button is pressed
 
@@ -46,6 +57,7 @@ public class CreateContactActivity extends AppCompatActivity {
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 String name = contactName.getText().toString();
                 String phone = contactPhone.getText().toString();
+
 
                 if(name.isEmpty()) {
                     Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon non pou kontak la!", Toast.LENGTH_LONG).show();

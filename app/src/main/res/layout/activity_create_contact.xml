@@ -7,15 +7,15 @@
     tools:context=".CreateContactActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/tvAddContact"
         android:id="@+id/ivContactPhoto"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tvAddContact"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:clickable="true"
-        android:src="@drawable/profile_pic"
-        android:focusable="true" />
+        android:focusable="true"
+        android:src="@drawable/profile_pic" />
 
     <TextView
         android:id="@+id/tvAddContact"
