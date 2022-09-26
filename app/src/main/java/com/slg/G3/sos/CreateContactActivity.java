@@ -25,6 +25,7 @@ public class CreateContactActivity extends AppCompatActivity {
     private EditText contactName;
     private EditText contactPhone;
     private Button btnAdd;
+    private Button btnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,9 @@ public class CreateContactActivity extends AppCompatActivity {
         contactName = findViewById(R.id.etContactName);
         contactPhone = findViewById(R.id.etContactNumber);
         btnAdd = findViewById(R.id.btnContactSend);
+        btnCancel = findViewById(R.id.btnCancel);
+
+        // code to add contact when button is pressed
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +60,19 @@ public class CreateContactActivity extends AppCompatActivity {
 
                 saveContact(name, phone);
 
+
+            }
+        });
+
+        //code to cancel adding contact when button Anile is pressed
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
+                Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre.", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+                finish();
 
             }
         });
