@@ -50,6 +50,7 @@ public class CreateContactActivity extends AppCompatActivity {
 
                 if(phone.isEmpty()) {
                     Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon nimewo pou kontak la!", Toast.LENGTH_LONG).show();
+                    return;
                 }
 
 
