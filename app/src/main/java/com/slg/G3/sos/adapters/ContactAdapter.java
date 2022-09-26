@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.parse.ParseFile;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.fragments.ContactsFragment;
 import com.slg.G3.sos.models.Contact;
@@ -25,7 +26,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
 
     public ContactAdapter (ContactsFragment context, List<Contact> contacts){
-        this.context = context;
+        this.context = context.getContext();
         this.contacts = contacts;
     }
     @NonNull
@@ -46,14 +47,15 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
     public int getItemCount() {
         return contacts.size();
     }
+
     // Clean all elements of the recycler
     public void clear() {
         contacts.clear();
         notifyDataSetChanged();
     }
     // Add a list of items -- change to type used
-    public void addAll(List<Contact> contactList) {
-        contacts.addAll(contactList);
+    public void addAll(List<Contact> contacts) {
+        contacts.addAll(contacts);
         notifyDataSetChanged();
     }
 
@@ -79,7 +81,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
         public void bind(Contact contact) {
             tvContactName.setText(contact.getName());
-            tvContactNumber.setText(contact.getPhone());
+            tvContactNumber.setText(contact.getNumber());
 
             ParseFile image = contact.getImage();
             if (image != null){
