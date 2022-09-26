@@ -43,6 +43,12 @@ public class CreateContactActivity extends AppCompatActivity {
                 String name = contactName.getText().toString();
                 String phone = contactPhone.getText().toString();
 
+                if(name.isEmpty()) {
+                    Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon non pou kontak la!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+
                 saveContact(name, phone);
 
 
