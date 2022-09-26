@@ -89,9 +89,7 @@ public class ContactsFragment extends Fragment {
         //Set a Layout Manager
         rvContacts.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        //update adapter
-        contactAdapter.notifyItemInserted(0);
-        rvContacts.smoothScrollToPosition(0);
+
 
        queryContacts();
 
