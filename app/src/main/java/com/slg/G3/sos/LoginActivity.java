@@ -1,6 +1,7 @@
 package com.slg.G3.sos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,26 +20,36 @@ import com.parse.SignUpCallback;
 public class LoginActivity extends AppCompatActivity {
     public static final String TAG = "LoginActivity";
 
-    private TextView tvLogin;
+    //private TextView tvLogin;
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
+
     private Button btnSignup;
+
+  
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         if (ParseUser.getCurrentUser() != null) {
             goMainActivity();
         }
 
 
+      
+
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
+        tvForgotPW = findViewById(R.id.tvForgotPW);
         btnLogin = findViewById(R.id.btnLogin);
+
         btnSignup = findViewById(R.id.btnSignup);
+
 
         // user logs in when the button is pressed
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
         // here we want to go to sign activity when button is pressed
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+
 
 
 
@@ -77,7 +90,9 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e(TAG, "issue with login", e);
                     return;
                 }
+
                 Toast.makeText(LoginActivity.this, "You are logged in", Toast.LENGTH_SHORT).show();
+
                 goMainActivity();
 
 
