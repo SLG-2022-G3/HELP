@@ -35,6 +35,8 @@ import java.io.File;
 public class CreateContactActivity extends AppCompatActivity {
 
     public static String TAG = "CreateContactActivity";
+
+    // in order to access gallery, and save image
     public static final int IMAGE_PICK_CODE = 1;
     public static final int PERMISSION_CODE = 2;
 
