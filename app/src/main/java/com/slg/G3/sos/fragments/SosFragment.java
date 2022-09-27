@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Looper;
 import android.provider.Settings;
-import android.telephony.SmsManager;
+import android.telephony.gsm.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,40 +109,57 @@ public class SosFragment extends Fragment {
         btnSOS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //Check Condition to access Location
-                if (ContextCompat.checkSelfPermission(
-                        getActivity(),
-                        Manifest.permission
-                                .ACCESS_FINE_LOCATION)
-                        != PackageManager
-                        .PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
-                        getActivity(),
-                        Manifest.permission
-                                .ACCESS_COARSE_LOCATION)
-                        != PackageManager
-                        .PERMISSION_GRANTED ){
-                    // When permission is granted
-                    // Call method
-                    getCurrentLocation();
-
+                // Code to Send SOS MESSAGE
+                //TODO: retrieve predefined SOS Message to String
+                String sos = "I NEED HELP";
+                String phoneNo = "40770750";
+                //TODO: retrieve Emergency Contact PhoneNumber to String
+                if (checkPermission()) {
+                    //Get the default SmsManager//
+                    SmsManager smsManager = SmsManager.getDefault();
+                    //Send the SOS
+                    smsManager.sendTextMessage(phoneNo, null, sos, null, null);
+                    Toast.makeText(getContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
                 } else {
-                    // When permission is not granted
-                    // Call method
-                    requestPermissions(
-                            new String[]{
-                                    Manifest.permission
-                                            .ACCESS_FINE_LOCATION,
-                                    Manifest.permission
-                                            .ACCESS_COARSE_LOCATION},
-                            100);
+                    Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
+                    requestPermission();
                 }
+
             }
+
         });
-
-
     }
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.SEND_SMS);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
     @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] ==PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getContext(), "Permission access allowed", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Permission access denied", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    private void requestPermission(){
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[]{Manifest.permission.SEND_SMS},MY_PERMISSIONS_REQUEST_SEND_SMS);
+    }
+    /*  @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         // Check condition
@@ -238,7 +255,7 @@ public class SosFragment extends Fragment {
 
                     }
                 }
-            });*/
+            });
         }
         else {
             // When location service is not enable open location setting
@@ -275,5 +292,5 @@ public class SosFragment extends Fragment {
             return false;
         }
 
-    }*/
+    */
 }

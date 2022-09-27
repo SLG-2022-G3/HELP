@@ -38,11 +38,11 @@ public class User extends ParseUser {
         put(KEY_USERNAME, username);
     }
 
-    public String getSos(){
+    public String getSOS(){
         return getString(KEY_SOS);
     }
-    public void setSos(String sos) {
-        put(KEY_SOS, sos);
+    public void setSOS(String sosMessage) {
+        put(KEY_SOS, sosMessage);
     }
 
     public String getInfo(){
