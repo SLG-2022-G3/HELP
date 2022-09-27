@@ -51,7 +51,7 @@ public class SosFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String TAG = "SOSFragment";
     private static final int PERMISSION_REQUEST_CODE = 1;
-    //private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
 
 
     // TODO: Rename and change types of parameters
@@ -119,8 +119,10 @@ public class SosFragment extends Fragment {
                     SmsManager smsManager = SmsManager.getDefault();
                     //Send the SOS
                     smsManager.sendTextMessage(phoneNo, null, sos, null, null);
+                    Toast.makeText(getContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
+                    requestPermission();
                 }
 
             }
@@ -136,10 +138,7 @@ public class SosFragment extends Fragment {
         }
     }
 
-    private void requestPermission(){
-        ActivityCompat.requestPermissions(getActivity(),
-                new String[]{Manifest.permission.SEND_SMS},PERMISSION_REQUEST_CODE);
-    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -149,13 +148,16 @@ public class SosFragment extends Fragment {
                     Toast.makeText(getContext(), "Permission access allowed", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "Permission access denied", Toast.LENGTH_SHORT).show();
-                btnSOS.setEnabled(false);
-
                 }
                 break;
         }
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    private void requestPermission(){
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[]{Manifest.permission.SEND_SMS},MY_PERMISSIONS_REQUEST_SEND_SMS);
     }
     /*  @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
