@@ -59,10 +59,10 @@ public class User extends ParseUser {
         put(KEY_TELEPHONE, telephone);
     }
 
-    public ParseFile getProfileImage(){
+    public ParseFile getImage(){
         return getParseFile(KEY_PROFILE_IMAGE);
     }
-    public void setProfileImage(ParseFile parseFile) {
+    public void setImage(ParseFile parseFile) {
         put(KEY_PROFILE_IMAGE, parseFile);
     }
 

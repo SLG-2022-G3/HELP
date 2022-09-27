@@ -104,10 +104,10 @@ public class ProfileFragment extends Fragment {
 
         tvName.setText(ParseUser.getCurrentUser().getUsername());
         tvDescription.setText(ParseUser.getCurrentUser().getEmail());
-        ParseFile parseFile = user.getProfileImage();
-        if (parseFile != null) {
-            Glide.with(context).load(parseFile.getUrl()).into(ivProfPic);
-        }
+//        ParseFile parseFile = user.getImage();
+//        if (parseFile != null) {
+//            Glide.with(context).load(parseFile.getUrl()).into(ivProfPic);
+//        }
 
 
 
