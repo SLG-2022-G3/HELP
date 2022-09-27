@@ -17,13 +17,13 @@
         android:id="@+id/tvContactName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:layout_toEndOf="@+id/ivProfPic"
         android:fontFamily="sans-serif-black"
         android:textColor="@color/black"
-        android:textSize="24dp"
+        android:textSize="22dp"
         tools:text="Steeve Rogers" />
 
     <TextView
@@ -31,19 +31,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvContactName"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="10dp"
         android:layout_toEndOf="@+id/ivProfPic"
         android:fontFamily="sans-serif"
         android:textColor="@color/gray_text"
-        android:textSize="24dp"
+        android:textSize="21dp"
         tools:text="+1 987 654 3210" />
 
     <ImageButton
         android:id="@+id/ibEditContact"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_centerVertical="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
@@ -52,13 +52,13 @@
         android:layout_toStartOf="@+id/ibDeleteContact"
         android:background="@drawable/rounded_corner1"
         android:backgroundTint="@color/green"
-        android:padding="10dp"
+        android:padding="15dp"
         android:src="@drawable/ic_edit" />
 
     <ImageButton
         android:id="@+id/ibDeleteContact"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="5dp"
@@ -67,7 +67,7 @@
         android:layout_marginBottom="5dp"
         android:background="@drawable/rounded_corner1"
         android:backgroundTint="@color/red"
-        android:padding="10dp"
+        android:padding="15dp"
         android:src="@drawable/ic_trash" />
 
 </RelativeLayout>

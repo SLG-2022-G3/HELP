@@ -18,13 +18,19 @@
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/ic_settings.xml" value="0.147" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/iv_my_profile.xml" value="0.124" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/logout_btn_shape.xml" value="0.147" />
+        <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/msg_bg.xml" value="0.154" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/rounded_corner1.xml" value="0.1385" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/rounded_corner2.xml" value="0.1385" />
+        <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/activity_create_contact.xml" value="0.2" />
+        <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/activity_signup.xml" value="0.1337386018237082" />
+        <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/activity_sos.xml" value="0.275" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/contacts.xml" value="0.20923913043478262" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/fragment_contacts.xml" value="0.2" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
-        <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/fragment_sos.xml" value="0.15081521739130435" />
+        <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/fragment_s_o_s_message_view.xml" value="0.275" />
+        <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/fragment_sos.xml" value="0.2" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.275" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/mipmap-anydpi-v26/btn_sos.xml" value="0.1" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/mipmap-anydpi-v26/profile_pic_round.xml" value="0.1" />
@@ -39,6 +45,16 @@
         <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/project SOS/HELP/app/src/main/res/layout/fragment_sos.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/project SOS/HELP/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/sos/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/drawable/bg.xml" value="0.2075" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2075" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/activity_resetpassword.xml" value="0.2" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/contacts.xml" value="0.2" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/fragment_contacts.xml" value="0.2" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/fragment_sos.xml" value="0.2" />
+
       </map>
     </option>
   </component>
