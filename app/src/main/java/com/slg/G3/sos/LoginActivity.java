@@ -1,6 +1,7 @@
 package com.slg.G3.sos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,14 +20,14 @@ import com.parse.SignUpCallback;
 public class LoginActivity extends AppCompatActivity {
     public static final String TAG = "LoginActivity";
 
-    private TextView tvLogin;
-    private EditText etUsername;
-    private EditText etPassword;
+    private TextView tvLogin, btnSignup;
+    private EditText etUsername, etPassword;
     private Button btnLogin;
-    private Button btnSignup;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
