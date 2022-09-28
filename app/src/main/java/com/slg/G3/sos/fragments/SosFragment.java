@@ -106,28 +106,28 @@ public class SosFragment extends Fragment {
         btnSOS = view.findViewById(R.id.btnSOS);
 
 
-        btnSOS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Code to Send SOS MESSAGE
-                //TODO: retrieve predefined SOS Message to String
-                String sos = "I NEED HELP";
-                String phoneNo = "40770750";
-                //TODO: retrieve Emergency Contact PhoneNumber to String
-                if (checkPermission()) {
-                    //Get the default SmsManager//
-                    SmsManager smsManager = SmsManager.getDefault();
-                    //Send the SOS
-                    smsManager.sendTextMessage(phoneNo, null, sos, null, null);
-                    Toast.makeText(getContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
-                    requestPermission();
-                }
-
-            }
-
-        });
+//        btnSOS.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // Code to Send SOS MESSAGE
+//                //TODO: retrieve predefined SOS Message to String
+//                String sos = "I NEED HELP";
+//                String phoneNo = "40770750";
+//                //TODO: retrieve Emergency Contact PhoneNumber to String
+//                if (checkPermission()) {
+//                    //Get the default SmsManager//
+//                    SmsManager smsManager = SmsManager.getDefault();
+//                    //Send the SOS
+//                    smsManager.sendTextMessage(phoneNo, null, sos, null, null);
+//                    Toast.makeText(getContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
+//                    requestPermission();
+//                }
+//
+//            }
+//
+//        });
     }
     private boolean checkPermission() {
         int result = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.SEND_SMS);

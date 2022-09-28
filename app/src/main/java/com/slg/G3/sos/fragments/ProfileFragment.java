@@ -20,7 +20,6 @@ import com.parse.ParseUser;
 import com.slg.G3.sos.LoginActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.User;
-import com.slg.G3.sos.models.UserInfo;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,7 +38,6 @@ public class ProfileFragment extends Fragment {
     private ImageView ivProfPic, btnLogout;
     private TextView tvName, tvDescription, tvMsg;
     private RelativeLayout btnEMsg,btnShare, btnSettings ;
-    private UserInfo userInfo;
 
 
     Context context;
