@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.parse.ParseUser;
 import com.slg.G3.sos.LoginActivity;
@@ -38,6 +37,7 @@ public class ProfileFragment extends Fragment {
     private ImageView ivProfPic, btnLogout;
     private TextView tvName, tvDescription, tvMsg;
     private RelativeLayout btnEMsg,btnShare, btnSettings ;
+
 
 
     Context context;
@@ -89,12 +89,23 @@ public class ProfileFragment extends Fragment {
 
         tvName = view.findViewById(R.id.tvName);
         tvDescription = view.findViewById(R.id.tvDescription);
+
+        ivProfPic = view.findViewById(R.id.ivProfilePic);
+
+
         tvMsg = view.findViewById(R.id.tvMsg);
+
         btnLogout = view.findViewById(R.id.btnLogout);
 
+        tvName.setText(ParseUser.getCurrentUser().getUsername());
+        tvDescription.setText(ParseUser.getCurrentUser().getEmail());
+//        ParseFile parseFile = user.getImage();
+//        if (parseFile != null) {
+//            Glide.with(context).load(parseFile.getUrl()).into(ivProfPic);
+//        }
 
 
-        ParseUser currentUser;
+
 
         tvName.setText(ParseUser.getCurrentUser().getUsername());
         //tvDescription.setText(userInfo.getInfo());

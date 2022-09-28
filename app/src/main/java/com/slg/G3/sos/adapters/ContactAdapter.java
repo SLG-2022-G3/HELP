@@ -78,6 +78,13 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
             ibEditContact = itemView.findViewById(R.id.ibEditContact);
             ibDeleteContact = itemView.findViewById(R.id.ibDeleteContact);
 
+            ibEditContact.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
         }
 
         public void bind(Contact contact) {

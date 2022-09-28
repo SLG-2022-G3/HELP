@@ -1,7 +1,10 @@
 package com.slg.G3.sos.models;
 
+import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
+
+@ParseClassName("User")
 
 public class User extends ParseUser {
 
@@ -45,8 +48,8 @@ public class User extends ParseUser {
     public String getInfo(){
         return getString(KEY_INFO_PERSO);
     }
-    public void setInfo(String info) {
-        put(KEY_INFO_PERSO, info);
+    public void setInfo(String persoInfo) {
+        put(KEY_INFO_PERSO, persoInfo);
     }
 
     public String getTelephone(){
@@ -56,11 +59,12 @@ public class User extends ParseUser {
         put(KEY_TELEPHONE, telephone);
     }
 
-    public ParseFile getProfileImage(){
+    public ParseFile getImage(){
         return getParseFile(KEY_PROFILE_IMAGE);
     }
-    public void setProfileImage(ParseFile profileImage) {
-        put(KEY_PROFILE_IMAGE, profileImage);
+    public void setImage(ParseFile parseFile) {
+        put(KEY_PROFILE_IMAGE, parseFile);
     }
+
 
 }
