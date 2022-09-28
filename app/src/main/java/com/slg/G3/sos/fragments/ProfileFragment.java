@@ -16,6 +16,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.slg.G3.sos.LoginActivity;
 import com.slg.G3.sos.R;
@@ -91,12 +95,23 @@ public class ProfileFragment extends Fragment {
 
         tvName = view.findViewById(R.id.tvName);
         tvDescription = view.findViewById(R.id.tvDescription);
+
+        ivProfPic = view.findViewById(R.id.ivProfilePic);
+
+
         tvMsg = view.findViewById(R.id.tvMsg);
+
         btnLogout = view.findViewById(R.id.btnLogout);
 
+        tvName.setText(ParseUser.getCurrentUser().getUsername());
+        tvDescription.setText(ParseUser.getCurrentUser().getEmail());
+//        ParseFile parseFile = user.getImage();
+//        if (parseFile != null) {
+//            Glide.with(context).load(parseFile.getUrl()).into(ivProfPic);
+//        }
 
 
-        ParseUser currentUser;
+
 
         tvName.setText(ParseUser.getCurrentUser().getUsername());
         //tvDescription.setText(userInfo.getInfo());

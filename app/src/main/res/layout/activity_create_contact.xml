@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CreateContactActivity">
 
+
     <TextView
         android:id="@+id/tvAddContact"
         android:layout_width="wrap_content"
@@ -18,52 +19,67 @@
         android:textColor="@color/black"/>
 
     <EditText
+        android:id="@+id/etContactName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Non"
-        android:id="@+id/etContactName"
-        android:layout_below="@+id/tvAddContact"
-        android:layout_marginTop="30dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
-        android:padding="10dp"
+        android:layout_below="@id/ivContactPhoto"
         android:background="@color/gray_back"
+        android:hint="Non"
+        android:padding="10dp"
         android:textColor="@color/black"
-        android:textSize="20dp"/>
+        android:textSize="20dp" />
 
     <EditText
+        android:id="@+id/etContactNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etContactPhone"
-        android:inputType="phone"
-        android:hint="Nimewo"
         android:layout_below="@+id/etContactName"
-        android:layout_marginTop="30dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
-        android:padding="10dp"
         android:background="@color/gray_back"
+        android:hint="Nimewo"
+        android:inputType="phone"
+        android:padding="10dp"
         android:textColor="@color/black"
-        android:textSize="20dp"/>
+        android:textSize="20dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ANREJISTRE"
-        android:layout_below="@+id/etContactPhone"
+        android:layout_below="@+id/etContactNumber"
         android:layout_margin="30dp"
         android:id="@+id/btnContactSend"
         android:backgroundTint="@color/green"
         android:layout_alignParentEnd="true"/>
+
     <Button
+        android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Anile"
-        android:layout_below="@+id/etContactPhone"
+        android:layout_below="@+id/etContactNumber"
         android:layout_alignParentStart="true"
-        android:layout_margin="30dp"
-        android:id="@+id/btnCancel"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/gray_back"/>
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/gray_back"
+        android:text="Anile"
+        android:textColor="@color/black" />
+
+    <ImageView
+        android:id="@+id/ivContactPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvAddContact"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/profile_pic"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </RelativeLayout>
