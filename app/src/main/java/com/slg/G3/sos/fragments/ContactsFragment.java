@@ -135,7 +135,7 @@ public class ContactsFragment extends Fragment {
                     Log.e(TAG, "Issues with getting Contacts", e);
                     return;
                 } for(Contact contact : contacts){
-                    Log.i(TAG, "Contact's name : "+ contact.getName() + "Phone Number : "+ contact.getNumber());
+                    Log.i(TAG, "Contact's name : "+ contact.getName() + "Phone Number : "+ contact.getNumber() + "photo: " + contact.getImage());
                 }
 
                 // contacts.clear();

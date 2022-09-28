@@ -5,6 +5,7 @@ import android.app.Application;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.slg.G3.sos.models.Contact;
+import com.slg.G3.sos.models.User;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -16,6 +17,7 @@ public class ParseApplication extends Application {
 
         // Register your parse models
         ParseObject.registerSubclass(Contact.class);
+        ParseObject.registerSubclass(User.class);
 
 
         // Use for monitoring Parse network traffic
