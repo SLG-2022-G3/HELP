@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     ImageView facebook, google;
     TextView forgetPassword,next;
 
+
     float v=0;
 
     @Override
