@@ -6,82 +6,54 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/buz"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".27"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/view_bg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".78"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1">
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".7"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.129" >
-
-            <ImageView
-                android:id="@+id/fabButtonGoogle"
-                android:layout_width="96dp"
-                android:layout_height="100dp"
-                app:srcCompat="@drawable/gl" />
-        </androidx.viewpager.widget.ViewPager>
-
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/tvSinup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/anrejistre"
-            android:textColor="#ac0700"
-            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.447"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewPager"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.062" />
+
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="ou deja gen on kont ?"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.733" />
 
         <TextView
             android:id="@+id/before"
-            android:layout_width="95dp"
-            android:layout_height="85dp"
-            app:drawableRightCompat="@drawable/ic_baseline_arrow_back_24"
-            app:layout_constraintBottom_toBottomOf="@+id/viewPager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="KONEKTE"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewPager"
-            app:layout_constraintVertical_bias="0.0" />
-
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.76" />
 
         <EditText
             android:id="@+id/username"
@@ -92,15 +64,15 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/input"
-            android:drawableStart="@drawable/ic_baseline_person"
+            android:drawableStart="@drawable/ic_baseline_person_24"
             android:drawablePadding="15dp"
             android:hint=" mete non itilizate "
             android:inputType="text"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:textColor="#ac0700"
-            android:textColorHint="#ac0700"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/emailSignup"
             app:layout_constraintHeight_percent=".8"
@@ -119,15 +91,15 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/input"
-            android:drawableStart="@drawable/ic_baseline_email"
+            android:drawableStart="@drawable/ic_baseline_mail"
             android:drawablePadding="15dp"
             android:hint="mete Imel ou la"
             android:inputType="textEmailAddress"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:textColor="#ac0700"
-            android:textColorHint="#ac0700"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent=".8"
@@ -142,15 +114,15 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:background="@drawable/input"
-            android:drawableStart="@drawable/ic_baseline_lock"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
             android:drawablePadding="15dp"
-            android:hint="Modpas"
+            android:hint="Mete modpas la"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:textColor="#ac0700"
-            android:textColorHint="#ac0700"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/emailSignup"
             app:layout_constraintHorizontal_bias="0.0"
@@ -166,15 +138,15 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/input"
-            android:drawableStart="@drawable/ic_baseline_lock"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
             android:drawablePadding="15dp"
-            android:hint="kofime Modpas"
+            android:hint="kofime Modpas la "
             android:inputType="textPassword"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:textColor="#ac0700"
-            android:textColorHint="#ac0700"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -182,11 +154,12 @@
             app:layout_constraintTop_toBottomOf="@+id/Passwords"
             app:layout_constraintVertical_bias="0.134" />
 
+
         <Button
             android:id="@+id/buttonSignup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/blood_red"
+            android:backgroundTint="@color/green"
             android:text="ANREJISTRE"
             android:textColor="@color/white"
             android:textSize="16sp"
@@ -195,48 +168,54 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.739"
+            app:layout_constraintVertical_bias="0.682"
             app:layout_constraintWidth_percent=".8" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/view_bg"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0" />
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="~ OUBYEN ~"
-            android:textColor="#AC0700"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="~ OUBYEN  ~"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.84" />
+
+        <TextView
+            android:id="@+id/same"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text=" ANREJISTRE AK"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.879" />
 
         <ImageView
             android:id="@+id/ButtonGgle"
             android:layout_width="96dp"
             android:layout_height="100dp"
+            android:src="@drawable/gl"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/Buttonfb"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            android:src="@drawable/gl" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/Buttonfb"
@@ -251,34 +230,5 @@
             app:srcCompat="@drawable/fb" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="209dp"
-        android:layout_height="128dp"
-        android:src="@drawable/red1"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BYENVENI !"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.99" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

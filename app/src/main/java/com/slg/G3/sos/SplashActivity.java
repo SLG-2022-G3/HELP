@@ -1,6 +1,7 @@
 package com.slg.G3.sos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,28 +13,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
-    Animation topAnim, bottomAnim;
-    ImageView imageView;
+    Animation zoom;
+    TextView imageView;
+    ImageView circle;
     TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_splash);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        topAnim = AnimationUtils.loadAnimation(this, R.anim.top_anim);
-        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_anim);
-        imageView = findViewById(R.id.whiteLogo);
+        zoom = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoom);
 
-        imageView.setAnimation(topAnim);
+        circle= findViewById(R.id.circle);
 
-new Handler().postDelayed(new Runnable() {
-    @Override
-    public void run() {
-        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-        finish();
-    }
-},3000);
+        imageView = findViewById(R.id.whiteText);
+
+        circle.startAnimation(zoom);
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i);
+                finish();
+            }
+        },3000);
     }
 }
