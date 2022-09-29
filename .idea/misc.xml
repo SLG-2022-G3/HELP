@@ -21,13 +21,9 @@
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/msg_bg.xml" value="0.154" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/rounded_corner1.xml" value="0.1385" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/drawable/rounded_corner2.xml" value="0.1385" />
-<<<<<<< HEAD
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/activity_create_contact.xml" value="0.2" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/activity_login.xml" value="0.2" />
-        <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/activity_main.xml" value="0.264" />
-=======
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/activity_main.xml" value="0.4" />
->>>>>>> 8ae7d6f8dda101070d0a753774c150abafd925bf
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/activity_signup.xml" value="0.1337386018237082" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/activity_sos.xml" value="0.275" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/layout/contacts.xml" value="0.20923913043478262" />
@@ -38,19 +34,27 @@
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.275" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/mipmap-anydpi-v26/btn_sos.xml" value="0.1" />
         <entry key="..\:/Users/CodeSAM/StudioProjects/HELP/app/src/main/res/mipmap-anydpi-v26/profile_pic_round.xml" value="0.1" />
+        <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/project SOS/HELP/app/src/main/res/drawable/bacgrounds.xml" value="0.1195" />
+        <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/project SOS/HELP/app/src/main/res/drawable/button_bg.xml" value="0.1195" />
+        <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/project SOS/HELP/app/src/main/res/drawable/input.xml" value="0.1195" />
+        <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/project SOS/HELP/app/src/main/res/drawable/view_bg.xml" value="0.1195" />
+        <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/project SOS/HELP/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/project SOS/HELP/app/src/main/res/layout/activity_signup.xml" value="0.25" />
+        <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/project SOS/HELP/app/src/main/res/layout/activity_splash.xml" value="0.21" />
+        <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/project SOS/HELP/app/src/main/res/layout/contacts.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/project SOS/HELP/app/src/main/res/layout/fragment_sos.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/project SOS/HELP/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Vellie Laguerre/Documents/Code_Path/sos/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/drawable/bg.xml" value="0.2075" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2075" />
-        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/activity_create_contact.xml" value="0.33" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/activity_resetpassword.xml" value="0.2" />
-        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/activity_signup.xml" value="0.22" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/contacts.xml" value="0.2" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/fragment_contacts.xml" value="0.2" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/fragment_sos.xml" value="0.2" />
-        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/xml/fileprovider.xml" value="0.19895833333333332" />
+
       </map>
     </option>
   </component>

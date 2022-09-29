@@ -1,17 +1,20 @@
 package com.slg.G3.sos;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.tabs.TabLayout;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -20,50 +23,98 @@ import com.parse.SignUpCallback;
 public class LoginActivity extends AppCompatActivity {
     public static final String TAG = "LoginActivity";
 
-    private TextView tvLogin, btnSignup;
-    private EditText etUsername, etPassword;
+    private TextView tvLogin;
+    private EditText etEmail;
+    private EditText etPassword;
+
     private Button btnLogin;
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    ImageView facebook, google;
+    TextView forgetPassword,next;
+
+
+    float v=0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+
 
         if (ParseUser.getCurrentUser() != null) {
             goMainActivity();
         }
 
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPager);
+        facebook = findViewById(R.id.fabButtonfb);
+        google = findViewById(R.id.fabButtonGoogle);
+        next = findViewById(R.id.next);
 
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
+        etEmail = findViewById(R.id.emailLogin);
+        etPassword = findViewById(R.id.passwordLogin);
         btnLogin = findViewById(R.id.btnLogin);
-        btnSignup = findViewById(R.id.btnSignup);
+
+        tabLayout.addTab(tabLayout.newTab().setText("konekte"));
+        tabLayout.addTab(tabLayout.newTab().setText("Anrejistre"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+
+        facebook.setTranslationY(300);
+        google.setTranslationY(300);
+        tabLayout.setTranslationY(300);
+
+        facebook.setAlpha(v);
+        google.setAlpha(v);
+        tabLayout.setAlpha(v);
+
+        facebook.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(400).start();
+        google.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(600).start();
+        google.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
+
+        // here we want to go to sign activity when button is pressed
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,SignupActivity.class));
+            }
+        });
+
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this, "opsyon sa poko valid", Toast.LENGTH_SHORT).show();
+            }
+        });
+        google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this, "opsyon sa poko valid", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // user logs in when the button is pressed
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Login button pressed");
-                String username = etUsername.getText().toString();
+                String username = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
                 loginUser(username,password);
 
+
             }
         });
-
-        // here we want to go to sign activity when button is pressed
-        btnSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-
 
     }
 
@@ -86,7 +137,6 @@ public class LoginActivity extends AppCompatActivity {
 
         });
 
-
     }
 
     private void goMainActivity() {
@@ -94,6 +144,4 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
-
 }
