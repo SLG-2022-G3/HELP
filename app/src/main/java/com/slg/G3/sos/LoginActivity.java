@@ -23,9 +23,11 @@ import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String TAG = "LoginActivity";
+
     private TextView tvLogin;
     private EditText etEmail;
     private EditText etPassword;
+
     private Button btnLogin;
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -35,13 +37,17 @@ public class LoginActivity extends AppCompatActivity {
 
     float v=0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_login);
 
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
 
 
         if (ParseUser.getCurrentUser() != null) {
@@ -56,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.passwordLogin);
         btnLogin = findViewById(R.id.btnLogin);
         forgetPassword = findViewById(R.id.forgetPassword);
+
 
         facebook.setTranslationY(300);
         google.setTranslationY(300);
@@ -106,8 +113,10 @@ public class LoginActivity extends AppCompatActivity {
                 String password = etPassword.getText().toString();
                 loginUser(username,password);
 
+
             }
         });
+
     }
 
 
@@ -128,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+
     }
 
     private void goMainActivity() {

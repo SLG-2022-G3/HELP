@@ -20,6 +20,7 @@ import com.parse.ParseUser;
 import com.slg.G3.sos.LoginActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.User;
+import com.slg.G3.sos.models.UserInfo;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,15 +36,10 @@ public class ProfileFragment extends Fragment {
     public static final String TAG ="AccountFragment";
 
     private ParseUser currentUser;
-    private ImageView ivProfPic;
-    private TextView tvName;
-    private TextView tvDescription;
-    private RelativeLayout btnEMsg;
-    private RelativeLayout btnLang;
-    private RelativeLayout btnFFriends;
-    private RelativeLayout btnShare;
-    private RelativeLayout btnSettings;
-    private ImageView btnLogout;
+    private ImageView ivProfPic, btnLogout;
+    private TextView tvName, tvDescription, tvMsg;
+    private RelativeLayout btnEMsg,btnShare, btnSettings ;
+    private UserInfo userInfo;
 
     Context context;
 
@@ -94,7 +90,7 @@ public class ProfileFragment extends Fragment {
 
         tvName = view.findViewById(R.id.tvName);
         tvDescription = view.findViewById(R.id.tvDescription);
-
+        tvMsg = view.findViewById(R.id.tvMsg);
         btnLogout = view.findViewById(R.id.btnLogout);
 
 
@@ -102,7 +98,9 @@ public class ProfileFragment extends Fragment {
         ParseUser currentUser;
 
         tvName.setText(ParseUser.getCurrentUser().getUsername());
-        tvDescription.setText(ParseUser.getCurrentUser().getEmail());
+        //tvDescription.setText(userInfo.getInfo());
+        //tvMsg.setText(userInfo.getSos());
+
 
 
         //User can log out when Dekonekte is clicked
