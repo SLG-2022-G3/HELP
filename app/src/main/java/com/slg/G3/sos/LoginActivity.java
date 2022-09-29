@@ -1,6 +1,7 @@
 package com.slg.G3.sos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -40,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_login);
 
 
@@ -52,8 +54,6 @@ public class LoginActivity extends AppCompatActivity {
             goMainActivity();
         }
 
-        tabLayout = findViewById(R.id.tabLayout);
-        viewPager = findViewById(R.id.viewPager);
         facebook = findViewById(R.id.fabButtonfb);
         google = findViewById(R.id.fabButtonGoogle);
         next = findViewById(R.id.next);
@@ -61,26 +61,27 @@ public class LoginActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.emailLogin);
         etPassword = findViewById(R.id.passwordLogin);
         btnLogin = findViewById(R.id.btnLogin);
-
-        tabLayout.addTab(tabLayout.newTab().setText("konekte"));
-        tabLayout.addTab(tabLayout.newTab().setText("Anrejistre"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        forgetPassword = findViewById(R.id.forgetPassword);
 
 
         facebook.setTranslationY(300);
         google.setTranslationY(300);
-        tabLayout.setTranslationY(300);
+
 
         facebook.setAlpha(v);
         google.setAlpha(v);
-        tabLayout.setAlpha(v);
+
 
         facebook.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(400).start();
         google.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(600).start();
         google.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
+
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this, "fiti implemantasyon", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // here we want to go to sign activity when button is pressed
         next.setOnClickListener(new View.OnClickListener() {

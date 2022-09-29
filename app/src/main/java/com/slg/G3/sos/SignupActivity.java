@@ -86,10 +86,36 @@ public class SignupActivity extends AppCompatActivity {
                 String confirmPassword = etConfirmPassword.getText().toString();
                 String email = etEmail.getText().toString();
 
+                if (username.isEmpty() || username.length()<7)
+                {
+                    showError(etUsername, "non itilizatè ou an pa valid, li trò kout !");
+                }
+                else if (email.isEmpty() || !email.contains("@"))
+                {
+                    showError(etEmail, "imel ou an pa valid !");
+                }
+                else if (password.isEmpty() || password.length()<8)
+                {
+                    showError(etPassword, "modpas lan dwe gen pou pi piti 8 karaktè");
+                }
+                else if (confirmPassword.isEmpty() || !confirmPassword.equals(password))
+                {
+                    showError(etConfirmPassword, "modpas yo pa menm !");
+                }
+                else
+                {
+                    Toast.makeText(SignupActivity.this, "call registration method", Toast.LENGTH_SHORT).show();
+                }
+
                 SignUpUser(username,password,confirmPassword,email);
 
             }
         });
+    }
+
+    private void showError(EditText user, String s) {
+        user.setError(s);
+        user.requestFocus();
     }
 
     private void SignUpUser(String username, String password, String confirmPassword, String email) {
@@ -107,7 +133,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
-                    Toast.makeText(SignupActivity.this, "Yay! You are successfully signed up.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Yay! ou anrejistre ak siksè!", Toast.LENGTH_SHORT).show();
                     goMainActivity();
 
                     // Hooray! Let them use the app now.
