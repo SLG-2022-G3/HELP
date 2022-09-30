@@ -56,14 +56,14 @@ public class SignupActivity extends AppCompatActivity {
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(SignupActivity.this, "opsyon sa poko ajoute", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignupActivity.this, "ou poko ka anrejistre ak facebook, opsyon sa poko ajoute !", Toast.LENGTH_SHORT).show();
             }
         });
 
         google.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(SignupActivity.this, "opsyon sa poko ajoute", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignupActivity.this, "ou poko ka anrejistre ak google,opsyon sa poko ajoute !", Toast.LENGTH_SHORT).show();
             }
         });
 

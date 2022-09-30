@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "fiti implemantasyon", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "nou regret sa se yon fiti implemantasyon", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -94,13 +94,13 @@ public class LoginActivity extends AppCompatActivity {
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "opsyon sa poko valid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "ou poko ka konekte ak facebook, opsyon sa poko valid !", Toast.LENGTH_SHORT).show();
             }
         });
         google.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "opsyon sa poko valid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "ou poko ka konekte ak google,opsyon sa poko valid !", Toast.LENGTH_SHORT).show();
             }
         });
 
