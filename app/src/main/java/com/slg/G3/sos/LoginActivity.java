@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String TAG = "LoginActivity";
 
     private TextView tvLogin;
-    private EditText etEmail;
+    private EditText etUsername;
     private EditText etPassword;
 
     private Button btnLogin;
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         google = findViewById(R.id.fabButtonGoogle);
         next = findViewById(R.id.next);
 
-        etEmail = findViewById(R.id.emailLogin);
+        etUsername = findViewById(R.id.usernameLogin);
         etPassword = findViewById(R.id.passwordLogin);
         btnLogin = findViewById(R.id.btnLogin);
         forgetPassword = findViewById(R.id.forgetPassword);
@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "Login button pressed");
-                String username = etEmail.getText().toString();
+                String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 loginUser(username,password);
 
@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.e(TAG, "issue with login", e);
                     return;
                 }
-                Toast.makeText(LoginActivity.this, "You are logged in", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "ou konekte ak siksè !", Toast.LENGTH_SHORT).show();
                 goMainActivity();
 
 

@@ -65,17 +65,17 @@
             app:layout_constraintVertical_bias="0.717" />
 
         <EditText
-            android:id="@+id/emailLogin"
+            android:id="@+id/usernameLogin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/input"
-            android:drawableStart="@drawable/ic_baseline_mail"
+            android:drawableStart="@drawable/ic_baseline_person_24"
             android:drawablePadding="15dp"
             android:ems="10"
-            android:hint="mete imel ou la"
-            android:inputType="textEmailAddress"
+            android:hint="mete non itilizatè a"
+            android:inputType="textPersonName"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
@@ -110,7 +110,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailLogin"
+            app:layout_constraintTop_toBottomOf="@+id/usernameLogin"
             app:layout_constraintVertical_bias="0.101" />
 
         <TextView
