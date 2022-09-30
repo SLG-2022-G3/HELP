@@ -23,15 +23,15 @@
             android:layout_centerHorizontal="true"/>
 
         <ImageView
+            android:id="@+id/ivProfilePic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ivProfilePic"
-            android:src="@drawable/profile_pic"
-            android:layout_alignParentStart="true"
             android:layout_below="@+id/tvPHeader"
+            android:layout_alignParentStart="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"/>
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/profile_pic" />
 
         <TextView
             android:id="@+id/tvName"
@@ -58,49 +58,56 @@
             tools:text="description" />
 
 
-
-
-
         <RelativeLayout
+            android:id="@+id/btnEMsg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnEMsg"
-            android:layout_below="@id/ivProfilePic"
-            android:layout_marginTop="15dp"
-            android:padding="2dp"
-            android:clickable="true">
+            android:layout_above="@+id/btnLang"
+            android:clickable="true"
+            android:padding="2dp">
 
             <ImageView
+                android:id="@+id/shape1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:id="@+id/shape1"
+                android:src="@drawable/fill_btns_shape"
                 android:clickable="true"
-                android:src="@drawable/fill_btns_shape" />
+                />
+
             <ImageView
+                android:id="@+id/iconMsg"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:src="@drawable/sos_message"
                 android:layout_alignStart="@+id/shape1"
+                android:layout_alignTop="@+id/shape1"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="0dp"
-                android:id="@+id/iconMsg" />
+                android:layout_marginTop="20dp"
+                android:src="@drawable/sos_message" />
+
             <TextView
+                android:id="@+id/tvMsg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mesaj Ijans"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_alignTop="@+id/shape1"
+                android:layout_marginTop="20dp"
+                android:layout_alignEnd="@+id/shape1"
+                android:layout_toEndOf="@id/iconMsg"
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/black"
-                android:layout_marginStart="15dp"
-                android:textSize="20sp"
-                android:layout_toEndOf="@id/iconMsg"
-                android:layout_centerVertical="true"/>
+                android:textSize="18sp"
+                android:text=" Mesaj Ijans"
+                tools:text="Mesaj Ijans : 'M an danje' " />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnLang"
-            android:layout_below="@id/btnEMsg"
+            android:layout_above="@+id/btnFFriends"
             android:padding="2dp"
             android:clickable="true">
 
@@ -131,11 +138,12 @@
                 android:layout_toEndOf="@id/iconLang"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnFFriends"
-            android:layout_below="@id/btnLang"
+            android:layout_above="@+id/btnshare"
             android:padding="2dp"
             android:clickable="true">
 
@@ -165,11 +173,13 @@
                 android:layout_toEndOf="@id/iconFFriends"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnshare"
-            android:layout_below="@id/btnFFriends"
+            android:layout_above="@id/btnSettings"
+            android:layout_marginBottom="5dp"
             android:padding="2dp"
             android:clickable="true">
 
@@ -200,12 +210,14 @@
                 android:layout_toEndOf="@id/iconShare"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnSettings"
-            android:layout_below="@id/btnshare"
+            android:layout_above="@id/logout"
             android:padding="2dp"
+            android:layout_marginBottom="80dp"
             android:clickable="true">
 
             <ImageView
@@ -239,6 +251,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/logout"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="15dp"
             android:clickable="true"
@@ -260,17 +273,6 @@
                 android:textColor="@color/gray_text"
                 android:textSize="20sp" />
         </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
 
     </RelativeLayout>
 
