@@ -6,7 +6,7 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 
-@ParseClassName("Contacts")
+@ParseClassName("Contact")
 public class Contact extends ParseObject {
 
     public static final String KEY_NAME = "name";
@@ -32,8 +32,8 @@ public class Contact extends ParseObject {
     public ParseFile getImage(){
         return getParseFile(KEY_IMAGE);
     }
-    public void setImage(ParseFile parseFile) {
-        put(KEY_IMAGE, parseFile);
+    public void setImage(ParseFile photoProfile) {
+        put(KEY_IMAGE, photoProfile);
     }
 
     public ParseUser getUser(){

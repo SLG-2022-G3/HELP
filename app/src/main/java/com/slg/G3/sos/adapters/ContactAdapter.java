@@ -63,7 +63,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView ivProfPic;
+//        private ImageView ivProfPic;
         private TextView tvContactName;
         private TextView tvContactNumber;
         private ImageButton ibEditContact;
@@ -72,22 +72,29 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ivProfPic = itemView.findViewById(R.id.ivProfPic);
+//            ivProfPic = itemView.findViewById(R.id.ivProfPic);
             tvContactName = itemView.findViewById(R.id.tvContactName);
             tvContactNumber = itemView.findViewById(R.id.tvContactNumber);
             ibEditContact = itemView.findViewById(R.id.ibEditContact);
             ibDeleteContact = itemView.findViewById(R.id.ibDeleteContact);
+
+            ibEditContact.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
 
         }
 
         public void bind(Contact contact) {
             tvContactName.setText(contact.getName());
             tvContactNumber.setText(contact.getNumber());
-
-            ParseFile image = contact.getImage();
-            if (image != null){
-                Glide.with(context).load(image.getUrl()).transform(new CircleCrop()).into(ivProfPic);
-            }
+//
+//            ParseFile image = contact.getImage();
+//            if (image != null){
+//                Glide.with(context).load(image.getUrl()).transform(new CircleCrop()).into(ivProfPic);
+//            }
         }
     }
 }
