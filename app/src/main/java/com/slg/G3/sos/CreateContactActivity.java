@@ -102,6 +102,7 @@ public class CreateContactActivity extends AppCompatActivity {
 
 
 
+
                 if(name.isEmpty()) {
                     Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon non pou kontak la!", Toast.LENGTH_LONG).show();
                     return;
@@ -113,7 +114,7 @@ public class CreateContactActivity extends AppCompatActivity {
                 }
 
 
-                saveContact(name, phone, currentUser, profilePhoto);
+                saveContact(name, phone, currentUser);
 
 
             }
@@ -181,31 +182,45 @@ public class CreateContactActivity extends AppCompatActivity {
 
 
     //method to save contact to parse
-    private void saveContact(String name, String phone, ParseUser currentUser, File profilePhoto) {
+    private void saveContact(String name, String phone, ParseUser currentUser) {
         Contact contact = new Contact();
         contact.setName(name);
-       // contact.setImage(new ParseFile(profilePhoto));
         contact.setNumber(phone);
         contact.setUser(currentUser);
-        contact.saveInBackground(new SaveCallback() {
+        contact.pinInBackground();
+
+        contact.saveEventually(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-
                 if (e != null) {
-                    Log.e(TAG, "error while saving");
-                    Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre. Tanpri eseye anko!", Toast.LENGTH_LONG).show();
-
+                    Log.e (TAG, "error while saving");
+                    Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre", Toast.LENGTH_SHORT).show();
                 }
-                Log.i(TAG, "Contact saved successfully");
-                Toast.makeText(CreateContactActivity.this, "Kontak la anrejistre!", Toast.LENGTH_LONG).show();
-
-                contactName.setText("");
-                contactPhone.setText("");
-                ivContactPhoto.setImageResource(0);
-
-
+                Toast.makeText(CreateContactActivity.this, "Kontak la anrejistre", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+
+//        contact.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(,seException e) {
+//
+//                if (e != null) {
+//                    Log.e(TAG, "error while saving");
+//                    Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre. Tanpri eseye anko!", Toast.LENGTH_LONG).show();
+//
+//                }
+//                Log.i(TAG, "Contact saved successfully");
+//                Toast.makeText(CreateContactActivity.this, "Kontak la anrejistre!", Toast.LENGTH_LONG).show();
+//
+//                contactName.setText("");
+//                contactPhone.setText("");
+//
+//
+//            }
+//        });
 
         Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
         startActivity(intent);
