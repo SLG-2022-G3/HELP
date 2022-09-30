@@ -67,8 +67,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/gray_back"
+        android:backgroundTint="@color/dark_red"
         android:text="Anile"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
 
 </RelativeLayout>
