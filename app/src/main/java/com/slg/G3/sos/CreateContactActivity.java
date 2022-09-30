@@ -47,8 +47,8 @@ public class CreateContactActivity extends AppCompatActivity {
     private EditText contactPhone;
     private Button btnAdd;
     private Button btnCancel;
-    private ImageView ivContactPhoto;
-    private File profilePhoto ;
+//    private ImageView ivContactPhoto;
+//    private File profilePhoto ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,35 +60,35 @@ public class CreateContactActivity extends AppCompatActivity {
         contactPhone = findViewById(R.id.etContactNumber);
         btnAdd = findViewById(R.id.btnContactSend);
         btnCancel = findViewById(R.id.btnCancel);
-        ivContactPhoto = findViewById(R.id.ivContactPhoto);
+//        ivContactPhoto = findViewById(R.id.ivContactPhoto);
 
 
         // logic to add a profile photo to iv contact photo
 
-        ivContactPhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(CreateContactActivity.this, "Opsyon sa poko ajoute", Toast.LENGTH_SHORT).show();
-
-                // checking runtime permission
-                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-
-                // Permission is not granted. Requesting it
-
-                    String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-                // here we show the pop up for runtime permission
-                    requestPermissions(permissions, PERMISSION_CODE);
-                }
-                else {
-
-                    // permission is granted already
-                    PickImageFromGallery();
-
-                }
-
-
-            }
-        });
+//        ivContactPhoto.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(CreateContactActivity.this, "Opsyon sa poko ajoute", Toast.LENGTH_SHORT).show();
+//
+//                // checking runtime permission
+//                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+//
+//                // Permission is not granted. Requesting it
+//
+//                    String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+//                // here we show the pop up for runtime permission
+//                    requestPermissions(permissions, PERMISSION_CODE);
+//                }
+//                else {
+//
+//                    // permission is granted already
+//                    PickImageFromGallery();
+//
+//                }
+//
+//
+//            }
+//        });
 
 
         // code to add contact when button is pressed
@@ -140,36 +140,36 @@ public class CreateContactActivity extends AppCompatActivity {
 
         // handling result of picked image
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+//
+//            //set image to profile
+//            ivContactPhoto.setImageURI(data.getData());
+//        }
+//    }
 
-            //set image to profile
-            ivContactPhoto.setImageURI(data.getData());
-        }
-    }
-
-    // handling result of runtime permission
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case PERMISSION_CODE: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // permission is granted
-                    PickImageFromGallery();
-                }
-                else {
-                    // permission was denied
-                    Toast.makeText(this, "Ou pa bay pemisyon an...", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-        }
-
-    }
+//    // handling result of runtime permission
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        switch (requestCode) {
+//            case PERMISSION_CODE: {
+//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    // permission is granted
+//                    PickImageFromGallery();
+//                }
+//                else {
+//                    // permission was denied
+//                    Toast.makeText(this, "Ou pa bay pemisyon an...", Toast.LENGTH_SHORT).show();
+//                }
+//
+//            }
+//
+//        }
+//
+//    }
 
 // method to pick photo
     private void PickImageFromGallery() {
