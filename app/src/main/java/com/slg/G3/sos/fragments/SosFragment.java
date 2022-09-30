@@ -194,11 +194,6 @@ public class SosFragment extends Fragment {
         });
     }
 
-   // private String getLongitude() {
-   // }
-
-   // private String getLatitude() {
-   // }
 
     private boolean checkPermission() {
         int result = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.SEND_SMS);
@@ -208,8 +203,6 @@ public class SosFragment extends Fragment {
             return false;
         }
     }
-
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
