@@ -126,7 +126,7 @@ public class ContactsFragment extends Fragment {
         // Specify which class to query
         ParseQuery<Contact> query = ParseQuery.getQuery("Contact");
         query.fromLocalDatastore();
-
+        query.setLimit(5);
         query.whereEqualTo(Contact.KEY_USER, ParseUser.getCurrentUser());
 
         //Specify the object ID

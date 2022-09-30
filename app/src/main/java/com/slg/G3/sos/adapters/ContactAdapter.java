@@ -89,7 +89,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
         public void bind(Contact contact) {
             tvContactName.setText(contact.getName());
-//            tvContactNumber.setText(contact.getNumber());
+            tvContactNumber.setText(contact.getNumber());
 //
 //            ParseFile image = contact.getImage();
 //            if (image != null){
