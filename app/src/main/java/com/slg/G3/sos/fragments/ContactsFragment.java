@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -66,6 +67,7 @@ public class ContactsFragment extends Fragment {
     private RelativeLayout relativeLayout;
     protected List<Contact> allcontact;
     protected ContactAdapter contactAdapter;
+    private ImageButton btnDelete;
 
 
 
@@ -242,11 +244,11 @@ public class ContactsFragment extends Fragment {
 
     private void queryContacts() {
         // Specify which class to query
-        ParseQuery<Contact> query = ParseQuery.getQuery(Contact.class);
-        query.orderByDescending("createdAt");
+        ParseQuery<Contact> query = ParseQuery.getQuery("Contact");
+        query.fromLocalDatastore();
         query.setLimit(5);
-
         query.whereEqualTo(Contact.KEY_USER, ParseUser.getCurrentUser());
+
         //Specify the object ID
         query.findInBackground(new FindCallback<Contact>() {
             @Override
@@ -256,6 +258,7 @@ public class ContactsFragment extends Fragment {
                     return;
                 } for(Contact contact : contacts){
                     Log.i(TAG, "Contact's name : "+ contact.getName() + "Phone Number : "+ contact.getNumber() + "photo: " + contact.getImage());
+                    contact.saveInBackground();
                 }
 
                 // contacts.clear();

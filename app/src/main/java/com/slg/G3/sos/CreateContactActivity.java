@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -47,8 +49,10 @@ public class CreateContactActivity extends AppCompatActivity {
     private EditText contactPhone;
     private Button btnAdd;
     private Button btnCancel;
-    private ImageView ivContactPhoto;
-    private File profilePhoto ;
+    public SharedPreferences sp;
+    public String sharedName, sharedPhone;
+//    private ImageView ivContactPhoto;
+//    private File profilePhoto ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,47 +64,60 @@ public class CreateContactActivity extends AppCompatActivity {
         contactPhone = findViewById(R.id.etContactNumber);
         btnAdd = findViewById(R.id.btnContactSend);
         btnCancel = findViewById(R.id.btnCancel);
-        ivContactPhoto = findViewById(R.id.ivContactPhoto);
+//        ivContactPhoto = findViewById(R.id.ivContactPhoto);
 
 
         // logic to add a profile photo to iv contact photo
 
-        ivContactPhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(CreateContactActivity.this, "Opsyon sa poko ajoute", Toast.LENGTH_SHORT).show();
+//        ivContactPhoto.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(CreateContactActivity.this, "Opsyon sa poko ajoute", Toast.LENGTH_SHORT).show();
+//
+//                // checking runtime permission
+//                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+//
+//                // Permission is not granted. Requesting it
+//
+//                    String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+//                // here we show the pop up for runtime permission
+//                    requestPermissions(permissions, PERMISSION_CODE);
+//                }
+//                else {
+//
+//                    // permission is granted already
+//                    PickImageFromGallery();
+//
+//                }
+//
+//
+//            }
+//        });
 
-                // checking runtime permission
-                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-
-                // Permission is not granted. Requesting it
-
-                    String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-                // here we show the pop up for runtime permission
-                    requestPermissions(permissions, PERMISSION_CODE);
-                }
-                else {
-
-                    // permission is granted already
-                    PickImageFromGallery();
-
-                }
-
-
-            }
-        });
-
-
-        // code to add contact when button is pressed
+        // instantiate shared preferences
+        sp = getSharedPreferences("MyContacts", Context.MODE_PRIVATE);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+                sharedName = contactName.getText().toString();
+                sharedPhone = contactPhone.getText().toString();
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("contactName", sharedName);
+                editor.putString("contactPhone", sharedPhone);
+                editor.apply();
+                Toast.makeText(CreateContactActivity.this, "info saved", Toast.LENGTH_LONG).show();
+
+
+
+
+
                 String name = contactName.getText().toString();
                 String phone = contactPhone.getText().toString();
                 ParseUser currentUser = ParseUser.getCurrentUser();
-
-
 
                 if(name.isEmpty()) {
                     Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon non pou kontak la!", Toast.LENGTH_LONG).show();
@@ -113,11 +130,17 @@ public class CreateContactActivity extends AppCompatActivity {
                 }
 
 
-                saveContact(name, phone, currentUser, profilePhoto);
-
+                saveContact(name, phone, currentUser);
 
             }
         });
+
+
+        // code to add contact when button is pressed
+
+
+
+
 
 
 
@@ -139,78 +162,75 @@ public class CreateContactActivity extends AppCompatActivity {
 
         // handling result of picked image
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+//
+//            //set image to profile
+//            ivContactPhoto.setImageURI(data.getData());
+//        }
+//    }
 
-            //set image to profile
-            ivContactPhoto.setImageURI(data.getData());
-        }
-    }
+//    // handling result of runtime permission
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        switch (requestCode) {
+//            case PERMISSION_CODE: {
+//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    // permission is granted
+//                    PickImageFromGallery();
+//                }
+//                else {
+//                    // permission was denied
+//                    Toast.makeText(this, "Ou pa bay pemisyon an...", Toast.LENGTH_SHORT).show();
+//                }
+//
+//            }
+//
+//        }
+//
+//    }
 
-    // handling result of runtime permission
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case PERMISSION_CODE: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // permission is granted
-                    PickImageFromGallery();
-                }
-                else {
-                    // permission was denied
-                    Toast.makeText(this, "Ou pa bay pemisyon an...", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-        }
-
-    }
-
-// method to pick photo
-    private void PickImageFromGallery() {
-        // intent to pick image from gallery
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent, IMAGE_PICK_CODE);
-    }
+//// method to pick photo
+//    private void PickImageFromGallery() {
+//        // intent to pick image from gallery
+//        Intent intent = new Intent(Intent.ACTION_PICK);
+//        intent.setType("image/*");
+//        startActivityForResult(intent, IMAGE_PICK_CODE);
+//    }
 
 
 
     //method to save contact to parse
-    private void saveContact(String name, String phone, ParseUser currentUser, File profilePhoto) {
+    private void saveContact(String name, String phone, ParseUser currentUser) {
         Contact contact = new Contact();
         contact.setName(name);
-       // contact.setImage(new ParseFile(profilePhoto));
         contact.setNumber(phone);
         contact.setUser(currentUser);
+        contact.pinInBackground();
+
         contact.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-
                 if (e != null) {
-                    Log.e(TAG, "error while saving");
-                    Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre. Tanpri eseye anko!", Toast.LENGTH_LONG).show();
-
+                    Log.e (TAG, "error while saving");
+                    Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre", Toast.LENGTH_SHORT).show();
                 }
-                Log.i(TAG, "Contact saved successfully");
-                Toast.makeText(CreateContactActivity.this, "Kontak la anrejistre!", Toast.LENGTH_LONG).show();
-
-                contactName.setText("");
-                contactPhone.setText("");
-                ivContactPhoto.setImageResource(0);
-
-
+                Toast.makeText(CreateContactActivity.this, "Kontak la anrejistre", Toast.LENGTH_SHORT).show();
             }
         });
 
+
+
         Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
 
     }
+
+
 
 
 }

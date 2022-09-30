@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+
+import android.widget.ImageView;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,26 +25,52 @@ public class SignupActivity extends AppCompatActivity {
 
     private EditText etUsername;
     private EditText etPassword;
+    private EditText etConfirmPassword;
+    private EditText etEmail;
     private Button btnSend;
-    private TextView btnSignIn;
+    TextView before;
+    ImageView facebook, google;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
-        btnSend = findViewById(R.id.btnSend);
-        btnSignIn = findViewById(R.id.btnSignIn);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        //User can go back to login by clicking on KONEKTE TV
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
+        etUsername = findViewById(R.id.username);
+        etEmail = findViewById(R.id.emailSignup);
+        etPassword = findViewById(R.id.Passwords);
+        etConfirmPassword = findViewById(R.id.confirmPassword);
+        btnSend = findViewById(R.id.buttonSignup);
+        before = findViewById(R.id.before);
+        facebook = findViewById(R.id.Buttonfb);
+        google = findViewById(R.id.ButtonGgle);
+
+        facebook.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Log.i(TAG, "Login link clicked");
-                goLoginActivity();
+            public void onClick(View v) {
+                Toast.makeText(SignupActivity.this, "opsyon sa poko ajoute", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(SignupActivity.this, "opsyon sa poko ajoute", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // here the user can go back to the loginActivity
+        before.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignupActivity.this,LoginActivity.class));
 
             }
         });
@@ -53,30 +83,57 @@ public class SignupActivity extends AppCompatActivity {
                 Log.i(TAG, "Submit button pressed");
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
-                SignUpUser(username,password);
+                String confirmPassword = etConfirmPassword.getText().toString();
+                String email = etEmail.getText().toString();
+
+                if (username.isEmpty() || username.length()<7)
+                {
+                    showError(etUsername, "non itilizatè ou an pa valid, li trò kout !");
+                }
+                else if (email.isEmpty() || !email.contains("@"))
+                {
+                    showError(etEmail, "imel ou an pa valid !");
+                }
+                else if (password.isEmpty() || password.length()<8)
+                {
+                    showError(etPassword, "modpas lan dwe gen pou pi piti 8 karaktè");
+                }
+                else if (confirmPassword.isEmpty() || !confirmPassword.equals(password))
+                {
+                    showError(etConfirmPassword, "modpas yo pa menm !");
+                }
+                else
+                {
+                    Toast.makeText(SignupActivity.this, "call registration method", Toast.LENGTH_SHORT).show();
+                }
+
+                SignUpUser(username,password,confirmPassword,email);
 
             }
         });
-
-
-
     }
 
-    private void SignUpUser(String username, String password) {
+    private void showError(EditText user, String s) {
+        user.setError(s);
+        user.requestFocus();
+    }
+
+    private void SignUpUser(String username, String password, String confirmPassword, String email) {
 
         Log.i(TAG, "attempt to Signup: " + username);
-
         //create parse user
         ParseUser user = new ParseUser();
         //core properties
         user.setUsername(username);
         user.setPassword(password);
+        user.setPassword(confirmPassword);
+        user.setEmail(email);
         //sign up in background
         user.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
-                    Toast.makeText(SignupActivity.this, "Yay! You are successfully signed up.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Yay! ou anrejistre ak siksè!", Toast.LENGTH_SHORT).show();
                     goMainActivity();
 
                     // Hooray! Let them use the app now.
@@ -94,9 +151,5 @@ public class SignupActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    private void goLoginActivity() {
-        Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
+
 }

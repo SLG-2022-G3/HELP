@@ -22,10 +22,10 @@
         android:id="@+id/etContactName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tvAddContact"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_below="@id/ivContactPhoto"
         android:background="@color/gray_back"
         android:hint="Non"
         android:padding="10dp"
@@ -70,16 +70,5 @@
         android:backgroundTint="@color/gray_back"
         android:text="Anile"
         android:textColor="@color/black" />
-
-    <ImageView
-        android:id="@+id/ivContactPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvAddContact"
-        android:layout_centerHorizontal="true"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/profile_pic"
-        tools:srcCompat="@tools:sample/avatars" />
 
 </RelativeLayout>
