@@ -138,7 +138,7 @@ public class SosFragment extends Fragment {
                         if (location != null){
                             // Code to Send SOS MESSAGE
                             //TODO: retrieve predefined SOS Message to String
-                            String sos = "HEY" + nameContact + "M an danje, mwen nan adres sa a: \n" + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
+                            String sos = "HEY " + nameContact + " M an danje, mwen nan adres sa a: \n" + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
                             //String phoneNo = "40770750";
                             //TODO: retrieve Emergency Contact PhoneNumber to String
                             if (checkPermission()) {
@@ -153,7 +153,7 @@ public class SosFragment extends Fragment {
                             }
 
                         }else {
-                            String sosMessage = "I need HELP. \n" + "GPS off, No Location provided ";
+                            String sosMessage = "HEY " + nameContact + " M an danje \n" + "GPS off, No Location provided ";
                             if (checkPermission()) {
                                 //Get the default SmsManager//
                                 SmsManager smsManager = SmsManager.getDefault();
@@ -171,7 +171,7 @@ public class SosFragment extends Fragment {
                     public void onFailure(@NonNull Exception e) {
                         // Code to Send SOS MESSAGE
                         //TODO: retrieve predefined SOS Message to String
-                        String sosMessage = "I NEED HELP join me at : \n" + "GPS off, No Location Provided" ;
+                        String sosMessage = "HEY " + nameContact + " M an danje \n" + "GPS off, No Location Provided" ;
                         //String phoneNo = "40770750";
                         //TODO: retrieve Emergency Contact PhoneNumber to String
                         if (checkPermission()) {
