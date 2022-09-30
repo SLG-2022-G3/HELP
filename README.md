@@ -53,6 +53,9 @@ HELP is an application that will help users who need any kind of assistance, whe
    * Allows user to update personal health information.
    * Allows user to add/update predefined S.O.S Message.
    * Lets people change language, and app notification settings. (Bonus)
+   
+#### Gif Walkthrough
+<img src="https://github.com/SLG-2022-G3/HELP/blob/master/Signup.gif/" width=320> <img src="https://github.com/SLG-2022-G3/HELP/blob/master/Add%20Contact.gif/" width=320> <img src="https://github.com/SLG-2022-G3/HELP/blob/master/Prove%20SOS%20is%20Sent.gif/" width=320>
 
 ### 3. Navigation
 
