@@ -138,6 +138,7 @@ public class ContactsFragment extends Fragment {
                     return;
                 } for(Contact contact : contacts){
                     Log.i(TAG, "Contact's name : "+ contact.getName() + "Phone Number : "+ contact.getNumber() + "photo: " + contact.getImage());
+                    contact.saveInBackground();
                 }
 
                 // contacts.clear();

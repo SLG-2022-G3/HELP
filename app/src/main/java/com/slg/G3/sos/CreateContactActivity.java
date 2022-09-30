@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -47,6 +49,8 @@ public class CreateContactActivity extends AppCompatActivity {
     private EditText contactPhone;
     private Button btnAdd;
     private Button btnCancel;
+    public SharedPreferences sp;
+    public String sharedName, sharedPhone;
 //    private ImageView ivContactPhoto;
 //    private File profilePhoto ;
 
@@ -90,18 +94,30 @@ public class CreateContactActivity extends AppCompatActivity {
 //            }
 //        });
 
-
-        // code to add contact when button is pressed
+        // instantiate shared preferences
+        sp = getSharedPreferences("MyContacts", Context.MODE_PRIVATE);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+                sharedName = contactName.getText().toString();
+                sharedPhone = contactPhone.getText().toString();
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("contactName", sharedName);
+                editor.putString("contactPhone", sharedPhone);
+                editor.apply();
+                Toast.makeText(CreateContactActivity.this, "info saved", Toast.LENGTH_LONG).show();
+
+
+
+
+
                 String name = contactName.getText().toString();
                 String phone = contactPhone.getText().toString();
                 ParseUser currentUser = ParseUser.getCurrentUser();
-
-
-
 
                 if(name.isEmpty()) {
                     Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon non pou kontak la!", Toast.LENGTH_LONG).show();
@@ -116,9 +132,15 @@ public class CreateContactActivity extends AppCompatActivity {
 
                 saveContact(name, phone, currentUser);
 
-
             }
         });
+
+
+        // code to add contact when button is pressed
+
+
+
+
 
 
 
@@ -171,13 +193,13 @@ public class CreateContactActivity extends AppCompatActivity {
 //
 //    }
 
-// method to pick photo
-    private void PickImageFromGallery() {
-        // intent to pick image from gallery
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent, IMAGE_PICK_CODE);
-    }
+//// method to pick photo
+//    private void PickImageFromGallery() {
+//        // intent to pick image from gallery
+//        Intent intent = new Intent(Intent.ACTION_PICK);
+//        intent.setType("image/*");
+//        startActivityForResult(intent, IMAGE_PICK_CODE);
+//    }
 
 
 
@@ -189,7 +211,7 @@ public class CreateContactActivity extends AppCompatActivity {
         contact.setUser(currentUser);
         contact.pinInBackground();
 
-        contact.saveEventually(new SaveCallback() {
+        contact.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e != null) {
@@ -202,28 +224,9 @@ public class CreateContactActivity extends AppCompatActivity {
 
 
 
-
-//        contact.saveInBackground(new SaveCallback() {
-//            @Override
-//            public void done(,seException e) {
-//
-//                if (e != null) {
-//                    Log.e(TAG, "error while saving");
-//                    Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre. Tanpri eseye anko!", Toast.LENGTH_LONG).show();
-//
-//                }
-//                Log.i(TAG, "Contact saved successfully");
-//                Toast.makeText(CreateContactActivity.this, "Kontak la anrejistre!", Toast.LENGTH_LONG).show();
-//
-//                contactName.setText("");
-//                contactPhone.setText("");
-//
-//
-//            }
-//        });
-
         Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
 
     }
 
