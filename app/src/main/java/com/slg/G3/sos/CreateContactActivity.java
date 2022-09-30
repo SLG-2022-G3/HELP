@@ -24,7 +24,7 @@ public class CreateContactActivity extends AppCompatActivity {
     private TextView textView;
     private EditText contactName;
     private EditText contactPhone;
-    private Button btnAdd;
+    private Button btnAdd, btncancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,14 @@ public class CreateContactActivity extends AppCompatActivity {
         contactName = findViewById(R.id.etContactName);
         contactPhone = findViewById(R.id.etContactPhone);
         btnAdd = findViewById(R.id.btnContactSend);
+        btncancel = findViewById(R.id.btnCancel);
+
+        btncancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreateContactActivity.this,ContactsFragment.class));
+            }
+        });
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
