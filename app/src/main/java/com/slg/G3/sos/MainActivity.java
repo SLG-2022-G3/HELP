@@ -157,8 +157,9 @@ public class MainActivity extends AppCompatActivity {
 
             } else {
                 Toast.makeText(this, "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                startActivity(intent);
+                //TODO : Implement Dialog Fragment for approve get User's
+                //Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                //startActivity(intent);
             }
         } else {
             // if permissions aren't available, request for permissions
@@ -191,7 +192,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onLocationResult(LocationResult locationResult) {
             Location lastLocation = locationResult.getLastLocation();
-            //tvLocation.setText("https://maps.google.com/?q="+lastLocation.getLatitude() +","+ lastLocation.getLongitude() + "/");
         }
     };
 
