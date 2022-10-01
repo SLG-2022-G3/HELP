@@ -6,7 +6,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -29,10 +32,10 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etPassword;
 
     private Button btnLogin;
-    TabLayout tabLayout;
     ViewPager viewPager;
     ImageView facebook, google;
     TextView forgetPassword,next;
+    boolean passwordVisible;
 
 
     float v=0;
@@ -62,6 +65,35 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.passwordLogin);
         btnLogin = findViewById(R.id.btnLogin);
         forgetPassword = findViewById(R.id.forgetPassword);
+
+        etPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int Right=2;
+                if (event.getAction()==MotionEvent.ACTION_UP){
+                    if (event.getRawX()>= etPassword.getRight()-etPassword.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection = etPassword.getSelectionEnd();
+                        if (passwordVisible){
+                            // set drawable image here
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_off,0);
+                            // to hide the password
+                            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible = false;
+                        }else {
+                            // set drawable image here
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_,0);
+                            // to show the password
+                            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible = true;
+                        }
+                        etPassword.setSelection(selection);
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        });
 
 
         facebook.setTranslationY(300);
