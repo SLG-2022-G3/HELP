@@ -88,7 +88,7 @@ public class ProfileFragment extends Fragment {
 
 
         tvName = view.findViewById(R.id.tvName);
-        tvDescription = view.findViewById(R.id.tvDescription);
+        tvDescription = view.findViewById(R.id.tvInfo);
 
         ivProfPic = view.findViewById(R.id.ivProfilePic);
 
@@ -98,7 +98,7 @@ public class ProfileFragment extends Fragment {
         btnLogout = view.findViewById(R.id.btnLogout);
 
         tvName.setText(ParseUser.getCurrentUser().getUsername());
-        tvDescription.setText(ParseUser.getCurrentUser().getEmail());
+//        tvDescription.setText(ParseUser.getCurrentUser().getEmail());
 //        ParseFile parseFile = user.getImage();
 //        if (parseFile != null) {
 //            Glide.with(context).load(parseFile.getUrl()).into(ivProfPic);
