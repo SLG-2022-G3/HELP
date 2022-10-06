@@ -14,11 +14,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.slg.G3.sos.LoginActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.User;
+import com.slg.G3.sos.models.UserInfo;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,14 +39,15 @@ public class ProfileFragment extends Fragment {
 
     private ParseUser currentUser;
     private ImageView ivProfPic, btnLogout;
-    private TextView tvName, tvDescription, tvMsg;
+    private TextView tvName, tvDescription, tvPhone, tvEmail;
     private RelativeLayout btnEMsg,btnShare, btnSettings ;
+    String description, sosmessage, number;
 
 
 
     Context context;
 
-    User user;
+    User user = new User();
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -86,18 +91,22 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        ivProfPic = view.findViewById(R.id.ivProfilePic);
         tvName = view.findViewById(R.id.tvName);
+        tvPhone = view.findViewById(R.id.tvNumber);
+        tvEmail = view.findViewById(R.id.tvEmail);
+
+
         tvDescription = view.findViewById(R.id.tvInfo);
 
         ivProfPic = view.findViewById(R.id.ivProfilePic);
 
 
-        tvMsg = view.findViewById(R.id.tvMsg);
 
         btnLogout = view.findViewById(R.id.btnLogout);
 
-        tvName.setText(ParseUser.getCurrentUser().getUsername());
+        //tvName.setText(ParseUser.getCurrentUser().getUsername());
+
 //        tvDescription.setText(ParseUser.getCurrentUser().getEmail());
 //        ParseFile parseFile = user.getImage();
 //        if (parseFile != null) {
@@ -108,8 +117,15 @@ public class ProfileFragment extends Fragment {
 
 
         tvName.setText(ParseUser.getCurrentUser().getUsername());
-        //tvDescription.setText(userInfo.getInfo());
-        //tvMsg.setText(userInfo.getSos());
+        tvEmail.setText(ParseUser.getCurrentUser().getEmail());
+
+        ParseUser user = ParseUser.getCurrentUser();
+        description = user.get("persoInfo").toString();
+        tvDescription.setText(description);
+
+
+        //queryUser();
+        //tvMsg.setText(userInfo.getMessage());
 
 
 
@@ -125,5 +141,22 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+    }
+
+    private void queryUser() {
+
+            ParseQuery<ParseUser> query = ParseQuery.getQuery("User");
+
+            // The query will search for a ParseObject, given its objectId.
+            // When the query finishes running, it will invoke the GetCallback
+            // with either the object, or the exception thrown
+            query.getInBackground("<PARSE_OBJECT_ID>", (object, e) -> {
+                if (e == null) {
+                    //Object was successfully retrieved
+                } else {
+                    // something went wrong
+                    //Toast.makeText(getContext(), user.getInfo(), Toast.LENGTH_SHORT).show();
+                }
+            });
     }
 }

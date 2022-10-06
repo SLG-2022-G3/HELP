@@ -13,7 +13,7 @@ public class User extends ParseUser {
     public static final String KEY_USERNAME = "username";
     public static final String KEY_SOS = "sosMessage";
     public static final String KEY_INFO_PERSO = "persoInfo";
-    public static final String KEY_TELEPHONE = "telephone";
+    public static final String KEY_TELEPHONE = "phoneNumber";
     public static final String KEY_PROFILE_IMAGE = "profilePicture";
 
 
@@ -55,8 +55,8 @@ public class User extends ParseUser {
     public String getTelephone(){
         return getString(KEY_TELEPHONE);
     }
-    public void setTelephone(String telephone) {
-        put(KEY_TELEPHONE, telephone);
+    public void setTelephone(String phoneNumber) {
+        put(KEY_TELEPHONE, phoneNumber);
     }
 
     public ParseFile getImage(){
