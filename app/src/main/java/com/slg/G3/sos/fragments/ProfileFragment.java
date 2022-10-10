@@ -26,6 +26,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.slg.G3.sos.EditProfile;
 import com.slg.G3.sos.LoginActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.User;
@@ -158,7 +159,7 @@ public class ProfileFragment extends Fragment {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Codes to launch Edit Profile Screen
+                goEditProfileActivity();
             }
         });
 
@@ -172,6 +173,11 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+    }
+
+    private void goEditProfileActivity() {
+        Intent intent = new Intent(getActivity(), EditProfile.class);
+        startActivity(intent);
     }
 
     private void queryUser() {

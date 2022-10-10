@@ -15,4 +15,6 @@
     <string name="byenveni">BYENVENI !</string>
     <string name="anrejistre">ANREJISTRE</string>
     <string name="editInfoBtn">Modifye Pwofil la</string>
+    <string name="cancel">ANILE</string>
+    <string name="capture_image">CAMERA</string>
 </resources>

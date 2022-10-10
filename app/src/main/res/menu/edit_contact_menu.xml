@@ -6,13 +6,13 @@
         android:enabled="true"
         android:icon="@drawable/ic_baseline_arrow_back_24"
         android:iconTint="@color/gray_back"
-        android:title="@string/text_home"
+        android:title="@string/cancel"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_contacts"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_save_24"
-        android:title="@string/text_compose"
+        android:title="@string/anrejistre"
         app:showAsAction="ifRoom" />
 
 </menu>

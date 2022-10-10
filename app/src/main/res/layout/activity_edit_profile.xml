@@ -12,20 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:background="@color/blood_red">
-
-        <Button
-            android:id="@+id/btnEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/green"
-
-            android:text="@string/anrejistre"
-            android:textColor="@color/black" />
-
-
+        android:background="@color/red">
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
@@ -34,15 +21,77 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/editInfoBtn"
+        android:textSize="26sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true" />
-
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/ivCam"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/header"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_marginTop="30dp"
+        android:src="@drawable/profile_pic"
+        />
+    <ImageButton
+        android:id="@+id/btnCam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivCam"
+        android:layout_marginStart="170dp"
+        android:layout_marginEnd="170dp"
+        android:backgroundTint="#C3BBBB"
+        android:contentDescription="@string/capture_image"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_baseline_photo_camera_24"
+        app:tint="#E9E91E63" />
+    <EditText
+        android:id="@+id/etTelephone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:layout_below="@+id/btnCam"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:hint="Nimewo Telefon"/>
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:layout_below="@+id/etTelephone"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:hint="Imel"/>
+
+    <EditText
+        android:id="@+id/etInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_below="@+id/etEmail"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:hint="Enfomasyon Pesonel"/>
+
+    <EditText
+        android:id="@+id/etMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_below="@+id/etInfo"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:hint="Mesaj Ijans"/>
+
+
+
 
 
 </RelativeLayout>
