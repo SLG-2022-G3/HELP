@@ -2,6 +2,8 @@ package com.slg.G3.sos.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,11 +13,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -40,7 +47,8 @@ public class ProfileFragment extends Fragment {
     private ParseUser currentUser;
     private ImageView ivProfPic, btnLogout;
     private TextView tvName, tvDescription, tvPhone, tvEmail;
-    private RelativeLayout btnEMsg,btnShare, btnSettings ;
+    private Button btnEdit;
+    private RelativeLayout rl, btnEMsg,btnShare, btnSettings ;
     String description, sosmessage, number;
 
 
@@ -95,11 +103,22 @@ public class ProfileFragment extends Fragment {
         tvName = view.findViewById(R.id.tvName);
         tvPhone = view.findViewById(R.id.tvNumber);
         tvEmail = view.findViewById(R.id.tvEmail);
+        btnEdit = view.findViewById(R.id.btnEdit);
 
 
         tvDescription = view.findViewById(R.id.tvInfo);
 
         ivProfPic = view.findViewById(R.id.ivProfilePic);
+        ParseUser currentUser = ParseUser.getCurrentUser();
+            try {
+                ParseFile userParseFile = (ParseFile) currentUser.getParseFile("profilePicture");
+                Bitmap bmp = BitmapFactory.decodeStream(userParseFile.getDataStream());
+                bmp.setDensity(Bitmap.DENSITY_NONE);
+                //bmp = Bitmap.createBitmap(bmp, 0, 0, 100, 100);
+                ivProfPic.setImageBitmap(bmp);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
 
 
 
@@ -108,15 +127,20 @@ public class ProfileFragment extends Fragment {
         //tvName.setText(ParseUser.getCurrentUser().getUsername());
 
 //        tvDescription.setText(ParseUser.getCurrentUser().getEmail());
-//        ParseFile parseFile = user.getImage();
-//        if (parseFile != null) {
-//            Glide.with(context).load(parseFile.getUrl()).into(ivProfPic);
-//        }
+
+
+
+
+      //  if (parseFile != null) {
+      //      Glide.with(context).load(parseFile.getUrl()).into(ivProfPic);
+      //  }
 
 
 
 
         tvName.setText(ParseUser.getCurrentUser().getUsername());
+        number = user.getTelephone();
+        tvPhone.setText(number);
         tvEmail.setText(ParseUser.getCurrentUser().getEmail());
 
         ParseUser user = ParseUser.getCurrentUser();
@@ -130,6 +154,13 @@ public class ProfileFragment extends Fragment {
 
 
         //User can log out when Dekonekte is clicked
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO: Codes to launch Edit Profile Screen
+            }
+        });
 
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
