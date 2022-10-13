@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <!-- fragment_edit_name.xml -->
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/edit_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"  >
+
+         <TextView
+            android:id="@+id/tvAddContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modifye Kontak Ijans"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/black"/>
+        <EditText
+        android:id="@+id/etContactName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvAddContact"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/gray_back"
+        android:hint="Non"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+        <EditText
+        android:id="@+id/etContactNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etContactName"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/gray_back"
+        android:hint="Nimewo"
+        android:inputType="phone"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+         <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ANREJISTRE"
+        android:layout_below="@+id/etContactNumber"
+        android:layout_marginTop="30dp"
+        android:id="@+id/btnContactSend"
+        android:backgroundTint="@color/green"
+        android:layout_alignEnd="@+id/etContactNumber"/>
+
+         <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etContactNumber"
+        android:layout_alignStart="@+id/etContactNumber"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/gray_back"
+        android:text="Anile"
+        android:textColor="@color/black" />
+    </RelativeLayout>
+
