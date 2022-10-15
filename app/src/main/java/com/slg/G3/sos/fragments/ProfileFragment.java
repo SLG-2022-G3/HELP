@@ -17,20 +17,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.parse.GetDataCallback;
-import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.slg.G3.sos.EditProfile;
 import com.slg.G3.sos.LoginActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.User;
-import com.slg.G3.sos.models.UserInfo;
 
 /**
  * A simple {@link Fragment} subclass.

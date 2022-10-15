@@ -68,38 +68,6 @@ public class MainActivity extends AppCompatActivity {
         // method to get the location
         getLastLocation();
 
-       /* locationProviderClient.getCurrentLocation(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY, new CancellationToken() {
-            @Override
-            public boolean isCancellationRequested() {
-                return false;
-            }
-            @NonNull
-            @Override
-            public CancellationToken onCanceledRequested(@NonNull OnTokenCanceledListener onTokenCanceledListener) {
-                return null;
-            }
-        }).addOnSuccessListener(new OnSuccessListener<Location>() {
-           /* @Override
-            public void onSuccess(Location location) {
-                if (location != null){
-                    //Fetch Location to String
-
-                } else {
-
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-            }
-        });*/
-
-
-
-
-
-
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
