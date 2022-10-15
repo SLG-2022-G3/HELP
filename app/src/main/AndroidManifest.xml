@@ -16,7 +16,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-
     <queries>
 
         <!-- Camera -->
@@ -37,13 +36,17 @@
         android:theme="@style/Theme.Sos"
         tools:targetApi="31">
         <activity
+            android:name=".EditContact"
+            android:exported="false" />
+        <activity
             android:name=".EditProfile"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".CreateContactActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.codepath.fileprovider.sos"
@@ -53,6 +56,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/fileprovider" />
         </provider>
+
         <activity
             android:name=".LoginActivity"
             android:exported="true"
