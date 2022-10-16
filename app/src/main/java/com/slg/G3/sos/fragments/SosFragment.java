@@ -61,8 +61,6 @@ public class SosFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private GifImageView btnSOS;
-    private List<Contact> contacts;
-    String message;
     FusedLocationProviderClient locationProviderClient;
     TextView tvLatitude, tvLongitude;
 
@@ -150,10 +148,7 @@ public class SosFragment extends Fragment {
                     public void onSuccess(Location location) {
                         if (location != null){
                             // Code to Send SOS MESSAGE
-                            //TODO: retrieve predefined SOS Message to String
                             String sos = nameContact + sosPredefined + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
-                            //String phoneNo = "40770750";
-                            //TODO: retrieve Emergency Contact PhoneNumber to String
                             if (checkPermission()) {
                                 //Get the default SmsManager//
                                 SmsManager smsManager = SmsManager.getDefault();
@@ -183,10 +178,7 @@ public class SosFragment extends Fragment {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         // Code to Send SOS MESSAGE
-                        //TODO: retrieve predefined SOS Message to String
                         String sosMessage = "HEY " + nameContact + sosPredefined + "GPS off, No Location Provided" ;
-                        //String phoneNo = "40770750";
-                        //TODO: retrieve Emergency Contact PhoneNumber to String
                         if (checkPermission()) {
                             //Get the default SmsManager//
                             SmsManager smsManager = SmsManager.getDefault();

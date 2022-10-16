@@ -2,7 +2,9 @@ package com.slg.G3.sos.fragments;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -68,12 +70,6 @@ public class ContactsFragment extends Fragment {
     protected List<Contact> allcontact;
     protected ContactAdapter contactAdapter;
     private ImageButton btnDelete, btnEdit;
-
-
-
-    // TODO: Rename and change types of parameters
-    String phoneNo = "40770750";
-    String message;
     FusedLocationProviderClient locationProviderClient;
 
 
@@ -127,6 +123,9 @@ public class ContactsFragment extends Fragment {
         btnAddContact = view.findViewById(R.id.btnAddContacts);
         btnSOS = view.findViewById(R.id.btnSOS);
 
+
+
+
         btnAddContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,6 +133,23 @@ public class ContactsFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
+        // shared preferences to retrieve the number of the last
+        //contact the user saved and their name as well
+
+        SharedPreferences sp = getContext().getSharedPreferences("MyContacts", Context.MODE_PRIVATE);
+        String nameContact = sp.getString("contactName", "");
+        String phoneContact = sp.getString("contactPhone", "");
+
+
+        // shared preferences to retrieve the predefined sos message from profile fragment
+        SharedPreferences prefs = getContext().getSharedPreferences("Message", Context.MODE_PRIVATE);
+        String sosPredefined = prefs.getString("predefMessage", "");
+
+
+
+
         btnSOS.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("MissingPermission")
             @Override
@@ -155,15 +171,14 @@ public class ContactsFragment extends Fragment {
                     public void onSuccess(Location location) {
                         if (location != null){
                             // Code to Send SOS MESSAGE
-                            //TODO: retrieve predefined SOS Message to String
-                            String sos = "I NEED HELP join me at : \n" + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
+                            String sos = nameContact + sosPredefined + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
                             //String phoneNo = "40770750";
                             //TODO: retrieve Emergency Contact PhoneNumber to String
                             if (checkPermission()) {
                                 //Get the default SmsManager//
                                 SmsManager smsManager = SmsManager.getDefault();
                                 //Send the SOS
-                                smsManager.sendTextMessage(phoneNo, null, sos, null, null);
+                                smsManager.sendTextMessage(phoneContact, null, sos, null, null);
                                 Toast.makeText(getContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
@@ -171,12 +186,12 @@ public class ContactsFragment extends Fragment {
                             }
 
                         }else {
-                            String sosMessage = "I need HELP. \n" + "GPS off, No Location provided ";
+                            String sosMessage = "HEY " + nameContact + sosPredefined + "GPS off, No Location provided ";
                             if (checkPermission()) {
                                 //Get the default SmsManager//
                                 SmsManager smsManager = SmsManager.getDefault();
                                 //Send the SOS
-                                smsManager.sendTextMessage(phoneNo, null, sosMessage, null, null);
+                                smsManager.sendTextMessage(phoneContact, null, sosMessage, null, null);
                                 Toast.makeText(getContext(), "Sending SOS, without Location", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
@@ -188,15 +203,13 @@ public class ContactsFragment extends Fragment {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         // Code to Send SOS MESSAGE
-                        //TODO: retrieve predefined SOS Message to String
-                        String sosMessage = "I NEED HELP join me at : \n" + "GPS off, No Location Provided" ;
-                        //String phoneNo = "40770750";
+                        String sosMessage = "HEY " + nameContact + sosPredefined + "GPS off, No Location Provided" ;
                         //TODO: retrieve Emergency Contact PhoneNumber to String
                         if (checkPermission()) {
                             //Get the default SmsManager//
                             SmsManager smsManager = SmsManager.getDefault();
                             //Send the SOS
-                            smsManager.sendTextMessage(phoneNo, null, sosMessage, null, null);
+                            smsManager.sendTextMessage(phoneContact, null, sosMessage, null, null);
                             Toast.makeText(getContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
