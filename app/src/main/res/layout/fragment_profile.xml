@@ -71,87 +71,97 @@
             tools:text="Email" />
 
         <Button
+            android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnEdit"
-            android:text="@string/editInfoBtn"
-            android:backgroundTint="@color/light_red"
-            android:textColor="@color/black"
             android:layout_below="@+id/tvEmail"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"/>
+            android:backgroundTint="@color/light_red"
+            android:text="@string/editInfoBtn"
+            android:textColor="@color/black" />
 
         <RelativeLayout
             android:id="@+id/rlInfoPerso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnEdit"
-            android:clickable="true"
             android:layout_marginTop="15dp"
+            android:clickable="true"
             android:padding="2dp">
-
-            <ImageView
-                android:id="@+id/shape"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/ic_perso_info_bg"
-                android:clickable="true"
-                />
 
             <ImageView
                 android:id="@+id/icInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:layout_alignStart="@+id/shape"
-                android:layout_alignTop="@+id/shape"
+                android:layout_alignTop="@+id/etInfo"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/ic_info" />
 
+
             <TextView
-                android:id="@+id/tvInfo"
+                android:id="@+id/tvNewMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/shape"
-                android:layout_alignEnd="@+id/shape"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="65dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                tools:text="Mesaj sos predefini" />
+
+            <EditText
+                android:id="@+id/etInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="57dp"
+                android:layout_below="@id/tvNewMessage"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="7dp"
                 android:layout_toEndOf="@id/icInfo"
+                android:clickable="true"
+                android:focusable="true"
                 android:fontFamily="sans-serif-light"
-                android:text=" Ajoute Enfomasyon sou sante w ki ka itil si gen yon ijans"
+                android:hint="Klike la pou w chanje Mesaj SOS ou a"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                tools:text=" Klike la pou ajoute kek enfomasyon sou sante w tankou : Aleji, Enstriksyon sou san, elatriye  ' " />
+                android:textSize="16sp" />
+
+
+            <Button
+                android:id="@+id/btnSaveMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etInfo"
+                android:layout_centerHorizontal="true"
+                android:text="@string/anrejistre" />
+
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/btnEMsg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnEMsg"
             android:layout_below="@+id/rlInfoPerso"
-            android:padding="5dp"
             android:layout_marginTop="10dp"
-            android:clickable="true">
+            android:clickable="true"
+            android:padding="5dp">
 
             <ImageView
+                android:id="@+id/shape3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:id="@+id/shape3"
                 android:clickable="true"
                 android:src="@drawable/fill_btns_shape" />
+
             <ImageView
+                android:id="@+id/iconFFriends"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:src="@drawable/sos_message"
                 android:layout_alignStart="@+id/shape3"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="0dp"
-                android:id="@+id/iconFFriends" />
+                android:src="@drawable/sos_message" />
 
             <TextView
+                android:id="@+id/tvMsg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -159,7 +169,6 @@
                 android:layout_toEndOf="@id/iconFFriends"
                 android:fontFamily="sans-serif-light"
                 android:text="Mesaj Ijans"
-                android:id="@+id/tvMsg"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
         </RelativeLayout>
