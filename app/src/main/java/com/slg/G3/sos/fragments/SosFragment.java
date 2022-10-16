@@ -109,9 +109,22 @@ public class SosFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         locationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
+
+        // shared preferences to retrieve the number of the last
+        //contact the user saved and their name as well
+
         SharedPreferences sp = getContext().getSharedPreferences("MyContacts", Context.MODE_PRIVATE);
         String nameContact = sp.getString("contactName", "");
         String phoneContact = sp.getString("contactPhone", "");
+
+
+        // shared preferences to retrieve the predefined sos message from profile fragment
+        SharedPreferences prefs = getContext().getSharedPreferences("Message", Context.MODE_PRIVATE);
+        String sosPredefined = prefs.getString("predefMessage", "");
+
+
+
+
 
         btnSOS = view.findViewById(R.id.btnSOS);
 
@@ -138,7 +151,7 @@ public class SosFragment extends Fragment {
                         if (location != null){
                             // Code to Send SOS MESSAGE
                             //TODO: retrieve predefined SOS Message to String
-                            String sos = "HEY " + nameContact + " M an danje, mwen nan adres sa a: \n" + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
+                            String sos = nameContact + sosPredefined + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
                             //String phoneNo = "40770750";
                             //TODO: retrieve Emergency Contact PhoneNumber to String
                             if (checkPermission()) {
@@ -153,7 +166,7 @@ public class SosFragment extends Fragment {
                             }
 
                         }else {
-                            String sosMessage = "HEY " + nameContact + " M an danje \n" + "GPS off, No Location provided ";
+                            String sosMessage = "HEY " + nameContact + sosPredefined + "GPS off, No Location provided ";
                             if (checkPermission()) {
                                 //Get the default SmsManager//
                                 SmsManager smsManager = SmsManager.getDefault();
@@ -171,7 +184,7 @@ public class SosFragment extends Fragment {
                     public void onFailure(@NonNull Exception e) {
                         // Code to Send SOS MESSAGE
                         //TODO: retrieve predefined SOS Message to String
-                        String sosMessage = "HEY " + nameContact + " M an danje \n" + "GPS off, No Location Provided" ;
+                        String sosMessage = "HEY " + nameContact + sosPredefined + "GPS off, No Location Provided" ;
                         //String phoneNo = "40770750";
                         //TODO: retrieve Emergency Contact PhoneNumber to String
                         if (checkPermission()) {
