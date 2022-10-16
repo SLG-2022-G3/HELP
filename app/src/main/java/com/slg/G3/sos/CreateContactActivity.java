@@ -33,6 +33,7 @@ import com.slg.G3.sos.fragments.ContactsFragment;
 import com.slg.G3.sos.models.Contact;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class CreateContactActivity extends AppCompatActivity {
 
@@ -51,6 +52,7 @@ public class CreateContactActivity extends AppCompatActivity {
     private Button btnCancel;
     public SharedPreferences sp;
     public String sharedName, sharedPhone;
+    public ArrayList<String> contactList = new ArrayList<>();
 //    private ImageView ivContactPhoto;
 //    private File profilePhoto ;
 
@@ -95,7 +97,7 @@ public class CreateContactActivity extends AppCompatActivity {
 //        });
 
         // instantiate shared preferences
-        sp = getSharedPreferences("MyContacts", Context.MODE_PRIVATE);
+//        sp = getSharedPreferences("MyContacts", Context.MODE_PRIVATE);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,12 +105,12 @@ public class CreateContactActivity extends AppCompatActivity {
 
 
 
-                sharedName = contactName.getText().toString();
-                sharedPhone = contactPhone.getText().toString();
-                SharedPreferences.Editor editor = sp.edit();
-                editor.putString("contactName", sharedName);
-                editor.putString("contactPhone", sharedPhone);
-                editor.apply();
+//                sharedName = contactName.getText().toString();
+//                sharedPhone = contactPhone.getText().toString();
+////                SharedPreferences.Editor editor = sp.edit();
+//                editor.putString("contactName", sharedName);
+//                editor.putString("contactPhone", sharedPhone);
+//                editor.apply();
                 Toast.makeText(CreateContactActivity.this, "info saved", Toast.LENGTH_LONG).show();
 
 
@@ -117,6 +119,11 @@ public class CreateContactActivity extends AppCompatActivity {
 
                 String name = contactName.getText().toString();
                 String phone = contactPhone.getText().toString();
+
+
+
+
+
                 ParseUser currentUser = ParseUser.getCurrentUser();
 
                 if(name.isEmpty()) {
@@ -147,8 +154,13 @@ public class CreateContactActivity extends AppCompatActivity {
         //code to cancel adding contact when button Anile is pressed
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
+                Log.i(TAG, contactList.toString());
+
+
                 Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
                 Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre.", Toast.LENGTH_SHORT).show();
                 startActivity(intent);

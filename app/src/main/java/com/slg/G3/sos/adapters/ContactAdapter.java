@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.parse.ParseFile;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.fragments.ContactsFragment;
