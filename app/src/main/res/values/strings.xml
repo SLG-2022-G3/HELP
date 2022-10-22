@@ -14,7 +14,8 @@
     <string name="oubyen">~ OUBYEN ~</string>
     <string name="byenveni">BYENVENI !</string>
     <string name="anrejistre">ANREJISTRE</string>
-    <string name="editInfoBtn">Modifye Pwofil la</string>
+    <string name="editInfoBtn">Plis detay</string>
     <string name="cancel">ANILE</string>
     <string name="capture_image">CAMERA</string>
+    <string name="sa_se_mesaj_sos_ou_se_li_ki_pral_jwenn_kontak_ou_ajoute_a">Sa se mesaj SOS ou. Se li ki pral jwenn kontak ou ajoute a.</string>
 </resources>
