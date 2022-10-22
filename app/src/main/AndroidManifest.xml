@@ -40,6 +40,10 @@
             android:name=".EditProfile"
             android:exported="false" />
         <activity
+            android:name=".DetailedContact"
+            android:exported="false" />
+
+        <activity
             android:name=".CreateContactActivity"
             android:exported="false" />
         <activity
