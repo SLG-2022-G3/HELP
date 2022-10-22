@@ -19,6 +19,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,6 +30,7 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.slg.G3.sos.Utils.TinyDB;
 import com.slg.G3.sos.fragments.ContactsFragment;
 import com.slg.G3.sos.models.Contact;
 
@@ -46,8 +48,7 @@ public class CreateContactActivity extends AppCompatActivity {
 
 
     private TextView textView;
-    private EditText contactName;
-    private EditText contactPhone;
+    private EditText contactName, contactPhone, etRelation, etAddress;
     private Button btnAdd;
     private Button btnCancel;
     public SharedPreferences sp;
@@ -64,6 +65,8 @@ public class CreateContactActivity extends AppCompatActivity {
         textView = findViewById(R.id.tvAddContact);
         contactName = findViewById(R.id.etContactName);
         contactPhone = findViewById(R.id.etContactNumber);
+        etRelation = findViewById(R.id.etRelation);
+        etAddress = findViewById(R.id.etAddress);
         btnAdd = findViewById(R.id.btnContactSend);
         btnCancel = findViewById(R.id.btnCancel);
 //        ivContactPhoto = findViewById(R.id.ivContactPhoto);
@@ -99,9 +102,16 @@ public class CreateContactActivity extends AppCompatActivity {
         // instantiate shared preferences
 //        sp = getSharedPreferences("MyContacts", Context.MODE_PRIVATE);
 
+
+
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                saveToArray();
+
+
 
 
 
@@ -116,9 +126,10 @@ public class CreateContactActivity extends AppCompatActivity {
 
 
 
-
                 String name = contactName.getText().toString();
                 String phone = contactPhone.getText().toString();
+                String relationship = etRelation.getText().toString();
+                String address = etAddress.getText().toString();
 
 
 
@@ -137,17 +148,13 @@ public class CreateContactActivity extends AppCompatActivity {
                 }
 
 
-                saveContact(name, phone, currentUser);
+                saveContact(name, phone, relationship, address, currentUser);
+
+                Log.i(TAG, contactList.toString() + contactList.size());
+
 
             }
         });
-
-
-        // code to add contact when button is pressed
-
-
-
-
 
 
 
@@ -158,7 +165,6 @@ public class CreateContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.i(TAG, contactList.toString());
 
 
                 Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
@@ -172,7 +178,18 @@ public class CreateContactActivity extends AppCompatActivity {
     }
 
 
-        // handling result of picked image
+
+    private void saveToArray() {
+        contactList.add(contactPhone.getText().toString());
+
+        TinyDB tinydb = new TinyDB(this);
+        tinydb.putListString("Contacts", contactList);
+
+
+    }
+
+
+    // handling result of picked image
 
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -216,12 +233,15 @@ public class CreateContactActivity extends AppCompatActivity {
 
 
     //method to save contact to parse
-    private void saveContact(String name, String phone, ParseUser currentUser) {
+    private void saveContact(String name, String phone, String relationship, String address, ParseUser currentUser) {
         Contact contact = new Contact();
         contact.setName(name);
         contact.setNumber(phone);
         contact.setUser(currentUser);
+        contact.setAddress(address);
+        contact.setRelationship(relationship);
         contact.pinInBackground();
+
 
         contact.saveInBackground(new SaveCallback() {
             @Override
