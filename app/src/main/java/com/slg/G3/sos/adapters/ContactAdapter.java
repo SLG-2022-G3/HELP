@@ -1,11 +1,13 @@
 package com.slg.G3.sos.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
+import com.slg.G3.sos.DetailedContact;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.fragments.ContactsFragment;
 import com.slg.G3.sos.models.Contact;
@@ -67,6 +70,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         private TextView tvContactNumber;
         private ImageButton ibEditContact;
         private ImageButton ibDeleteContact;
+        RelativeLayout rlContact;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,6 +80,16 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
             tvContactNumber = itemView.findViewById(R.id.tvContactNumber);
             ibEditContact = itemView.findViewById(R.id.ibEditContact);
             ibDeleteContact = itemView.findViewById(R.id.ibDeleteContact);
+            rlContact = itemView.findViewById(R.id.rlContact);
+
+            rlContact.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, DetailedContact.class);
+                    context.startActivity(intent);
+
+                }
+            });
 
             ibEditContact.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -83,6 +97,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
                 }
             });
+
+
             ibDeleteContact.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -101,5 +117,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 //                Glide.with(context).load(image.getUrl()).transform(new CircleCrop()).into(ivProfPic);
 //            }
         }
+
+
     }
+
 }
