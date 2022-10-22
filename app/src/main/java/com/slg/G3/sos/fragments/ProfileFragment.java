@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,19 +21,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.parse.GetDataCallback;
-import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.slg.G3.sos.EditProfile;
 import com.slg.G3.sos.LoginActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.User;
-
-import java.util.Objects;
 //import com.slg.G3.sos.models.UserInfo;
 
 /**
@@ -54,7 +47,7 @@ public class ProfileFragment extends Fragment {
 
     private ParseUser currentUser;
     private ImageView ivProfPic, btnLogout;
-    private TextView tvName, tvPhone, tvEmail, tvNewMessage, tvInfo;
+    private TextView tvName, tvPhone, tvEmail, tvNewMessage, tvBloodType, tvPerso, tvMsgSOS;
     private Button btnEdit, btnSaveMessage;
     private RelativeLayout rl, btnEMsg,btnShare, btnSettings ;
     String description, sosmessage, number, sharedMessage;
@@ -125,12 +118,15 @@ public class ProfileFragment extends Fragment {
         tvEmail = view.findViewById(R.id.tvEmail);
         btnEdit = view.findViewById(R.id.btnEdit);
         btnSaveMessage = view.findViewById(R.id.btnSaveMessage);
-
         EditText tvDescription = view.findViewById(R.id.etInfo);
+        tvBloodType = view.findViewById(R.id.tvBloodType);
+        tvPerso = view.findViewById(R.id.tvPerso);
+        tvMsgSOS = view.findViewById(R.id.tvMsgSOS);
+        btnLogout = view.findViewById(R.id.btnLogout);
 
-        tvNewMessage = view.findViewById(R.id.tvNewMessage);
 
         ivProfPic = view.findViewById(R.id.ivProfilePic);
+
         ParseUser currentUser = ParseUser.getCurrentUser();
             try {
                 ParseFile userParseFile = (ParseFile) currentUser.getParseFile("profilePicture");
@@ -142,15 +138,19 @@ public class ProfileFragment extends Fragment {
                 e.printStackTrace();
             }
 
-        btnLogout = view.findViewById(R.id.btnLogout);
 
 
         // Set user info
 
         tvName.setText(ParseUser.getCurrentUser().getUsername());
-        number = user.getTelephone();
-        tvPhone.setText(number);
         tvEmail.setText(ParseUser.getCurrentUser().getEmail());
+
+//        UserInfo userInfo = new UserInfo();
+//        tvPhone.setText(userInfo.getTelephone());
+//        tvBloodType.setText(userInfo.getBloodType());
+//        tvMsgSOS.setText(userInfo.getSOS());
+
+
 
         ParseUser user = ParseUser.getCurrentUser();
 //        description = user.get("persoInfo").toString();
@@ -159,7 +159,6 @@ public class ProfileFragment extends Fragment {
 
         //queryUser();
         //tvMsg.setText(userInfo.getMessage());
-
 
 
         // method to edit info
@@ -172,6 +171,7 @@ public class ProfileFragment extends Fragment {
 
 
       // Method to log out user
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -216,7 +216,7 @@ public class ProfileFragment extends Fragment {
 
         prefs = getContext().getSharedPreferences("Message",Context.MODE_PRIVATE);
         String newMessage = prefs.getString("predefMessage", null);
-        tvNewMessage.setText(newMessage);
+        tvMsgSOS.setText(newMessage);
 
 
     }
