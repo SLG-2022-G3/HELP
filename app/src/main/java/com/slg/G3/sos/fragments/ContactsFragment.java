@@ -39,9 +39,11 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.slg.G3.sos.CreateContactActivity;
+import com.slg.G3.sos.DetailedContact;
 import com.slg.G3.sos.MainActivity;
 import com.slg.G3.sos.R;
 //import com.slg.G3.sos.adapters.ContactAdapter;
+import com.slg.G3.sos.Utils.TinyDB;
 import com.slg.G3.sos.adapters.ContactAdapter;
 import com.slg.G3.sos.models.Contact;
 //import com.slg.G3.sos.adapters.ContactAdapter;
@@ -62,15 +64,12 @@ public class ContactsFragment extends Fragment {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
 
 
-    private RecyclerView rvContacts;
     private RecyclerView rvEmerServContacts;
-    private GifImageView btnSOS;
-    private RelativeLayout btnAddContact;
-    private RelativeLayout relativeLayout;
     protected List<Contact> allcontact;
     protected ContactAdapter contactAdapter;
-    private ImageButton btnDelete, btnEdit;
-    FusedLocationProviderClient locationProviderClient;
+    ArrayList<String> phoneContact;
+
+
 
 
 
@@ -94,7 +93,9 @@ public class ContactsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        rvContacts = view.findViewById(R.id.rvContacts);
+
+
+        RecyclerView rvContacts = view.findViewById(R.id.rvContacts);
 
         //Create Data Source
         allcontact = new ArrayList<>();
@@ -120,9 +121,8 @@ public class ContactsFragment extends Fragment {
         //Set adapter on recyclerview
         //Set a Layout Manager*/
 
-        btnAddContact = view.findViewById(R.id.btnAddContacts);
-        btnSOS = view.findViewById(R.id.btnSOS);
-
+        RelativeLayout btnAddContact = view.findViewById(R.id.btnAddContacts);
+        GifImageView btnSOS = view.findViewById(R.id.btnSOS);
 
 
 
@@ -138,9 +138,11 @@ public class ContactsFragment extends Fragment {
         // shared preferences to retrieve the number of the last
         //contact the user saved and their name as well
 
-        SharedPreferences sp = getContext().getSharedPreferences("MyContacts", Context.MODE_PRIVATE);
-        String nameContact = sp.getString("contactName", "");
-        String phoneContact = sp.getString("contactPhone", "");
+
+        // using tinyDb class to retrieve list of strings in shared preferences
+        TinyDB tinyDB = new TinyDB(getContext());
+        phoneContact = tinyDB.getListString("Contacts");
+
 
 
         // shared preferences to retrieve the predefined sos message from profile fragment
@@ -171,14 +173,14 @@ public class ContactsFragment extends Fragment {
                     public void onSuccess(Location location) {
                         if (location != null){
                             // Code to Send SOS MESSAGE
-                            String sos = nameContact + sosPredefined + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
+                            String sos = sosPredefined + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
                             //String phoneNo = "40770750";
                             //TODO: retrieve Emergency Contact PhoneNumber to String
                             if (checkPermission()) {
                                 //Get the default SmsManager//
                                 SmsManager smsManager = SmsManager.getDefault();
                                 //Send the SOS
-                                smsManager.sendTextMessage(phoneContact, null, sos, null, null);
+                                smsManager.sendTextMessage(String.valueOf(phoneContact), null, sos, null, null);
                                 Toast.makeText(getContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
@@ -186,12 +188,12 @@ public class ContactsFragment extends Fragment {
                             }
 
                         }else {
-                            String sosMessage = "HEY " + nameContact + sosPredefined + "GPS off, No Location provided ";
+                            String sosMessage = sosPredefined + "GPS off, No Location provided ";
                             if (checkPermission()) {
                                 //Get the default SmsManager//
                                 SmsManager smsManager = SmsManager.getDefault();
                                 //Send the SOS
-                                smsManager.sendTextMessage(phoneContact, null, sosMessage, null, null);
+                                smsManager.sendTextMessage(String.valueOf(phoneContact), null, sosMessage, null, null);
                                 Toast.makeText(getContext(), "Sending SOS, without Location", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
@@ -203,13 +205,13 @@ public class ContactsFragment extends Fragment {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         // Code to Send SOS MESSAGE
-                        String sosMessage = "HEY " + nameContact + sosPredefined + "GPS off, No Location Provided" ;
+                        String sosMessage = sosPredefined + "GPS off, No Location Provided" ;
                         //TODO: retrieve Emergency Contact PhoneNumber to String
                         if (checkPermission()) {
                             //Get the default SmsManager//
                             SmsManager smsManager = SmsManager.getDefault();
                             //Send the SOS
-                            smsManager.sendTextMessage(phoneContact, null, sosMessage, null, null);
+                            smsManager.sendTextMessage(String.valueOf(phoneContact), null, sosMessage, null, null);
                             Toast.makeText(getContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
@@ -259,7 +261,8 @@ public class ContactsFragment extends Fragment {
         // Specify which class to query
         ParseQuery<Contact> query = ParseQuery.getQuery("Contact");
         query.fromLocalDatastore();
-        query.setLimit(5);
+        query.orderByAscending("createdAt");
+        query.setLimit(1);
         query.whereEqualTo(Contact.KEY_USER, ParseUser.getCurrentUser());
 
         //Specify the object ID
@@ -283,5 +286,7 @@ public class ContactsFragment extends Fragment {
 
 
     }
+
+
 
 }
