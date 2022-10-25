@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -37,6 +39,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnTokenCanceledListener;
 import com.google.android.gms.tasks.Task;
+import com.slg.G3.sos.ContactModel;
+import com.slg.G3.sos.DbHelper;
 import com.slg.G3.sos.MainActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.Utils.TinyDB;
@@ -116,9 +120,9 @@ public class SosFragment extends Fragment {
         SharedPreferences prefs = getContext().getSharedPreferences("Message", Context.MODE_PRIVATE);
         String sosPredefined = prefs.getString("predefMessage", "");
 
-       // using tinyDb class to retrieve list of strings in shared preferences
-        TinyDB tinyDB = new TinyDB(getContext());
-        phoneContact = tinyDB.getListString("Contacts");
+//       // using tinyDb class to retrieve list of strings in shared preferences
+//        TinyDB tinyDB = new TinyDB(getContext());
+//        phoneContact = tinyDB.getListString("Contacts");
 
 
 
@@ -146,29 +150,58 @@ public class SosFragment extends Fragment {
                     @Override
                     public void onSuccess(Location location) {
                         if (location != null){
+                            //Get the default SmsManager//
+                            SmsManager smsManager = SmsManager.getDefault();
+
+                            // get the list of all the contacts in Database
+                            DbHelper dbHelper = new DbHelper(getContext());
+                            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+
                             // Code to Send SOS MESSAGE
                             String sos = sosPredefined + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
                             if (checkPermission()) {
-                                //Get the default SmsManager//
-                                SmsManager smsManager = SmsManager.getDefault();
-                                //Send the SOS
-                                smsManager.sendTextMessage(String.valueOf(phoneContact), null, sos, null, null);
-                                Toast.makeText(getContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
+                                Cursor cursor = db.rawQuery("select * from SOSContact", null);
+                                while (cursor.moveToNext()) {
+                                    String num = cursor.getString(2);
+                                    //Send the SOS
+                                    smsManager.sendTextMessage(num, null, sos, null, null);
+                                    Toast.makeText(getContext(), "SOS la ale. Tanpri pran swen ou annatandan.", Toast.LENGTH_SHORT).show();
+
+                                }
+                                cursor.close();
+
+
+
                             } else {
-                                Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "SOS la pa ale.\n + Tanpri bay aplikasyon an pemisyon voye SMS.", Toast.LENGTH_SHORT).show();
                                 requestPermission();
                             }
 
                         }else {
-                            String sosMessage = sosPredefined + "GPS off, No Location provided ";
+                            String sosMessage = sosPredefined;
                             if (checkPermission()) {
                                 //Get the default SmsManager//
                                 SmsManager smsManager = SmsManager.getDefault();
-                                //Send the SOS
-                                smsManager.sendTextMessage(String.valueOf(phoneContact), null, sosMessage, null, null);
-                                Toast.makeText(getContext(), "Sending SOS, without Location", Toast.LENGTH_SHORT).show();
+
+                                // get the list of all the contacts in Database
+                                DbHelper dbHelper = new DbHelper(getContext());
+                                List<ContactModel> list = dbHelper.getAllContacts();
+                                SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+                                Cursor cursor = db.rawQuery("select * from SOSContact", null);
+                                while (cursor.moveToNext()) {
+                                    String num = cursor.getString(2);
+                                    String name = cursor.getString(1);
+                                    //Send the SOS
+                                    smsManager.sendTextMessage("Alo " + name + ", " + num, null, sosMessage, null, null);
+                                    Toast.makeText(getContext(), "SOS la ale san lokalizasyon ou. Aktive Lokalizasyon, tanpri.", Toast.LENGTH_SHORT).show();
+                                }
+
                             } else {
-                                Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "SOS la pa ale.\n + Tanpri bay aplikasyon an pemisyon voye SMS.", Toast.LENGTH_SHORT).show();
                                 requestPermission();
                             }
                         }
@@ -177,15 +210,31 @@ public class SosFragment extends Fragment {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         // Code to Send SOS MESSAGE
-                        String sosMessage = sosPredefined + "GPS off, No Location Provided" ;
+                        String sosMessage = sosPredefined;
+
                         if (checkPermission()) {
+
                             //Get the default SmsManager//
                             SmsManager smsManager = SmsManager.getDefault();
                             //Send the SOS
-                            smsManager.sendTextMessage(String.valueOf(phoneContact), null, sosMessage, null, null);
-                            Toast.makeText(getContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
+                            DbHelper dbHelper = new DbHelper(getContext());
+                            List<ContactModel> list = dbHelper.getAllContacts();
+                            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+
+                            Cursor cursor = db.rawQuery("select * from SOSContact", null);
+                            while (cursor.moveToNext()) {
+                                String num = cursor.getString(2);
+                                String name = cursor.getString(1);
+                                //Send the SOS
+                                smsManager.sendTextMessage("Alo " + name + ", " + num, null, sosMessage, null, null);
+                                Toast.makeText(getContext(), "SOS la ale. Tanpri pran swen ou annatandan.", Toast.LENGTH_SHORT).show();
+
+                            }
+
                         } else {
-                            Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "SOS la pa ale.\n + Tanpri bay aplikasyon an pemisyon voye SMS.", Toast.LENGTH_SHORT).show();
                             requestPermission();
                         }
                     }
@@ -213,9 +262,9 @@ public class SosFragment extends Fragment {
         switch (requestCode) {
             case PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] ==PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getContext(), "Permission access allowed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Mesi paske w bay pemisyon an.", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getContext(), "Permission access denied", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Ou pa bay pemisyon an.\n + Tanpri bay aplikasyon an pemisyon an.", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

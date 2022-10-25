@@ -36,6 +36,7 @@ import com.slg.G3.sos.models.Contact;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CreateContactActivity extends AppCompatActivity {
 
@@ -51,9 +52,9 @@ public class CreateContactActivity extends AppCompatActivity {
     private EditText contactName, contactPhone, etRelation, etAddress;
     private Button btnAdd;
     private Button btnCancel;
-    public SharedPreferences sp;
-    public String sharedName, sharedPhone;
-    public ArrayList<String> contactList = new ArrayList<>();
+    DbHelper dbHelper;
+    List<ContactModel> contactModelList;
+
 //    private ImageView ivContactPhoto;
 //    private File profilePhoto ;
 
@@ -69,6 +70,9 @@ public class CreateContactActivity extends AppCompatActivity {
         etAddress = findViewById(R.id.etAddress);
         btnAdd = findViewById(R.id.btnContactSend);
         btnCancel = findViewById(R.id.btnCancel);
+
+        dbHelper = new DbHelper(this);
+
 //        ivContactPhoto = findViewById(R.id.ivContactPhoto);
 
 
@@ -109,7 +113,7 @@ public class CreateContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                saveToArray();
+//                saveToArray();
 
 
 
@@ -128,29 +132,40 @@ public class CreateContactActivity extends AppCompatActivity {
 
                 String name = contactName.getText().toString();
                 String phone = contactPhone.getText().toString();
-                String relationship = etRelation.getText().toString();
+                String relation = etRelation.getText().toString();
                 String address = etAddress.getText().toString();
 
+                //save to database
+                dbHelper.addcontact(name, phone, relation, address);
+                Toast.makeText(CreateContactActivity.this, "Kontak la anrejistre.", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
 
 
 
 
-                ParseUser currentUser = ParseUser.getCurrentUser();
-
-                if(name.isEmpty()) {
-                    Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon non pou kontak la!", Toast.LENGTH_LONG).show();
-                    return;
-                }
-
-                if(phone.isEmpty()) {
-                    Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon nimewo pou kontak la!", Toast.LENGTH_LONG).show();
-                    return;
-                }
 
 
-                saveContact(name, phone, relationship, address, currentUser);
 
-                Log.i(TAG, contactList.toString() + contactList.size());
+
+
+//                ParseUser currentUser = ParseUser.getCurrentUser();
+//
+//                if(name.isEmpty()) {
+//                    Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon non pou kontak la!", Toast.LENGTH_LONG).show();
+//                    return;
+//                }
+//
+//                if(phone.isEmpty()) {
+//                    Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon nimewo pou kontak la!", Toast.LENGTH_LONG).show();
+//                    return;
+//                }
+//
+//
+//                saveContact(name, phone, relationship, address, currentUser);
+
 
 
             }
@@ -179,14 +194,14 @@ public class CreateContactActivity extends AppCompatActivity {
 
 
 
-    private void saveToArray() {
-        contactList.add(contactPhone.getText().toString());
-
-        TinyDB tinydb = new TinyDB(this);
-        tinydb.putListString("Contacts", contactList);
-
-
-    }
+//    private void saveToArray() {
+//        contactList.add(contactPhone.getText().toString());
+//
+//        TinyDB tinydb = new TinyDB(this);
+//        tinydb.putListString("Contacts", contactList);
+//
+//
+//    }
 
 
     // handling result of picked image
@@ -232,37 +247,36 @@ public class CreateContactActivity extends AppCompatActivity {
 
 
 
-    //method to save contact to parse
-    private void saveContact(String name, String phone, String relationship, String address, ParseUser currentUser) {
-        Contact contact = new Contact();
-        contact.setName(name);
-        contact.setNumber(phone);
-        contact.setUser(currentUser);
-        contact.setAddress(address);
-        contact.setRelationship(relationship);
-        contact.pinInBackground();
+//    //method to save contact to parse
+//    private void saveContact(String name, String phone, String relationship, String address, ParseUser currentUser) {
+//        Contact contact = new Contact();
+//        contact.setName(name);
+//        contact.setNumber(phone);
+//        contact.setUser(currentUser);
+//        contact.setAddress(address);
+//        contact.setRelationship(relationship);
+//        contact.pinInBackground();
+//
+//
+//        contact.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//                if (e != null) {
+//                    Log.e (TAG, "error while saving");
+//                    Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre", Toast.LENGTH_SHORT).show();
+//                }
+//                Toast.makeText(CreateContactActivity.this, "Kontak la anrejistre", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 
-        contact.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e != null) {
-                    Log.e (TAG, "error while saving");
-                    Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre", Toast.LENGTH_SHORT).show();
-                }
-                Toast.makeText(CreateContactActivity.this, "Kontak la anrejistre", Toast.LENGTH_SHORT).show();
-            }
-        });
 
-
-
-        Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
+//        Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
+//        startActivity(intent);
+//        finish();
 
     }
 
 
 
 
-}
