@@ -16,7 +16,6 @@ public class SplashActivity extends AppCompatActivity {
     Animation zoom;
     TextView imageView;
     ImageView circle;
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +26,8 @@ public class SplashActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         zoom = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoom);
 
-        circle= findViewById(R.id.circle);
+        circle= findViewById(R.id.ivSOS);
 
-        imageView = findViewById(R.id.whiteText);
-
-        circle.startAnimation(zoom);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -41,6 +37,6 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        },3000);
+        },1500);
     }
 }

@@ -52,11 +52,14 @@
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/activity_resetpassword.xml" value="0.2" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/activity_test.xml" value="0.1" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/activity_welcome.xml" value="0.1" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/contact_detailed.xml" value="0.25" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/contacts.xml" value="0.2" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/fragment_contacts.xml" value="0.25" />
         <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/fragment_profile.xml" value="0.4" />
-        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/fragment_sos.xml" value="0.2" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/fragment_sos.xml" value="0.25" />
+        <entry key="..\:/Users/ayibo/AndroidStudioProjects/HELP/app/src/main/res/layout/item_user.xml" value="0.19895833333333332" />
       </map>
     </option>
   </component>
