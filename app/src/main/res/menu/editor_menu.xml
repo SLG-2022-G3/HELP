@@ -2,14 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_home"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_arrow_back_24"
-        android:iconTint="@color/gray_back"
-        android:title="@string/cancel"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_contacts"
+        android:id="@+id/action_save"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_save_24"
         android:title="@string/anrejistre"
