@@ -2,12 +2,18 @@ package com.slg.G3.sos.fragments;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.os.Bundle;
+import android.telephony.gsm.SmsManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,15 +23,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.telephony.gsm.SmsManager;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
@@ -33,23 +30,11 @@ import com.google.android.gms.tasks.CancellationToken;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnTokenCanceledListener;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
 import com.slg.G3.sos.ContactModel;
 import com.slg.G3.sos.CreateContactActivity;
 import com.slg.G3.sos.DbHelper;
-import com.slg.G3.sos.DetailedContact;
-import com.slg.G3.sos.MainActivity;
 import com.slg.G3.sos.R;
-//import com.slg.G3.sos.adapters.ContactAdapter;
-import com.slg.G3.sos.Utils.TinyDB;
 import com.slg.G3.sos.adapters.DatabaseAdapter;
-import com.slg.G3.sos.models.Contact;
-//import com.slg.G3.sos.adapters.ContactAdapter;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +53,9 @@ public class ContactsFragment extends Fragment {
     private List<ContactModel> contactModelList;
     private DbHelper dbHelper;
     private DatabaseAdapter databaseAdapter;
-    private RecyclerView rvContact;
+    public static String sosPredefinedNoLocation, sosPredefinedLocation;
+    FusedLocationProviderClient locationProviderClient;
+
 
 
 
@@ -92,6 +79,10 @@ public class ContactsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        locationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        sosPredefinedLocation = "Mwen genyen ijans. Tanpri kontakte m rapid konnya menm. Men lokalizasyon mwen: ";
+        sosPredefinedNoLocation = "Mwen genyen ijans. Tanpri kontakte m rapid konnya menm. VIT! VIT!";
+
 
         dbHelper = new DbHelper(getContext());
 
@@ -142,95 +133,152 @@ public class ContactsFragment extends Fragment {
         });
 
 
-//        // shared preferences to retrieve the number of the last
-//        //contact the user saved and their name as well
-//
-//
-//        // using tinyDb class to retrieve list of strings in shared preferences
-//        TinyDB tinyDB = new TinyDB(getContext());
-//        phoneContact = tinyDB.getListString("Contacts");
 
 
 
-//        // shared preferences to retrieve the predefined sos message from profile fragment
-//        SharedPreferences prefs = getContext().getSharedPreferences("Message", Context.MODE_PRIVATE);
-//        String sosPredefined = prefs.getString("predefMessage", "");
-//
-//
-//
-//
-//        btnSOS.setOnClickListener(new View.OnClickListener() {
-//            @SuppressLint("MissingPermission")
-//            @Override
-//            public void onClick(View view) {
-//                FusedLocationProviderClient locationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-//
-//                locationProviderClient.getCurrentLocation(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY, new CancellationToken() {
-//                    @Override
-//                    public boolean isCancellationRequested() {
-//                        return false;
-//                    }
-//                    @NonNull
-//                    @Override
-//                    public CancellationToken onCanceledRequested(@NonNull OnTokenCanceledListener onTokenCanceledListener) {
-//                        return null;
-//                    }
-//                }).addOnSuccessListener(new OnSuccessListener<Location>() {
-//                    @Override
-//                    public void onSuccess(Location location) {
-//                        if (location != null){
-//                            // Code to Send SOS MESSAGE
-//                            String sos = sosPredefined + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
-//                            //String phoneNo = "40770750";
-//                            //TODO: retrieve Emergency Contact PhoneNumber to String
-//                            if (checkPermission()) {
-//                                //Get the default SmsManager//
-//                                SmsManager smsManager = SmsManager.getDefault();
-//                                //Send the SOS
-//                                smsManager.sendTextMessage(String.valueOf(phoneContact), null, sos, null, null);
-//                                Toast.makeText(getContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
-//                            } else {
-//                                Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
-//                                requestPermission();
-//                            }
-//
-//                        }else {
-//                            String sosMessage = sosPredefined + "GPS off, No Location provided ";
-//                            if (checkPermission()) {
-//                                //Get the default SmsManager//
-//                                SmsManager smsManager = SmsManager.getDefault();
-//                                //Send the SOS
-//                                smsManager.sendTextMessage(String.valueOf(phoneContact), null, sosMessage, null, null);
-//                                Toast.makeText(getContext(), "Sending SOS, without Location", Toast.LENGTH_SHORT).show();
-//                            } else {
-//                                Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
-//                                requestPermission();
-//                            }
-//                        }
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        // Code to Send SOS MESSAGE
-//                        String sosMessage = sosPredefined + "GPS off, No Location Provided" ;
-//                        //TODO: retrieve Emergency Contact PhoneNumber to String
-//                        if (checkPermission()) {
-//                            //Get the default SmsManager//
-//                            SmsManager smsManager = SmsManager.getDefault();
-//                            //Send the SOS
-//                            smsManager.sendTextMessage(String.valueOf(phoneContact), null, sosMessage, null, null);
-//                            Toast.makeText(getContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Toast.makeText(getContext(), "SOS Can not be Sent, access denied", Toast.LENGTH_SHORT).show();
-//                            requestPermission();
-//                        }
-//                    }
-//                });
-//
-//
-//
-//            }
-//        });
+        btnSOS.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("MissingPermission")
+            @Override
+            public void onClick(View view) {
+                 FusedLocationProviderClient locationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+
+                locationProviderClient.getCurrentLocation(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY, new CancellationToken() {
+                    @Override
+                    public boolean isCancellationRequested() {
+                        return false;
+                    }
+                    @NonNull
+                    @Override
+                    public CancellationToken onCanceledRequested(@NonNull OnTokenCanceledListener onTokenCanceledListener) {
+                        return null;
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if (location != null){
+
+                            sendWhatsapp();
+
+                            //Get the default SmsManager//
+                            SmsManager smsManager = SmsManager.getDefault();
+
+                            // get the list of all the contacts in Database
+                            DbHelper dbHelper = new DbHelper(getContext());
+                            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+                            // Code to Send SOS MESSAGE
+                            String sosMessage = sosPredefinedLocation + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
+                            if (checkPermission()) {
+                                Cursor cursor = db.rawQuery("select * from SOSContact", null);
+
+                                while (cursor.moveToNext()) {
+                                    String num = cursor.getString(2);
+                                    //Send the SOS
+                                    smsManager.sendTextMessage(num, null, sosMessage, null, null);
+
+                                }
+
+                                cursor.close();
+                                Toast.makeText(getContext(), "SOS la ale. Tanpri pran swen ou annatandan.", Toast.LENGTH_SHORT).show();
+
+
+
+
+                            } else {
+                                Toast.makeText(getContext(), "SOS la pa ale.\n + Tanpri bay aplikasyon an pemisyon voye SMS.", Toast.LENGTH_SHORT).show();
+                                requestPermission();
+                            }
+
+                        }else {
+                            String sosMessage = sosPredefinedNoLocation;
+                            if (checkPermission()) {
+                                //Get the default SmsManager//
+                                SmsManager smsManager = SmsManager.getDefault();
+
+
+                                // get the list of all the contacts in Database
+                                DbHelper dbHelper = new DbHelper(getContext());
+                                List<ContactModel> list = dbHelper.getAllContacts();
+                                SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+                                Cursor cursor = db.rawQuery("select * from SOSContact", null);
+
+                                while (cursor.moveToNext()) {
+                                    String num = cursor.getString(2);
+                                    String name = cursor.getString(1);
+                                    //Send the SOS
+                                    smsManager.sendTextMessage("Alo " + name + ", " + num, null, sosMessage, null, null);
+                                }
+                                cursor.close();
+
+                                Toast.makeText(getContext(), "SOS la ale san lokalizasyon ou. Aktive Lokalizasyon, tanpri.", Toast.LENGTH_SHORT).show();
+
+
+                            } else {
+                                Toast.makeText(getContext(), "SOS la pa ale.\n + Tanpri bay aplikasyon an pemisyon voye SMS.", Toast.LENGTH_SHORT).show();
+                                requestPermission();
+                            }
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Code to Send SOS MESSAGE
+                        String sosMessage = sosPredefinedNoLocation;
+
+                        if (checkPermission()) {
+
+                            //Get the default SmsManager//
+                            SmsManager smsManager = SmsManager.getDefault();
+                            //Send the SOS
+                            DbHelper dbHelper = new DbHelper(getContext());
+                            List<ContactModel> list = dbHelper.getAllContacts();
+                            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+
+                            Cursor cursor = db.rawQuery("select * from SOSContact", null);
+                            while (cursor.moveToNext()) {
+                                String num = cursor.getString(2);
+                                String name = cursor.getString(1);
+                                //Send the SOS
+                                smsManager.sendTextMessage("Alo " + name + ", " + num, null, sosMessage, null, null);
+
+                            }
+                            cursor.close();
+                            Toast.makeText(getContext(), "SOS la ale. Tanpri pran swen ou annatandan.", Toast.LENGTH_SHORT).show();
+
+
+
+                        } else {
+                            Toast.makeText(getContext(), "SOS la pa ale.\n + Tanpri bay aplikasyon an pemisyon voye SMS.", Toast.LENGTH_SHORT).show();
+                            requestPermission();
+                        }
+                    }
+                });
+
+
+
+            }
+
+        });
+    }
+
+
+
+    private void sendWhatsapp() {
+
+        Intent sendIntent = new Intent("android.intent.action.MAIN");
+        sendIntent.putExtra("", "" + "@s.whatsapp.net");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, sosPredefinedNoLocation);
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.setPackage("com.whatsapp");
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
+
+
     }
 
 
@@ -294,6 +342,35 @@ public class ContactsFragment extends Fragment {
 //
 //
 //    }
+
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.SEND_SMS);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] ==PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getContext(), "Mesi paske w bay pemisyon an.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Ou pa bay pemisyon an.\n + Tanpri bay aplikasyon an pemisyon an.", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    private void requestPermission(){
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[]{Manifest.permission.SEND_SMS},MY_PERMISSIONS_REQUEST_SEND_SMS);
+    }
 
 
 

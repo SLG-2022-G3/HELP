@@ -119,10 +119,6 @@ public class SosFragment extends Fragment {
 
 
 
-//       // using tinyDb class to retrieve list of strings in shared preferences
-//        TinyDB tinyDB = new TinyDB(getContext());
-//        phoneContact = tinyDB.getListString("Contacts");
-
 
 
         // click to send SOS
@@ -269,7 +265,6 @@ public class SosFragment extends Fragment {
 
 
 
-            //the database and select one of the numbers
             Intent sendIntent = new Intent("android.intent.action.MAIN");
             sendIntent.putExtra("", "" + "@s.whatsapp.net");
             sendIntent.putExtra(Intent.EXTRA_TEXT, sosPredefinedNoLocation);
