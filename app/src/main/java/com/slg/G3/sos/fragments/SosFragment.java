@@ -69,7 +69,7 @@ public class SosFragment extends Fragment {
     private GifImageView btnSOS;
     FusedLocationProviderClient locationProviderClient;
     TextView tvLatitude, tvLongitude;
-    ArrayList<String> phoneContact;
+    public static String sosPredefinedNoLocation, sosPredefinedLocation;
 
 
     public SosFragment() {
@@ -114,11 +114,10 @@ public class SosFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         locationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        sosPredefinedLocation = "Mwen genyen ijans. Tanpri kontakte m rapid konnya menm. Men lokalizasyon mwen: ";
+        sosPredefinedNoLocation = "Mwen genyen ijans. Tanpri kontakte m rapid konnya menm. VIT! VIT!";
 
 
-       // shared preferences to retrieve the predefined sos message from profile fragment
-        SharedPreferences prefs = getContext().getSharedPreferences("Message", Context.MODE_PRIVATE);
-        String sosPredefined = prefs.getString("predefMessage", "");
 
 //       // using tinyDb class to retrieve list of strings in shared preferences
 //        TinyDB tinyDB = new TinyDB(getContext());
@@ -150,6 +149,9 @@ public class SosFragment extends Fragment {
                     @Override
                     public void onSuccess(Location location) {
                         if (location != null){
+
+                            sendWhatsapp();
+
                             //Get the default SmsManager//
                             SmsManager smsManager = SmsManager.getDefault();
 
@@ -160,17 +162,20 @@ public class SosFragment extends Fragment {
 
 
                             // Code to Send SOS MESSAGE
-                            String sos = sosPredefined + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
+                            String sosMessage = sosPredefinedLocation + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
                             if (checkPermission()) {
                                 Cursor cursor = db.rawQuery("select * from SOSContact", null);
+
                                 while (cursor.moveToNext()) {
                                     String num = cursor.getString(2);
                                     //Send the SOS
-                                    smsManager.sendTextMessage(num, null, sos, null, null);
-                                    Toast.makeText(getContext(), "SOS la ale. Tanpri pran swen ou annatandan.", Toast.LENGTH_SHORT).show();
+                                    smsManager.sendTextMessage(num, null, sosMessage, null, null);
 
                                 }
+
                                 cursor.close();
+                                Toast.makeText(getContext(), "SOS la ale. Tanpri pran swen ou annatandan.", Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -180,10 +185,11 @@ public class SosFragment extends Fragment {
                             }
 
                         }else {
-                            String sosMessage = sosPredefined;
+                            String sosMessage = sosPredefinedNoLocation;
                             if (checkPermission()) {
                                 //Get the default SmsManager//
                                 SmsManager smsManager = SmsManager.getDefault();
+
 
                                 // get the list of all the contacts in Database
                                 DbHelper dbHelper = new DbHelper(getContext());
@@ -192,13 +198,17 @@ public class SosFragment extends Fragment {
 
 
                                 Cursor cursor = db.rawQuery("select * from SOSContact", null);
+
                                 while (cursor.moveToNext()) {
                                     String num = cursor.getString(2);
                                     String name = cursor.getString(1);
                                     //Send the SOS
                                     smsManager.sendTextMessage("Alo " + name + ", " + num, null, sosMessage, null, null);
-                                    Toast.makeText(getContext(), "SOS la ale san lokalizasyon ou. Aktive Lokalizasyon, tanpri.", Toast.LENGTH_SHORT).show();
                                 }
+                                cursor.close();
+
+                                Toast.makeText(getContext(), "SOS la ale san lokalizasyon ou. Aktive Lokalizasyon, tanpri.", Toast.LENGTH_SHORT).show();
+
 
                             } else {
                                 Toast.makeText(getContext(), "SOS la pa ale.\n + Tanpri bay aplikasyon an pemisyon voye SMS.", Toast.LENGTH_SHORT).show();
@@ -210,7 +220,7 @@ public class SosFragment extends Fragment {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         // Code to Send SOS MESSAGE
-                        String sosMessage = sosPredefined;
+                        String sosMessage = sosPredefinedNoLocation;
 
                         if (checkPermission()) {
 
@@ -229,9 +239,12 @@ public class SosFragment extends Fragment {
                                 String name = cursor.getString(1);
                                 //Send the SOS
                                 smsManager.sendTextMessage("Alo " + name + ", " + num, null, sosMessage, null, null);
-                                Toast.makeText(getContext(), "SOS la ale. Tanpri pran swen ou annatandan.", Toast.LENGTH_SHORT).show();
 
                             }
+                            cursor.close();
+                            Toast.makeText(getContext(), "SOS la ale. Tanpri pran swen ou annatandan.", Toast.LENGTH_SHORT).show();
+
+
 
                         } else {
                             Toast.makeText(getContext(), "SOS la pa ale.\n + Tanpri bay aplikasyon an pemisyon voye SMS.", Toast.LENGTH_SHORT).show();
@@ -245,6 +258,27 @@ public class SosFragment extends Fragment {
             }
 
         });
+    }
+
+
+
+
+
+    private void sendWhatsapp() {
+
+
+
+
+            //the database and select one of the numbers
+            Intent sendIntent = new Intent("android.intent.action.MAIN");
+            sendIntent.putExtra("", "" + "@s.whatsapp.net");
+            sendIntent.putExtra(Intent.EXTRA_TEXT, sosPredefinedNoLocation);
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.setPackage("com.whatsapp");
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
+
+
     }
 
 
