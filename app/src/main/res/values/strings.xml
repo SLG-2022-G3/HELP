@@ -18,4 +18,5 @@
     <string name="cancel">ANILE</string>
     <string name="capture_image">CAMERA</string>
     <string name="sa_se_mesaj_sos_ou_se_li_ki_pral_jwenn_kontak_ou_ajoute_a">Sa se mesaj SOS ou. Se li ki pral jwenn kontak ou ajoute a.</string>
+    <string name="mesaj_byenvini">Aplikasyon SOS pèmèt ou voye yon SMS ak yon mesaj Whatsapp otomatikman ou klike\nsou bouton SOS la.\nMesaj sa a pral jwenn kontak ijans ou yo.</string>
 </resources>
