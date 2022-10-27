@@ -18,6 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Looper;
 import android.provider.Settings;
@@ -25,9 +27,13 @@ import android.telephony.gsm.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -39,12 +45,15 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnTokenCanceledListener;
 import com.google.android.gms.tasks.Task;
+import com.parse.ParseUser;
 import com.slg.G3.sos.ContactModel;
+import com.slg.G3.sos.CreateContactActivity;
 import com.slg.G3.sos.DbHelper;
 import com.slg.G3.sos.MainActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.Utils.TinyDB;
 import com.slg.G3.sos.models.Contact;
+import com.slg.G3.sos.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +77,9 @@ public class SosFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private GifImageView btnSOS;
     FusedLocationProviderClient locationProviderClient;
-    TextView tvLatitude, tvLongitude;
+    TextView tvGreeting, tvGreetingName, tvGreetings2;
+    ImageView ivIcon, ivGreetingsProfile;
+    Button btnKontak;
     public static String sosPredefinedNoLocation, sosPredefinedLocation;
 
 
@@ -114,12 +125,52 @@ public class SosFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         locationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-        sosPredefinedLocation = "Mwen genyen ijans. Tanpri kontakte m rapid konnya menm. Men lokalizasyon mwen: ";
-        sosPredefinedNoLocation = "Mwen genyen ijans. Tanpri kontakte m rapid konnya menm. VIT! VIT!";
+        sosPredefinedLocation = "Mwen genyen ijans. Tanpri kontakte m rapid, konnya menm. Men lokalizasyon mwen: ";
+        sosPredefinedNoLocation = "Mwen genyen ijans. Tanpri kontakte m rapid, konnya menm. VIT! VIT!";
+
+        tvGreeting = view.findViewById(R.id.tvGreeting);
+        tvGreetingName = view.findViewById(R.id.tvGreetingName);
+        tvGreetings2 = view.findViewById(R.id.tvGreetings2);
+        ivIcon = view.findViewById(R.id.ivIcon);
+        btnKontak = view.findViewById(R.id.btnKontak);
+        ivGreetingsProfile = view.findViewById(R.id.ivGreetingsProfile);
+
+      User user = new User();
+      tvGreetingName.setText(ParseUser.getCurrentUser().getUsername());
+
+        Glide.with(getContext())
+                .load(user.getImage())
+                .override(300, 200)
+                .placeholder(R.drawable.ic_profile)
+                .centerCrop()
+                .transform(new RoundedCorners(30))
+                .into(ivGreetingsProfile);
+
+
+        DbHelper dbHelper = new DbHelper(getContext());
+
+
+
+        btnKontak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(dbHelper.count() != 3) {
+                    Intent intent = new Intent(getContext(), CreateContactActivity.class);
+                    startActivity(intent);
+
+                }
+                else {
+                    Toast.makeText(getContext(), "Dezole, ou pa kapab ajoute plis pase 3 kontak.", Toast.LENGTH_SHORT).show();
+                }
 
 
 
 
+
+
+            }
+        });
 
         // click to send SOS
 
@@ -267,7 +318,7 @@ public class SosFragment extends Fragment {
 
             Intent sendIntent = new Intent("android.intent.action.MAIN");
             sendIntent.putExtra("", "" + "@s.whatsapp.net");
-            sendIntent.putExtra(Intent.EXTRA_TEXT, sosPredefinedNoLocation);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, sosPredefinedNoLocation );
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.setPackage("com.whatsapp");
             sendIntent.setType("text/plain");
