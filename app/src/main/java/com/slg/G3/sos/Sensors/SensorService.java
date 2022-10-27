@@ -10,6 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.location.Location;
@@ -37,6 +39,7 @@ import com.google.android.gms.tasks.CancellationToken;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnTokenCanceledListener;
+import com.slg.G3.sos.DbHelper;
 import com.slg.G3.sos.Utils.TinyDB;
 
 
@@ -48,7 +51,8 @@ public class SensorService extends Service {
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
-    ArrayList<String> phoneContact;
+    public static String sosPredefinedNoLocation, sosPredefinedLocation;
+
 
 
     public SensorService(){
@@ -70,6 +74,10 @@ public class SensorService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        sosPredefinedNoLocation = "Mwen genyen ijans. Tanpri kontakte m rapid konnya menm. VIT! VIT!";
+        sosPredefinedLocation = "Mwen genyen ijans. Tanpri kontakte m rapid konnya menm. Men lokalizasyon mwen: ";
+
 
         //start the foreground service
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
@@ -95,13 +103,7 @@ public class SensorService extends Service {
                     //create FusedLocationProviderClient to get the user location
                     FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(getApplicationContext());
 
-                    // shared preferences to retrieve the predefined sos message from profile fragment
-                    SharedPreferences prefs = getApplicationContext().getSharedPreferences("Message", Context.MODE_PRIVATE);
-                    String sosPredefined = prefs.getString("predefMessage", "");
 
-                    // using tinyDb class to retrieve list of strings in shared preferences
-                    TinyDB tinyDB = new TinyDB(getApplicationContext());
-                    phoneContact = tinyDB.getListString("Contacts");
 
                     //use the PRIORITY_BALANCED_POWER_ACCURACY so that the service doesn't use unnecessary power via GPS
                     //it will only use GPS at this very moment
@@ -119,38 +121,68 @@ public class SensorService extends Service {
                         @Override
                         public void onSuccess(Location location) {
                             if (location != null){
-                                // Code to Send SOS MESSAGE
-                                String sosMessage = sosPredefined + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
 
-                                    //Get the default SmsManager//
+                                //Get the default SmsManager//
                                 SmsManager smsManager = SmsManager.getDefault();
+
+                                // get the list of all the contacts in Database
+                                DbHelper dbHelper = new DbHelper(SensorService.this);
+                                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                                String sosMessage = sosPredefinedLocation + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
+
+
+                                Cursor cursor = db.rawQuery("select * from SOSContact", null);
+                                while (cursor.moveToNext()) {
+                                    String num = cursor.getString(2);
                                     //Send the SOS
-                                    smsManager.sendTextMessage(String.valueOf(phoneContact), null, sosMessage, null, null);
-                                    Toast.makeText(getApplicationContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
+                                    smsManager.sendTextMessage(num, null, sosMessage, null, null);
+                                }
+                                cursor.close();
+
+                                Toast.makeText(SensorService.this, "SOS la ale. Tanpri pran swen ou annatandan.", Toast.LENGTH_SHORT).show();
+
+
 
 
                             }else {
-                                String sosMessage = sosPredefined + "GPS off, No Location provided ";
+                                // get the list of all the contacts in Database
+                                DbHelper dbHelper = new DbHelper(SensorService.this);
+                                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                                String sosMessage = sosPredefinedNoLocation;
 
                                     //Get the default SmsManager//
                                 SmsManager smsManager = SmsManager.getDefault();
-                                    //Send the SOS
-                                    smsManager.sendTextMessage(String.valueOf(phoneContact), null, sosMessage, null, null);
-                                    Toast.makeText(getApplicationContext(), "Sending SOS, without Location", Toast.LENGTH_SHORT).show();
+
+                                Cursor cursor = db.rawQuery("select * from SOSContact", null);
+                                while (cursor.moveToNext()) {
+                                    String num = cursor.getString(2);
+                                    smsManager.sendTextMessage(num, null, sosMessage, null, null);
+
+                                }
+                                    Toast.makeText(getApplicationContext(), "SOS la ale, san lokalizasyon ou.", Toast.LENGTH_SHORT).show();
 
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            // Code to Send SOS MESSAGE
-                            String sosMessage = sosPredefined + "GPS off, No Location Provided" ;
+                            // get the list of all the contacts in Database
+                            DbHelper dbHelper = new DbHelper(SensorService.this);
+                            SQLiteDatabase db = dbHelper.getWritableDatabase();
+                            String sosMessage = sosPredefinedNoLocation ;
 
                                 //Get the default SmsManager//
                             SmsManager smsManager = SmsManager.getDefault();
+
+                            Cursor cursor = db.rawQuery("select * from SOSContact", null);
+                            while (cursor.moveToNext()) {
+
+                                String num = cursor.getString(2);
                                 //Send the SOS
-                                smsManager.sendTextMessage(String.valueOf(phoneContact), null, sosMessage, null, null);
-                                Toast.makeText(getApplicationContext(), "Sending SOS", Toast.LENGTH_SHORT).show();
+                                smsManager.sendTextMessage(num, null, sosMessage, null, null);
+
+                            }
+                                Toast.makeText(getApplicationContext(), "SMS la nan wout.", Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -197,8 +229,8 @@ public class SensorService extends Service {
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
         Notification notification = notificationBuilder.setOngoing(true)
-                .setContentTitle("You are protected.")
-                .setContentText("We are there for you")
+                .setContentTitle("Pran swen tet ou")
+                .setContentText("SOS la pou ede w")
 
                 //this is important, otherwise the notification will show the way
                 //you want i.e. it will show some default notification
