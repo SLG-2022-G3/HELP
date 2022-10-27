@@ -10,35 +10,22 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rlayout">
+        android:id="@+id/rlayout"
+        android:layout_marginTop="10dp">
 
-
-        <TextView
-            android:id="@+id/tvCHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="25dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Kontak ijans"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvContacts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/btnAddContacts"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/btnAddContacts"
             android:padding="1dp" />
 
         <RelativeLayout
             android:id="@+id/btnAddContacts"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_below="@+id/tvCHeader"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/rounded_corner2"
@@ -63,15 +50,43 @@
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/rlInfo2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/btnSOS"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/infoInstructions2"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_info" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/infoInstructions2"
+                android:fontFamily="@font/gelasio"
+                android:text="Ou dwe gen kat pou ou voye yon SMS pou yo otomatikman. W ap ka voye yon Whatsapp tou."
+                android:textColor="#000000" />
+
+
+        </RelativeLayout>
+
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/btnSOS"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_alignParentBottom="true"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="5dp"
             android:clickable="true"
             android:src="@drawable/btn_sos" />
 

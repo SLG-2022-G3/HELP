@@ -10,28 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvPHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PWOFIL"
-            android:layout_alignParentTop="true"
-            android:textSize="24sp"
-            android:fontFamily="sans-serif-medium"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"/>
-
         <ImageView
             android:id="@+id/ivProfilePic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvPHeader"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_alignParentStart="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"
-            android:src="@drawable/profile_pic" />
+            android:src="@drawable/ic_baseline_person" />
 
         <TextView
             android:id="@+id/tvName"
@@ -40,7 +27,7 @@
             android:layout_alignTop="@+id/ivProfilePic"
             android:layout_marginTop="2dp"
             android:layout_toEndOf="@id/ivProfilePic"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/gelasio"
             android:textColor="@color/black"
             android:textSize="20sp"
             tools:text="username" />
@@ -53,6 +40,7 @@
             android:layout_marginTop="0dp"
             android:layout_marginEnd="5dp"
             android:layout_toEndOf="@id/ivProfilePic"
+            android:fontFamily="@font/gelasio"
             android:textColor="@color/gray_text"
             android:textSize="16sp"
             tools:text="description" />
@@ -62,7 +50,8 @@
             android:id="@+id/btnLang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btnFFriends"
+            android:layout_below="@+id/tvDescription"
+            android:layout_marginTop="200dp"
             android:clickable="true"
             android:padding="2dp">
 
@@ -89,82 +78,86 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@id/iconLang"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="@font/gelasio"
                 android:text="Chwazi Lang"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/btnFFriends"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnFFriends"
-            android:layout_above="@+id/btnshare"
-            android:padding="2dp"
-            android:clickable="true">
+            android:layout_below="@+id/btnLang"
+            android:layout_marginTop="0dp"
+            android:clickable="true"
+            android:padding="2dp">
 
             <ImageView
+                android:id="@+id/shape3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:id="@+id/shape3"
+                android:layout_centerHorizontal="true"
                 android:clickable="true"
                 android:src="@drawable/fill_btns_shape" />
+
             <ImageView
+                android:id="@+id/iconFFriends"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:src="@drawable/find_friends"
                 android:layout_alignStart="@+id/shape3"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="0dp"
-                android:id="@+id/iconFFriends" />
+                android:src="@drawable/find_friends" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jwenn zanmi"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/black"
+                android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
-                android:textSize="20sp"
                 android:layout_toEndOf="@id/iconFFriends"
-                android:layout_centerVertical="true"/>
+                android:fontFamily="@font/gelasio"
+                android:text="Jwenn zanmi"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rlshare"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnshare"
-            android:layout_above="@id/btnSettings"
-            android:layout_marginBottom="5dp"
-            android:padding="2dp"
-            android:clickable="true">
+            android:layout_below="@+id/btnFFriends"
+            android:clickable="true"
+            android:padding="2dp">
 
             <ImageView
+                android:id="@+id/shape4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:id="@+id/shape4"
                 android:clickable="true"
                 android:src="@drawable/fill_btns_shape" />
+
             <ImageView
+                android:id="@+id/iconShare"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:src="@drawable/share"
                 android:layout_alignStart="@+id/shape4"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="0dp"
-                android:id="@+id/iconShare"
-                />
+                android:src="@drawable/share" />
+
             <TextView
+                android:id="@+id/btnshare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/iconShare"
+                android:fontFamily="@font/gelasio"
                 android:text="Pataje aplikasyon an"
                 android:textColor="@color/black"
-                android:layout_marginStart="15dp"
-                android:fontFamily="sans-serif-light"
-                android:textSize="20sp"
-                android:layout_toEndOf="@id/iconShare"
-                android:layout_centerVertical="true"/>
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -177,9 +170,9 @@
             android:clickable="true"/>
 
         <RelativeLayout
+            android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/logout"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="15dp"
             android:clickable="true"
