@@ -57,6 +57,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".Welcome"
+            android:exported="false" />
+
+        <activity
             android:name=".CreateContactActivity"
             android:exported="false" />
         <activity
