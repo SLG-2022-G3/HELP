@@ -127,8 +127,16 @@ public class ContactsFragment extends Fragment {
         btnAddContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CreateContactActivity.class);
-                startActivity(intent);
+
+                if(dbHelper.count()!=3) {
+                    Intent intent = new Intent(getActivity(), CreateContactActivity.class);
+                    startActivity(intent);
+                }
+
+                else {
+                    Toast.makeText(getContext(), "Dezole, ou pa ka ajoute plis pase 3 kontak ijans", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
