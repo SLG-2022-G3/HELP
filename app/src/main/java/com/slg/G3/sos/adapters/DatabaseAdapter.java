@@ -48,8 +48,8 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         ContactModel model = contactModelArrayList.get(position);
-        holder.tvContactName.setText(model.getName());
-        holder.tvContactNumber.setText(model.getPhoneNo());
+        holder.tvContactName.setText(model.getPhoneNo());
+        holder.tvContactNumber.setText(model.getName());
 
 
     }

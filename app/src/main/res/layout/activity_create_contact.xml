@@ -8,26 +8,13 @@
 
 
     <TextView
-        android:id="@+id/tvAddContact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="25dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Ajoute yon kontak"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
-
-
-    <TextView
         android:id="@+id/tvAddInstructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvAddContact"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/gelasio"
         android:text="Chwazi yon moun k ap disponib pou ou si ou bezwen l an ijans."
         android:textSize="16sp" />
 
@@ -83,15 +70,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
-        android:hint="Kisa moun sa ye pou ou?">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etRelation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-    </com.google.android.material.textfield.TextInputLayout>
+        android:hint="Kisa moun sa ye pou ou?"/>
 
 
 
@@ -104,39 +83,29 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
-        android:hint="Ki kote li abite?">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
+        android:hint="Ki kote li abite?"/>
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ANREJISTRE"
-        android:layout_below="@+id/outlineAddress"
-        android:layout_margin="30dp"
         android:id="@+id/btnContactSend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/outlinePhone"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="@color/green"
-        android:layout_alignParentEnd="true"/>
+        android:text="ANREJISTRE" />
 
     <Button
         android:id="@+id/btnCancel"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/btnContactSend"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/outlineAddress"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/dark_red"

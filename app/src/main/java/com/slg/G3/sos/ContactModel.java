@@ -4,18 +4,15 @@ public class ContactModel {
     private int id;
     private String phoneNo;
     private String name;
-    private String relation;
-    private String address;
+
 
     //constructor
 
 
-    public ContactModel(int id, String phoneNo, String name, String relation, String address) {
+    public ContactModel(int id, String phoneNo, String name) {
         this.id = id;
         this.phoneNo = phoneNo;
         this.name = name;
-        this.relation = relation;
-        this.address = address;
     }
 
     //validate the phone number, and reformat is necessary
@@ -57,11 +54,5 @@ public class ContactModel {
         return name;
     }
 
-    public String getRelation() {
-        return relation;
-    }
 
-    public String getAddress() {
-        return address;
-    }
 }
