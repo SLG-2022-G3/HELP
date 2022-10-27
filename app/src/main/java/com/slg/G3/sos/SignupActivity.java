@@ -110,10 +110,7 @@ public class SignupActivity extends AppCompatActivity {
                 {
                     showError(etConfirmPassword, "modpas yo pa menm !");
                 }
-                else
-                {
-                    Toast.makeText(SignupActivity.this, "call registration method", Toast.LENGTH_SHORT).show();
-                }
+               
 
                 SignUpUser(username,password,confirmPassword,email);
 //                deleteAlldataBase();

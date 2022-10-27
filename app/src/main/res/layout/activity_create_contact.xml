@@ -16,6 +16,7 @@
         android:layout_marginEnd="30dp"
         android:fontFamily="@font/gelasio"
         android:text="Chwazi yon moun k ap disponib pou ou si ou bezwen l an ijans."
+        android:textStyle="bold"
         android:textSize="16sp" />
 
 
@@ -33,7 +34,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etContactName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"/>
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -54,7 +56,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etContactNumber"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:inputType="phone"/>
 
 
     </com.google.android.material.textfield.TextInputLayout>

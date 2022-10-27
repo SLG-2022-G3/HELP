@@ -14,10 +14,10 @@
 
         <ImageView
             android:id="@+id/ivGreetingsProfile"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="22dp"
             android:src="@drawable/ic_profile" />
 
 
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="22dp"
             android:layout_marginEnd="60dp"
             android:fontFamily="@font/gelasio"
             android:text="Byenvini, "
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="155dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="22dp"
             android:layout_marginEnd="60dp"
             android:fontFamily="@font/gelasio"
             android:text="entel"
@@ -56,16 +56,18 @@
 
             <ImageView
                 android:id="@+id/ivIcon"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginStart="10dp"
-                android:src="@drawable/ic_info" />
+                android:layout_marginTop="20dp"
+                android:src="@drawable/warning" />
 
             <TextView
                 android:id="@+id/tvGreetings2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
                 android:layout_marginStart="100dp"
                 android:fontFamily="@font/gelasio"
                 android:lineSpacingExtra="2sp"
@@ -83,19 +85,22 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/rlInstructions"
             android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/gray_back"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:text="Kontak ijans"
+            android:textColor="@color/white"
             android:textSize="25sp" />
 
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/btnSOS"
             android:layout_width="match_parent"
-            android:layout_height="443dp"
+            android:layout_height="435dp"
             android:layout_marginTop="250dp"
+            android:layout_below="@+id/ivGreetingsProfile"
             android:clickable="true"
             android:src="@drawable/btn_sos" />
 

@@ -18,7 +18,7 @@
         android:layout_marginStart="3dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="2dp"
-        android:src="@drawable/ic_profile" />
+        android:src="@drawable/ic_baseline_person_24" />
 
 
     <TextView
@@ -39,11 +39,10 @@
         android:layout_below="@+id/tvContactName"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="10dp"
-        android:fontFamily="sans-serif"
         android:letterSpacing="0.2"
         android:textColor="@color/gray_text"
         android:textSize="16sp"
-        tools:text="+1 987 654 3210" />
+        tools:text="+1 987-654-3210" />
 
     <View
         android:layout_width="match_parent"
