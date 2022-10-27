@@ -1,7 +1,11 @@
 package com.slg.G3.sos;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -20,6 +24,8 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+import java.io.File;
+
 public class SignupActivity extends AppCompatActivity {
 
     public static final String TAG = "SignupActivity";
@@ -31,6 +37,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnSend;
     TextView before;
     ImageView facebook, google;
+    Context context;
 
 
 
@@ -109,10 +116,17 @@ public class SignupActivity extends AppCompatActivity {
                 }
 
                 SignUpUser(username,password,confirmPassword,email);
+//                deleteAlldataBase();
 
             }
         });
     }
+
+//    private void deleteAlldataBase() {
+//        this.deleteDatabase("/data/data/com.slg.G3.sos/databases/MyContacts2.db");
+//
+//    }
+
 
     private void showError(EditText user, String s) {
         user.setError(s);
@@ -148,7 +162,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void goMainActivity() {
-        Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+        Intent intent = new Intent(SignupActivity.this, Welcome.class);
         startActivity(intent);
         finish();
     }
