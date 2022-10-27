@@ -14,11 +14,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.slg.G3.sos.LoginActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.User;
+
+import java.io.File;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,14 +43,14 @@ public class ProfileFragment extends Fragment {
 
     private ParseUser currentUser;
     private ImageView ivProfPic, btnLogout;
-    private TextView tvName, tvDescription, tvMsg;
-    private RelativeLayout btnEMsg,btnShare, btnSettings ;
+    private TextView tvName, tvDescription, tvMsg, btnShare;
+    private RelativeLayout btnEMsg, btnSettings ;
+    User user;
 
 
 
     Context context;
 
-    User user;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -91,29 +99,41 @@ public class ProfileFragment extends Fragment {
         tvDescription = view.findViewById(R.id.tvDescription);
 
         ivProfPic = view.findViewById(R.id.ivProfilePic);
-
-
-
         btnLogout = view.findViewById(R.id.btnLogout);
 
         tvName.setText(ParseUser.getCurrentUser().getUsername());
         tvDescription.setText(ParseUser.getCurrentUser().getEmail());
-//        ParseFile parseFile = user.getImage();
-//        if (parseFile != null) {
-//            Glide.with(context).load(parseFile.getUrl()).into(ivProfPic);
-//        }
+
+        btnShare = view.findViewById(R.id.btnshare);
 
 
 
 
-        tvName.setText(ParseUser.getCurrentUser().getUsername());
+
+
+
+
         //tvDescription.setText(userInfo.getInfo());
         //tvMsg.setText(userInfo.getSos());
 
 
+        //Share app
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent shareIntent =   new Intent(android.content.Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT,"Telechaje SOS");
+                String app_url = " Hey, M ap itilize aplikasyon SOS. M ta renmen ou itilize l tou. Telechaje li la: sa a se lyen aplikasyon an";
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,app_url);
+                startActivity(Intent.createChooser(shareIntent, "Share via"));
+            }
+        });
+
+
 
         //User can log out when Dekonekte is clicked
-
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,4 +145,7 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
+
+
+
 }
