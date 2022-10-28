@@ -2,7 +2,10 @@ package com.slg.G3.sos;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -31,6 +34,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnSend;
     TextView before;
     ImageView facebook, google;
+    boolean passwordVisible2;
 
 
 
@@ -52,6 +56,65 @@ public class SignupActivity extends AppCompatActivity {
         before = findViewById(R.id.before);
         facebook = findViewById(R.id.Buttonfb);
         google = findViewById(R.id.ButtonGgle);
+
+        etPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int Right=2;
+                if (event.getAction()==MotionEvent.ACTION_UP){
+                    if (event.getRawX()>= etPassword.getRight()-etPassword.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection = etPassword.getSelectionEnd();
+                        if (passwordVisible2){
+                            // set drawable image here
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_off,0);
+                            // to hide the password
+                            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible2 = false;
+                        }else {
+                            // set drawable image here
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_,0);
+                            // to show the password
+                            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible2 = true;
+                        }
+                        etPassword.setSelection(selection);
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        });
+
+        etConfirmPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int Right=2;
+                if (event.getAction()==MotionEvent.ACTION_UP){
+                    if (event.getRawX()>= etConfirmPassword.getRight()-etConfirmPassword.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection = etConfirmPassword.getSelectionEnd();
+                        if (passwordVisible2){
+                            // set drawable image here
+                            etConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_off,0);
+                            // to hide the password
+                            etConfirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible2 = false;
+                        }else {
+                            // set drawable image here
+                            etConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_,0);
+                            // to show the password
+                            etConfirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible2 = true;
+                        }
+                        etConfirmPassword.setSelection(selection);
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        });
+
 
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override

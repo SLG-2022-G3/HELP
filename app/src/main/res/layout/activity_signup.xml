@@ -128,7 +128,6 @@
             android:drawablePadding="15dp"
             android:hint="Ekri yon modpas "
             android:paddingEnd="10dp"
-
             android:drawableEnd="@drawable/ic_baseline_visibility_off"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
