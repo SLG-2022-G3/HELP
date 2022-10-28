@@ -109,7 +109,7 @@ public class CreateContactActivity extends AppCompatActivity {
                 editor.putString("contactName", sharedName);
                 editor.putString("contactPhone", sharedPhone);
                 editor.apply();
-                Toast.makeText(CreateContactActivity.this, "info saved", Toast.LENGTH_LONG).show();
+                Toast.makeText(CreateContactActivity.this, "contak lan anrejistre", Toast.LENGTH_LONG).show();
 
 
 
