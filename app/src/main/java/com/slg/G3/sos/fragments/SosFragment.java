@@ -37,6 +37,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnTokenCanceledListener;
 import com.google.android.gms.tasks.Task;
+import com.parse.ParseUser;
 import com.slg.G3.sos.MainActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.Contact;
@@ -63,8 +64,9 @@ public class SosFragment extends Fragment {
     private GifImageView btnSOS;
     private List<Contact> contacts;
     String message;
+    String greeting = "Bonjou, ";
     FusedLocationProviderClient locationProviderClient;
-    TextView tvLatitude, tvLongitude;
+    TextView tvGreeting;
 
 
     public SosFragment() {
@@ -107,6 +109,10 @@ public class SosFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        tvGreeting = view.findViewById(R.id.tvGreeting);
+        tvGreeting.setText(greeting+ ParseUser.getCurrentUser().getUsername());
+
         locationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
         SharedPreferences sp = getContext().getSharedPreferences("MyContacts", Context.MODE_PRIVATE);

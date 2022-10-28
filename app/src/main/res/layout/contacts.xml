@@ -41,6 +41,7 @@
         android:background="@drawable/rounded_corner1"
         android:backgroundTint="@color/green"
         android:padding="15dp"
+        android:clickable="true"
         android:src="@drawable/ic_edit" />
 
     <ImageButton
@@ -56,6 +57,7 @@
         android:background="@drawable/rounded_corner1"
         android:backgroundTint="@color/red"
         android:padding="15dp"
+        android:clickable="true"
         android:src="@drawable/ic_trash" />
 
 </RelativeLayout>

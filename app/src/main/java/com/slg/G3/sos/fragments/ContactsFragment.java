@@ -67,7 +67,7 @@ public class ContactsFragment extends Fragment {
     private RelativeLayout relativeLayout;
     protected List<Contact> allcontact;
     protected ContactAdapter contactAdapter;
-    private ImageButton btnDelete;
+    private ImageButton btnDelete, btnEdit;
 
 
 

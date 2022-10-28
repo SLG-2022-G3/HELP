@@ -13,7 +13,8 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <queries>
 
@@ -22,9 +23,6 @@
             <action android:name="android.media.action.IMAGE_CAPTURE" />
         </intent>
     </queries>
-
-    
-
 
     <application
         android:name=".ParseApplication"
@@ -40,10 +38,32 @@
         <activity android:name=".LoginActivity"
             android:exported="true"/>
         <activity
-            android:name=".CreateContactActivity"
+            android:name=".EditContact"
             android:exported="false" />
         <activity
+            android:name=".EditProfile"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CreateContactActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.codepath.fileprovider.sos"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/fileprovider" />
+        </provider>
+
+        <activity
+            android:name=".LoginActivity"
+
             android:name=".SplashActivity"
+
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -68,8 +88,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

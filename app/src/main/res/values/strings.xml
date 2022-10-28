@@ -8,10 +8,13 @@
     <string name="log_in">Log in</string>
     <string name="sign_up">Sign up</string>
     <string name="konekte">KONEKTE</string>
-    <string name="mete_imel_ou_la">mete Imel ou</string>
-    <string name="ou_blye_modpas_lan">ou blye modpas lan ?</string>
-    <string name="mete_modpas_la">mete Modpas la</string>
+    <string name="mete_imel_ou_la">Ekri Imel ou</string>
+    <string name="ou_blye_modpas_lan">Ou bliye Modpas lan ?</string>
+    <string name="mete_modpas_la">Ekri Modpas la</string>
     <string name="oubyen">~ OUBYEN ~</string>
     <string name="byenveni">BYENVENI !</string>
     <string name="anrejistre">ANREJISTRE</string>
+    <string name="editInfoBtn">Modifye Pwofil la</string>
+    <string name="cancel">ANILE</string>
+    <string name="capture_image">CAMERA</string>
 </resources>
