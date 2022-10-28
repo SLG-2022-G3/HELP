@@ -60,7 +60,6 @@
         </provider>
 
         <activity
-            android:name=".LoginActivity"
 
             android:name=".SplashActivity"
 
