@@ -18,9 +18,8 @@
             android:id="@+id/rvContacts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_below="@id/btnAddContacts"
-            android:padding="1dp" />
+            android:layout_marginTop="15dp"
+            android:padding="4dp" />
 
         <RelativeLayout
             android:id="@+id/btnAddContacts"
@@ -28,6 +27,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
+            android:layout_below="@+id/rvContacts"
             android:layout_marginTop="25dp"
             android:background="@drawable/rounded_corner2"
             android:clickable="true"
@@ -38,7 +38,7 @@
                 android:layout_height="36dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="30dp"
-                android:src="@drawable/ic_add" />
+                android:src="@drawable/ic_baseline_person_add_24" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@+id/infoInstructions2"
                 android:fontFamily="@font/gelasio"
-                android:text="Ou dwe gen kat pou ou voye yon SMS pou yo otomatikman. W ap ka voye yon Whatsapp tou."
+                android:text="Ou dwe gen kat pou ou voye yon SMS bay kontak lan. W ap ka voye yon mesaj sou Whatsapp tou..."
                 android:textColor="#000000" />
 
 

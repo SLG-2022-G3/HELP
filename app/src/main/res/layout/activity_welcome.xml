@@ -35,7 +35,6 @@
             android:layout_below="@+id/welcome"
             android:layout_marginTop="37dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/gelasio_bold"
             android:text="Mèsi paske w ap itilize SOS"
             android:textColor="#000000"
             android:textSize="28sp"
@@ -47,7 +46,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/welcome_title"
             android:layout_marginTop="32dp"
-            android:fontFamily="@font/gelasio"
             android:text="Pou aplikasyon an fonksyone pi byen, ou dwe aktive sèvis lokalizasyon telefòn nan. Sa ap pèmèt ou voye yon mesaj SOS otomatik, ki tou genyen adrès kote ou ye a ladan l.\n\nOu kapab voye yon SOS san ou pa louvri telefòn nan. Jis souke li 3 fwa :)"
             android:textColor="#000000"
             android:textSize="18sp" />

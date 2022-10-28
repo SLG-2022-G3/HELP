@@ -15,9 +15,9 @@
         <ImageView
             android:id="@+id/ivGreetingsProfile"
             android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_height="35dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="30dp"
             android:src="@drawable/ic_profile" />
 
 
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="60dp"
             android:fontFamily="@font/gelasio"
             android:text="Byenvini, "
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="155dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="60dp"
             android:fontFamily="@font/gelasio"
             android:text="entel"
@@ -59,7 +59,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:src="@drawable/warning" />
 
             <TextView
@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="100dp"
                 android:fontFamily="@font/gelasio"
                 android:lineSpacingExtra="2sp"
@@ -78,21 +78,21 @@
 
         </RelativeLayout>
 
-        <Button
-            android:id="@+id/btnKontak"
-            style="@style/Widget.Material3.Button.ElevatedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rlInstructions"
-            android:layout_centerHorizontal="true"
-            android:backgroundTint="@color/gray_back"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="Kontak ijans"
-            android:textColor="@color/white"
-            android:textSize="25sp" />
+<!--        <Button-->
+<!--            android:id="@+id/btnKontak"-->
+<!--            style="@style/Widget.Material3.Button.ElevatedButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/rlInstructions"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:backgroundTint="@color/gray_back"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:text="Kontak ijans"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="25sp" />-->
 
 
         <pl.droidsonroids.gif.GifImageView

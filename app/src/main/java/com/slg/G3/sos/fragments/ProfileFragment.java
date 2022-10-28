@@ -1,7 +1,12 @@
 package com.slg.G3.sos.fragments;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -26,6 +31,7 @@ import com.slg.G3.sos.LoginActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.User;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 /**
@@ -40,6 +46,8 @@ public class ProfileFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     public static final String TAG ="AccountFragment";
+ 
+
 
     private ParseUser currentUser;
     private ImageView ivProfPic, btnLogout;

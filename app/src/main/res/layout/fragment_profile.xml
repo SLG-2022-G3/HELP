@@ -27,7 +27,6 @@
             android:layout_alignTop="@+id/ivProfilePic"
             android:layout_marginTop="2dp"
             android:layout_toEndOf="@id/ivProfilePic"
-            android:fontFamily="@font/gelasio"
             android:textColor="@color/black"
             android:textSize="20sp"
             tools:text="username" />
@@ -40,10 +39,10 @@
             android:layout_marginTop="0dp"
             android:layout_marginEnd="5dp"
             android:layout_toEndOf="@id/ivProfilePic"
-            android:fontFamily="@font/gelasio"
             android:textColor="@color/gray_text"
             android:textSize="16sp"
             tools:text="description" />
+
 
 
         <RelativeLayout
@@ -78,7 +77,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@id/iconLang"
-                android:fontFamily="@font/gelasio"
                 android:text="Chwazi Lang"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -116,7 +114,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@id/iconFFriends"
-                android:fontFamily="@font/gelasio"
                 android:text="Jwenn zanmi"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -154,7 +151,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@id/iconShare"
-                android:fontFamily="@font/gelasio"
                 android:text="Pataje aplikasyon an"
                 android:textColor="@color/black"
                 android:textSize="20sp" />

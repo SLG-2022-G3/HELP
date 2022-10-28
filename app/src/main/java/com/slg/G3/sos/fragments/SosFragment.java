@@ -132,7 +132,7 @@ public class SosFragment extends Fragment {
         tvGreetingName = view.findViewById(R.id.tvGreetingName);
         tvGreetings2 = view.findViewById(R.id.tvGreetings2);
         ivIcon = view.findViewById(R.id.ivIcon);
-        btnKontak = view.findViewById(R.id.btnKontak);
+//        btnKontak = view.findViewById(R.id.btnKontak);
         ivGreetingsProfile = view.findViewById(R.id.ivGreetingsProfile);
 
       User user = new User();
@@ -151,26 +151,26 @@ public class SosFragment extends Fragment {
 
 
 
-        btnKontak.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(dbHelper.count() != 3) {
-                    Intent intent = new Intent(getContext(), CreateContactActivity.class);
-                    startActivity(intent);
-
-                }
-                else {
-                    Toast.makeText(getContext(), "Dezole, ou pa kapab ajoute plis pase 3 kontak.", Toast.LENGTH_SHORT).show();
-                }
-
-
-
-
-
-
-            }
-        });
+//        btnKontak.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if(dbHelper.count() != 3) {
+//                    Intent intent = new Intent(getContext(), CreateContactActivity.class);
+//                    startActivity(intent);
+//
+//                }
+//                else {
+//                    Toast.makeText(getContext(), "Dezole, ou pa kapab ajoute plis pase 3 kontak.", Toast.LENGTH_SHORT).show();
+//                }
+//
+//
+//
+//
+//
+//
+//            }
+//        });
 
         // click to send SOS
 

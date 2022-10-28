@@ -94,11 +94,7 @@ public class SignupActivity extends AppCompatActivity {
                 String confirmPassword = etConfirmPassword.getText().toString();
                 String email = etEmail.getText().toString();
 
-                if (username.isEmpty() || username.length()<7)
-                {
-                    showError(etUsername, "non itilizatè ou an pa valid, li trò kout !");
-                }
-                else if (email.isEmpty() || !email.contains("@"))
+                if (email.isEmpty() || !email.contains("@"))
                 {
                     showError(etEmail, "imel ou an pa valid !");
                 }
@@ -146,6 +142,7 @@ public class SignupActivity extends AppCompatActivity {
             public void done(ParseException e) {
                 if (e == null) {
                     Toast.makeText(SignupActivity.this, "Yay! ou anrejistre ak siksè!", Toast.LENGTH_SHORT).show();
+
                     goMainActivity();
 
                     // Hooray! Let them use the app now.

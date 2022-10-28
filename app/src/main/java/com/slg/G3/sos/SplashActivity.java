@@ -26,8 +26,11 @@ public class SplashActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         zoom = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoom);
 
-        circle= findViewById(R.id.ivSOS);
+        circle= findViewById(R.id.circle);
 
+        imageView = findViewById(R.id.whiteText);
+
+        circle.startAnimation(zoom);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
