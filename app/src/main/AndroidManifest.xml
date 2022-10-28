@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <queries>
 
@@ -22,9 +22,6 @@
             <action android:name="android.media.action.IMAGE_CAPTURE" />
         </intent>
     </queries>
-
-    
-
 
     <application
         android:name=".ParseApplication"
@@ -37,27 +34,57 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sos"
         tools:targetApi="31">
+
+        <receiver
+            android:name=".Sensors.ReactivateService"
+            android:enabled="true"
+            android:exported="true"/>
+
         <activity android:name=".LoginActivity"
             android:exported="true"/>
+        <activity
+            android:name=".EditProfile"
+            android:exported="false" />
+
+        <service
+            android:name=".Sensors.SensorService"
+            android:enabled="true"
+            android:exported="true" />
+
+
+        <activity
+            android:name=".DetailedContact"
+            android:exported="false" />
+
+        <activity
+            android:name=".Welcome"
+            android:exported="false" />
+
         <activity
             android:name=".CreateContactActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
+
         <activity
             android:name=".SignupActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -66,8 +93,8 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
-
     </application>
+
+
 
 </manifest>

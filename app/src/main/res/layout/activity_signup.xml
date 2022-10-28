@@ -28,8 +28,8 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="127dp"
+            android:layout_height="113dp"
             android:layout_marginBottom="616dp"
             android:src="@drawable/log1"
             app:layout_constraintBottom_toBottomOf="parent"

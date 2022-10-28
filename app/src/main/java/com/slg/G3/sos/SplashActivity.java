@@ -16,7 +16,6 @@ public class SplashActivity extends AppCompatActivity {
     Animation zoom;
     TextView imageView;
     ImageView circle;
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +40,6 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        },3000);
+        },1500);
     }
 }

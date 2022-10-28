@@ -1,38 +1,16 @@
 package com.slg.G3.sos;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
-
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseUser;
-import com.parse.SaveCallback;
-import com.slg.G3.sos.fragments.ContactsFragment;
-import com.slg.G3.sos.models.Contact;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.File;
+import java.util.List;
 
 public class CreateContactActivity extends AppCompatActivity {
 
@@ -45,12 +23,12 @@ public class CreateContactActivity extends AppCompatActivity {
 
 
     private TextView textView;
-    private EditText contactName;
-    private EditText contactPhone;
+    private EditText contactName, contactPhone, etRelation, etAddress;
     private Button btnAdd;
     private Button btnCancel;
-    public SharedPreferences sp;
-    public String sharedName, sharedPhone;
+    DbHelper dbHelper;
+    List<ContactModel> contactModelList;
+
 //    private ImageView ivContactPhoto;
 //    private File profilePhoto ;
 
@@ -62,8 +40,11 @@ public class CreateContactActivity extends AppCompatActivity {
         textView = findViewById(R.id.tvAddContact);
         contactName = findViewById(R.id.etContactName);
         contactPhone = findViewById(R.id.etContactNumber);
-        btnAdd = findViewById(R.id.btnContactSend);
+              btnAdd = findViewById(R.id.btnContactSend);
         btnCancel = findViewById(R.id.btnCancel);
+
+        dbHelper = new DbHelper(this);
+
 //        ivContactPhoto = findViewById(R.id.ivContactPhoto);
 
 
@@ -95,60 +76,85 @@ public class CreateContactActivity extends AppCompatActivity {
 //        });
 
         // instantiate shared preferences
-        sp = getSharedPreferences("MyContacts", Context.MODE_PRIVATE);
+//        sp = getSharedPreferences("MyContacts", Context.MODE_PRIVATE);
+
+
+
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+//                saveToArray();
 
 
-                sharedName = contactName.getText().toString();
-                sharedPhone = contactPhone.getText().toString();
-                SharedPreferences.Editor editor = sp.edit();
-                editor.putString("contactName", sharedName);
-                editor.putString("contactPhone", sharedPhone);
-                editor.apply();
+
+
+
+//                sharedName = contactName.getText().toString();
+//                sharedPhone = contactPhone.getText().toString();
+////                SharedPreferences.Editor editor = sp.edit();
+//                editor.putString("contactName", sharedName);
+//                editor.putString("contactPhone", sharedPhone);
+//                editor.apply();
                 Toast.makeText(CreateContactActivity.this, "info saved", Toast.LENGTH_LONG).show();
-
 
 
 
 
                 String name = contactName.getText().toString();
                 String phone = contactPhone.getText().toString();
-                ParseUser currentUser = ParseUser.getCurrentUser();
-
-                if(name.isEmpty()) {
-                    Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon non pou kontak la!", Toast.LENGTH_LONG).show();
-                    return;
-                }
-
-                if(phone.isEmpty()) {
-                    Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon nimewo pou kontak la!", Toast.LENGTH_LONG).show();
-                    return;
-                }
 
 
-                saveContact(name, phone, currentUser);
+                //save to database
+                dbHelper.addcontact(name, phone);
+                Toast.makeText(CreateContactActivity.this, "Kontak la anrejistre.", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+
+
+
+
+
+
+
+
+
+
+
+//                ParseUser currentUser = ParseUser.getCurrentUser();
+//
+//                if(name.isEmpty()) {
+//                    Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon non pou kontak la!", Toast.LENGTH_LONG).show();
+//                    return;
+//                }
+//
+//                if(phone.isEmpty()) {
+//                    Toast.makeText(CreateContactActivity.this, "Tanpri ajoute yon nimewo pou kontak la!", Toast.LENGTH_LONG).show();
+//                    return;
+//                }
+//
+//
+//                saveContact(name, phone, relationship, address, currentUser);
+
+
 
             }
         });
-
-
-        // code to add contact when button is pressed
-
-
-
-
 
 
 
         //code to cancel adding contact when button Anile is pressed
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
+
+
                 Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
                 Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre.", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
@@ -160,7 +166,18 @@ public class CreateContactActivity extends AppCompatActivity {
     }
 
 
-        // handling result of picked image
+
+//    private void saveToArray() {
+//        contactList.add(contactPhone.getText().toString());
+//
+//        TinyDB tinydb = new TinyDB(this);
+//        tinydb.putListString("Contacts", contactList);
+//
+//
+//    }
+
+
+    // handling result of picked image
 
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -203,34 +220,36 @@ public class CreateContactActivity extends AppCompatActivity {
 
 
 
-    //method to save contact to parse
-    private void saveContact(String name, String phone, ParseUser currentUser) {
-        Contact contact = new Contact();
-        contact.setName(name);
-        contact.setNumber(phone);
-        contact.setUser(currentUser);
-        contact.pinInBackground();
+//    //method to save contact to parse
+//    private void saveContact(String name, String phone, String relationship, String address, ParseUser currentUser) {
+//        Contact contact = new Contact();
+//        contact.setName(name);
+//        contact.setNumber(phone);
+//        contact.setUser(currentUser);
+//        contact.setAddress(address);
+//        contact.setRelationship(relationship);
+//        contact.pinInBackground();
+//
+//
+//        contact.saveInBackground(new SaveCallback() {
+//            @Override
+//            public void done(ParseException e) {
+//                if (e != null) {
+//                    Log.e (TAG, "error while saving");
+//                    Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre", Toast.LENGTH_SHORT).show();
+//                }
+//                Toast.makeText(CreateContactActivity.this, "Kontak la anrejistre", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-        contact.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e != null) {
-                    Log.e (TAG, "error while saving");
-                    Toast.makeText(CreateContactActivity.this, "Kontak la pa anrejistre", Toast.LENGTH_SHORT).show();
-                }
-                Toast.makeText(CreateContactActivity.this, "Kontak la anrejistre", Toast.LENGTH_SHORT).show();
-            }
-        });
 
 
-
-        Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
+//        Intent intent = new Intent(CreateContactActivity.this, MainActivity.class);
+//        startActivity(intent);
+//        finish();
 
     }
 
 
 
 
-}
