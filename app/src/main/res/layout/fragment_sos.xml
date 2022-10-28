@@ -12,30 +12,33 @@
         android:layout_height="match_parent">
 
 
-        <ImageView
-            android:id="@+id/box"
-            android:layout_width="match_parent"
-            android:layout_height="227dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="0dp"
-            android:src="@drawable/fr_sos" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tvGreeting"
             android:fontFamily="sans-serif-medium"
             android:text="Bonjou, entel"
-            android:layout_alignTop="@+id/box"
             android:layout_alignStart="@+id/box"
             android:layout_alignEnd="@+id/box"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginEnd="60dp"
-            android:textSize="22dp"
-            android:textColor="@color/black"/>/>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="0dp"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:id="@+id/box"
+            android:layout_width="match_parent"
+            android:layout_height="227dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tvGreeting"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:src="@drawable/fr_sos" />
+
+
 
         <TextView
             android:layout_width="match_parent"
@@ -45,10 +48,12 @@
             android:layout_below="@+id/tvGreeting"
             android:layout_alignStart="@+id/box"
             android:layout_alignEnd="@+id/box"
-            android:layout_marginStart="60dp"
-            android:layout_marginEnd="60dp"
+            android:layout_alignTop="@+id/box"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
             android:id="@+id/line1"
-            android:textSize="24dp"
+            android:textSize="22dp"
             android:textColor="@color/black"/>
         <TextView
             android:layout_width="wrap_content"
@@ -57,12 +62,12 @@
             android:text="• Mesaj la pral jwenn denye kontak ki nan lis Kontak Ijans ou a"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="60dp"
-            android:layout_marginEnd="60dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginEnd="45dp"
             android:layout_below="@+id/line1"
             android:layout_marginTop="8dp"
             android:id="@+id/line3"
-            android:textSize="18dp"
+            android:textSize="17dp"
             android:textColor="#1C1C1C"/>
         <TextView
             android:layout_width="wrap_content"
@@ -72,35 +77,35 @@
             android:text="• Ou ka chanje mesaj SOS la nan Paramèt yo"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="60dp"
-            android:layout_marginEnd="60dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginEnd="45dp"
             android:layout_below="@+id/line3"
             android:layout_marginTop="5dp"
-            android:textSize="18dp"
+            android:textSize="17dp"
             android:textColor="#1C1C1C"/>
 
 
         <TextView
-            android:id="@+id/line6"
+            android:id="@+id/line7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/line3"
+            android:layout_below="@+id/line5"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="60dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="45dp"
             android:fontFamily="sans-serif"
-            android:text="• Pou mesaj lan ale wap bezwen kat sou telefon ou "
+            android:text="• Pou SMS la ale wap bezwen kat sou telefon ou "
             android:textColor="#1C1C1C"
-            android:textSize="18dp" />
+            android:textSize="17dp" />
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/btnSOS"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/line5"
-            android:layout_marginTop="-30dp"
+            android:layout_below="@+id/line7"
+            android:layout_marginTop="0dp"
             android:layout_marginBottom="0dp"
             android:clickable="true"
             android:src="@drawable/btn_sos" />
