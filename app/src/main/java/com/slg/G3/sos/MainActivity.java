@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                 });
 
             } else {
-                Toast.makeText(this, "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Tanpri aktive" + " lokalizasyon ou...", Toast.LENGTH_LONG).show();
                 //TODO : Implement Dialog Fragment for approve get User's
                 //Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 //startActivity(intent);
