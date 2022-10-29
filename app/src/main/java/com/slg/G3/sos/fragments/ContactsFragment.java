@@ -188,13 +188,13 @@ public class ContactsFragment extends Fragment {
                                 }
 
                                 cursor.close();
-                                Toast.makeText(getContext(), "SOS la ale. Tanpri pran swen ou annatandan.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "SOS la ale.\nChwazi yon kontak sou Whatsapp", Toast.LENGTH_LONG).show();
 
 
 
 
                             } else {
-                                Toast.makeText(getContext(), "SOS la pa ale.\n + Tanpri bay aplikasyon an pemisyon voye SMS.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "SOS la pa ale.\nBay pemisyon voye SMS.", Toast.LENGTH_LONG).show();
                                 requestPermission();
                             }
 
@@ -221,11 +221,11 @@ public class ContactsFragment extends Fragment {
                                 }
                                 cursor.close();
 
-                                Toast.makeText(getContext(), "SOS la ale san lokalizasyon ou. Aktive Lokalizasyon, tanpri.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "SOS la ale san lokalizasyon ou.\nAktive l tanpri.", Toast.LENGTH_LONG).show();
 
 
                             } else {
-                                Toast.makeText(getContext(), "SOS la pa ale.\n + Tanpri bay aplikasyon an pemisyon voye SMS.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "SOS la pa ale.\nBay pemisyon voye SMS.", Toast.LENGTH_LONG).show();
                                 requestPermission();
                             }
                         }
@@ -256,12 +256,12 @@ public class ContactsFragment extends Fragment {
 
                             }
                             cursor.close();
-                            Toast.makeText(getContext(), "SOS la ale. Tanpri pran swen ou annatandan.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "SOS la ale.\nChwazi yon kontak sou Whatsapp", Toast.LENGTH_LONG).show();
 
 
 
                         } else {
-                            Toast.makeText(getContext(), "SOS la pa ale.\n + Tanpri bay aplikasyon an pemisyon voye SMS.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "SOS la pa ale.\nBay pemisyon voye SMS.", Toast.LENGTH_LONG).show();
                             requestPermission();
                         }
                     }
@@ -367,7 +367,7 @@ public class ContactsFragment extends Fragment {
                 if (grantResults.length > 0 && grantResults[0] ==PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(getContext(), "Mesi paske w bay pemisyon an.", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getContext(), "Ou pa bay pemisyon an.\n + Tanpri bay aplikasyon an pemisyon an.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Ou pa bay pemisyon an.\nTanpri bay aplikasyon an pemisyon an.", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
