@@ -32,52 +32,42 @@
             android:layout_centerHorizontal="true" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvContacts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rvContacts"
+            android:layout_above="@+id/btnAddContacts"
             android:layout_below="@+id/tvCHeader"
-            android:padding="1dp"/>
+            android:padding="1dp" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/btnAddContacts"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_above="@+id/btnSOS"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
             android:background="@drawable/rounded_corner2"
-            android:layout_below="@+id/rvContacts"
             android:clickable="true"
-            android:padding="5dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp">
+            android:padding="5dp">
 
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:src="@drawable/ic_add"
+                android:layout_centerVertical="true"
                 android:layout_marginStart="30dp"
-                android:layout_centerVertical="true"/>
+                android:src="@drawable/ic_add" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="AJOUTE KONTAK"
-                android:textSize="18dp"
-                android:textColor="@color/gray_text"
                 android:layout_centerInParent="true"
-                />
+                android:text="AJOUTE KONTAK"
+                android:textColor="@color/gray_text"
+                android:textSize="18dp" />
 
 
         </RelativeLayout>
 
-
-
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/rvEmergServContacts"
-            android:layout_below="@+id/btnAddContacts"
-            android:layout_above="@+id/btnSOS"
-            />
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/btnSOS"

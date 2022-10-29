@@ -23,18 +23,19 @@ HELP is an application that will help users who need any kind of assistance, whe
 
 **Required Must-have Stories**
 
-- [ ] User can login.
-- [ ] User can sign up.
-- [ ] User can see a list of added emergency contacts or emergency services (PNH, Pompiers...)
-- [ ] User can add emergency contacts
+- [X] User can login.
+- [X] User can sign up.
+- [X] User can see a list of added emergency contacts or emergency services (PNH, Pompiers...)
+- [X] User can add emergency contacts
+- [X] User can send a predefined SOS to predefined contacts
+- [X] User can share their live location anytime, but the sharing starts automatically after they press the SOS button.
 - [ ] User can edit emergency contacts
 - [ ] User can remove emergency contacts
-- [ ] User can send a SOS to predefined contacts
-- [ ] User can share their live location anytime, but the sharing starts automatically after they press the SOS button.
-- [ ] A Profile page allows the user to add and update critical personal health information (Blood type, known allergies...)
+
 
 **Optional Nice-to-have Stories**
 
+- [ ] A Profile page allows the user to add and update critical personal health information (Blood type, known allergies...)
 - [ ] Users can send invite links to their contacts, to start using the application.
 - [ ] User can use a predefined button shortcut to send an SOS to predefined Contacts, without opening the app.
 - [ ] User can see a history of sent SOS
@@ -52,6 +53,9 @@ HELP is an application that will help users who need any kind of assistance, whe
    * Allows user to update personal health information.
    * Allows user to add/update predefined S.O.S Message.
    * Lets people change language, and app notification settings. (Bonus)
+   
+#### Gif Walkthrough
+<img src="https://github.com/SLG-2022-G3/HELP/blob/master/Signup.gif/" width=320> <img src="https://github.com/SLG-2022-G3/HELP/blob/master/Add%20Contact.gif/" width=320> <img src="https://github.com/SLG-2022-G3/HELP/blob/master/Prove%20SOS%20is%20Sent.gif/" width=320>
 
 ### 3. Navigation
 

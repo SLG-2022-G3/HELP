@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <RelativeLayout
+        android:id="@+id/rl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -24,15 +24,15 @@
             android:layout_centerHorizontal="true"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/ivProfilePic"
-            android:src="@drawable/profile_pic"
-            android:layout_alignParentStart="true"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_below="@+id/tvPHeader"
+            android:layout_alignParentStart="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"/>
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/profile_pic" />
 
         <TextView
             android:id="@+id/tvName"
@@ -42,102 +42,97 @@
             android:layout_marginTop="2dp"
             android:layout_toEndOf="@id/ivProfilePic"
             android:fontFamily="sans-serif-medium"
-            android:text="Mwen rele"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="22sp"
+            tools:text="username" />
 
         <TextView
-            android:id="@+id/tvDescription"
+            android:id="@+id/tvNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvName"
-            android:layout_toEndOf="@id/ivProfilePic"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="5dp"
-            android:text="Kek enfomasyon sou sante, maladi kwonik, aleji, elatriye"
+            android:layout_toEndOf="@id/ivProfilePic"
             android:textColor="@color/gray_text"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:text="Phone Number" />
 
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvNumber"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@id/ivProfilePic"
+            android:textColor="@color/gray_text"
+            android:textSize="16sp"
+            tools:text="Email" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnEdit"
+            android:text="@string/editInfoBtn"
+            android:backgroundTint="@color/light_red"
+            android:textColor="@color/black"
+            android:layout_below="@+id/tvEmail"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"/>
 
+        <RelativeLayout
+            android:id="@+id/rlInfoPerso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnEdit"
+            android:clickable="true"
+            android:layout_marginTop="15dp"
+            android:padding="2dp">
 
+            <ImageView
+                android:id="@+id/shape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_perso_info_bg"
+                android:clickable="true"
+                />
+
+            <ImageView
+                android:id="@+id/icInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_alignStart="@+id/shape"
+                android:layout_alignTop="@+id/shape"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_info" />
+
+            <TextView
+                android:id="@+id/tvInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/shape"
+                android:layout_alignEnd="@+id/shape"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="65dp"
+                android:layout_toEndOf="@id/icInfo"
+                android:fontFamily="sans-serif-light"
+                android:text=" Ajoute Enfomasyon sou sante w ki ka itil si gen yon ijans"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text=" Klike la pou ajoute kek enfomasyon sou sante w tankou : Aleji, Enstriksyon sou san, elatriye  ' " />
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnEMsg"
-            android:layout_below="@id/ivProfilePic"
-            android:layout_marginTop="15dp"
-            android:padding="2dp"
-            android:clickable="true">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:id="@+id/shape1"
-                android:clickable="true"
-                android:src="@drawable/fill_btns_shape" />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:src="@drawable/sos_message"
-                android:layout_alignStart="@+id/shape1"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="0dp"
-                android:id="@+id/iconMsg" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mesaj Ijans"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/black"
-                android:layout_marginStart="15dp"
-                android:textSize="20sp"
-                android:layout_toEndOf="@id/iconMsg"
-                android:layout_centerVertical="true"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnLang"
-            android:layout_below="@id/btnEMsg"
-            android:padding="2dp"
-            android:clickable="true">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:id="@+id/shape2"
-                android:clickable="true"
-                android:src="@drawable/fill_btns_shape" />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:src="@drawable/languages"
-                android:layout_alignStart="@+id/shape2"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="0dp"
-                android:id="@+id/iconLang"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Chwazi Lang"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-light"
-                android:layout_marginStart="15dp"
-                android:textSize="20sp"
-                android:layout_toEndOf="@id/iconLang"
-                android:layout_centerVertical="true"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnFFriends"
-            android:layout_below="@id/btnLang"
-            android:padding="2dp"
+            android:layout_below="@+id/rlInfoPerso"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
             android:clickable="true">
 
             <ImageView
@@ -150,28 +145,32 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:src="@drawable/find_friends"
+                android:src="@drawable/sos_message"
                 android:layout_alignStart="@+id/shape3"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="0dp"
                 android:id="@+id/iconFFriends" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jwenn zanmi"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/black"
+                android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
-                android:textSize="20sp"
                 android:layout_toEndOf="@id/iconFFriends"
-                android:layout_centerVertical="true"/>
+                android:fontFamily="sans-serif-light"
+                android:text="Mesaj Ijans"
+                android:id="@+id/tvMsg"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnshare"
-            android:layout_below="@id/btnFFriends"
-            android:padding="2dp"
+            android:layout_below="@+id/btnEMsg"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
             android:clickable="true">
 
             <ImageView
@@ -201,12 +200,14 @@
                 android:layout_toEndOf="@id/iconShare"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnSettings"
-            android:layout_below="@id/btnshare"
-            android:padding="2dp"
+            android:layout_below="@+id/btnshare"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
             android:clickable="true">
 
             <ImageView
@@ -240,39 +241,30 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnLogout"
+            android:id="@+id/logout"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="15dp"
-            android:padding="15dp"
-            android:clickable="true">
+            android:clickable="true"
+            android:padding="15dp">
 
             <ImageView
+                android:id="@+id/btnLogout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:clickable="true"
                 android:src="@drawable/logout_btn_shape" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:text="DEKONEKTE"
                 android:textColor="@color/gray_text"
-                android:textSize="20sp"
-                android:layout_centerInParent="true"/>
+                android:textSize="20sp" />
         </RelativeLayout>
 
+    </RelativeLayout>
 
 
-
-
-
-
-
-
-
-
-
-        </RelativeLayout>
-
-
-    </FrameLayout>
+</FrameLayout>
