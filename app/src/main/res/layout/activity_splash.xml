@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".SplashActivity">
-
-
     <ImageView
         android:id="@+id/circle"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:background="@drawable/bacgrounds"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -26,6 +25,8 @@
         android:layout_height="wrap_content"
         android:text="SOS"
         android:textSize="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:fontFamily="cursive"
         android:gravity="center"
         android:textColor="@color/white"
@@ -36,9 +37,14 @@
 
     <TextView
         android:id="@+id/Auteurs"
-        android:layout_width="100dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="36dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="109dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="44dp"
         android:gravity="center"
         android:text="from"
         android:textColor="@color/dark_red"
@@ -47,13 +53,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circle"
+        app:layout_constraintTop_toTopOf="@+id/circle"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="100dp"
-        android:layout_height="120dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@+id/Auteurs"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="157dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/aclonica"
         android:gravity="center"
         android:text="FAB"
@@ -61,22 +77,10 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.657"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circle"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/dod"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.367"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.935" />
+        app:layout_constraintTop_toTopOf="@+id/Auteurs"
+        app:layout_constraintVertical_bias="0.864" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

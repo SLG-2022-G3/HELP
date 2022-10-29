@@ -1,7 +1,11 @@
 package com.slg.G3.sos;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -20,6 +24,8 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+import java.io.File;
+
 public class SignupActivity extends AppCompatActivity {
 
     public static final String TAG = "SignupActivity";
@@ -31,6 +37,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnSend;
     TextView before;
     ImageView facebook, google;
+    Context context;
 
 
 
@@ -87,11 +94,7 @@ public class SignupActivity extends AppCompatActivity {
                 String confirmPassword = etConfirmPassword.getText().toString();
                 String email = etEmail.getText().toString();
 
-                if (username.isEmpty() || username.length()<7)
-                {
-                    showError(etUsername, "non itilizatè ou an pa valid, li trò kout !");
-                }
-                else if (email.isEmpty() || !email.contains("@"))
+                if (email.isEmpty() || !email.contains("@"))
                 {
                     showError(etEmail, "imel ou an pa valid !");
                 }
@@ -103,16 +106,20 @@ public class SignupActivity extends AppCompatActivity {
                 {
                     showError(etConfirmPassword, "modpas yo pa menm !");
                 }
-                else
-                {
-                    Toast.makeText(SignupActivity.this, "call registration method", Toast.LENGTH_SHORT).show();
-                }
+               
 
                 SignUpUser(username,password,confirmPassword,email);
+//                deleteAlldataBase();
 
             }
         });
     }
+
+//    private void deleteAlldataBase() {
+//        this.deleteDatabase("/data/data/com.slg.G3.sos/databases/MyContacts2.db");
+//
+//    }
+
 
     private void showError(EditText user, String s) {
         user.setError(s);
@@ -135,6 +142,7 @@ public class SignupActivity extends AppCompatActivity {
             public void done(ParseException e) {
                 if (e == null) {
                     Toast.makeText(SignupActivity.this, "Yay! ou anrejistre ak siksè!", Toast.LENGTH_SHORT).show();
+
                     goMainActivity();
 
                     // Hooray! Let them use the app now.
@@ -148,7 +156,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void goMainActivity() {
-        Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+        Intent intent = new Intent(SignupActivity.this, Welcome.class);
         startActivity(intent);
         finish();
     }

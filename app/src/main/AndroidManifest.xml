@@ -14,7 +14,6 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
 
     <queries>
 
@@ -35,34 +34,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sos"
         tools:targetApi="31">
+
+        <receiver
+            android:name=".Sensors.ReactivateService"
+            android:enabled="true"
+            android:exported="true"/>
+
         <activity android:name=".LoginActivity"
             android:exported="true"/>
         <activity
-            android:name=".EditContact"
-            android:exported="false" />
-        <activity
             android:name=".EditProfile"
-            android:exported="false"
-            android:screenOrientation="portrait" />
+            android:exported="false" />
+
+        <service
+            android:name=".Sensors.SensorService"
+            android:enabled="true"
+            android:exported="true" />
+
+
+        <activity
+            android:name=".DetailedContact"
+            android:exported="false" />
+
+        <activity
+            android:name=".Welcome"
+            android:exported="false" />
+
         <activity
             android:name=".CreateContactActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.codepath.fileprovider.sos"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/fileprovider" />
-        </provider>
-
+            android:exported="false" />
         <activity
-
             android:name=".SplashActivity"
-
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -70,7 +72,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
+
         <activity
             android:name=".SignupActivity"
             android:exported="true"
@@ -79,6 +84,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -88,5 +94,7 @@
             </intent-filter>
         </activity>
     </application>
+
+
 
 </manifest>

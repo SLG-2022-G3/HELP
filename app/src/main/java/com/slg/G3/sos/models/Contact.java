@@ -13,6 +13,9 @@ public class Contact extends ParseObject {
     public static final String KEY_IMAGE = "profilePhoto";
     public static final String KEY_USER = "user";
     public static final String KEY_PHONE = "phone";
+    public static final String KEY_RELATIONSHIP = "relationship";
+    public static final String KEY_ADDRESS = "address";
+
 
 
     public String getName(){
@@ -41,6 +44,20 @@ public class Contact extends ParseObject {
     }
     public void setUser(ParseUser user) {
         put(KEY_USER, user);
+    }
+
+    public String getRelationship(){
+        return getString(KEY_RELATIONSHIP);
+    }
+    public void setRelationship(String relationship) {
+        put(KEY_RELATIONSHIP, relationship);
+    }
+
+    public String getAddress(){
+        return getString(KEY_ADDRESS);
+    }
+    public void setAddress(String address) {
+        put(KEY_ADDRESS, address);
     }
 
 }

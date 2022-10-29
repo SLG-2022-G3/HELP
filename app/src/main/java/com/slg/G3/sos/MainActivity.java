@@ -10,33 +10,33 @@ import androidx.fragment.app.FragmentManager;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
-import android.location.LocationProvider;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
+import android.os.PowerManager;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.CancellationToken;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.OnTokenCanceledListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.slg.G3.sos.Sensors.ReactivateService;
+import com.slg.G3.sos.Sensors.SensorService;
 import com.slg.G3.sos.fragments.ContactsFragment;
 import com.slg.G3.sos.fragments.ProfileFragment;
 import com.slg.G3.sos.fragments.SosFragment;
@@ -45,11 +45,14 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
     private static final int MY_PERMISSIONS_REQUEST_READ_LOCATION =0 ;
+    private static final int IGNORE_BATTERY_OPTIMIZATION_REQUEST = 1002;
+
 
     FusedLocationProviderClient locationProviderClient;
     int PERMISSION_ID = 44;
 
     final FragmentManager fragmentManager = getSupportFragmentManager();
+
 
     @SuppressLint("MissingPermission")
     @Override
@@ -64,9 +67,58 @@ public class MainActivity extends AppCompatActivity {
             );
         }
 
+
+
         locationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         // method to get the location
         getLastLocation();
+
+
+       /* locationProviderClient.getCurrentLocation(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY, new CancellationToken() {
+
+            @Override
+            public boolean isCancellationRequested() {
+                return false;
+            }
+            @NonNull
+            @Override
+            public CancellationToken onCanceledRequested(@NonNull OnTokenCanceledListener onTokenCanceledListener) {
+                return null;
+            }
+        }).addOnSuccessListener(new OnSuccessListener<Location>() {
+           /* @Override
+            public void onSuccess(Location location) {
+                if (location != null){
+                    //Fetch Location to String
+
+                } else {
+
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });*/
+
+        //check for BatteryOptimization,
+        PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (pm != null && !pm.isIgnoringBatteryOptimizations(getPackageName())) {
+                askIgnoreOptimization();
+            }
+        }
+
+        //start the service
+        SensorService sensorService = new SensorService();
+        Intent intent = new Intent(this, sensorService.getClass());
+        if (!isMyServiceRunning(sensorService.getClass())) {
+            startService(intent);
+        }
+
+
+
 
 
 
@@ -105,6 +157,40 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.action_home);
     }
 
+
+    //method to check if the service is running
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                Log.i ("Service status", "Running");
+                return true;
+            }
+        }
+        Log.i ("Service status", "Not running");
+        return false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        Intent broadcastIntent = new Intent();
+        broadcastIntent.setAction("restartservice");
+        broadcastIntent.setClass(this, ReactivateService.class);
+        this.sendBroadcast(broadcastIntent);
+        super.onDestroy();
+    }
+
+    //this method prompts the user to remove any battery optimisation constraints from the App
+    private void askIgnoreOptimization() {
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            @SuppressLint("BatteryLife") Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+            intent.setData(Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, IGNORE_BATTERY_OPTIMIZATION_REQUEST);
+        }
+
+    }
+
     public void getLastLocation() {
         // check if permissions are given
         if (checkPermission()) {
@@ -124,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                 });
 
             } else {
-                Toast.makeText(this, "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Tanpri aktive" + " lokalizasyon ou...", Toast.LENGTH_LONG).show();
                 //TODO : Implement Dialog Fragment for approve get User's
                 //Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 //startActivity(intent);

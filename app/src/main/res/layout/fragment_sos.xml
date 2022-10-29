@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/frameSOS"
     android:layout_height="match_parent"
     tools:context=".fragments.SosFragment">
 
@@ -11,97 +12,95 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <ImageView
-            android:id="@+id/box"
-            android:layout_width="match_parent"
-            android:layout_height="227dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="0dp"
-            android:src="@drawable/fr_sos" />
+            android:id="@+id/ivGreetingsProfile"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_profile" />
+
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/tvGreeting"
-            android:fontFamily="sans-serif-medium"
-            android:text="Bonjou, entel"
-            android:layout_alignTop="@+id/box"
-            android:layout_alignStart="@+id/box"
-            android:layout_alignEnd="@+id/box"
-            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="60dp"
-            android:textSize="22dp"
-            android:textColor="@color/black"/>/>
+            android:fontFamily="@font/gelasio"
+            android:text="Byenvini, "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:ignore="ExtraText" />
 
         <TextView
+            android:id="@+id/tvGreetingName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="155dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="60dp"
+            android:fontFamily="@font/gelasio"
+            android:text="entel"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:ignore="ExtraText" />
+
+        <RelativeLayout
+            android:id="@+id/rlInstructions"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:text="Peze bouton sa pou w voye yon mesaj SOS"
-            android:layout_below="@+id/tvGreeting"
-            android:layout_alignStart="@+id/box"
-            android:layout_alignEnd="@+id/box"
-            android:layout_marginStart="60dp"
-            android:layout_marginEnd="60dp"
-            android:id="@+id/line1"
-            android:textSize="24dp"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:text="• Mesaj la pral jwenn denye kontak ki nan lis Kontak Ijans ou a"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="60dp"
-            android:layout_marginEnd="60dp"
-            android:layout_below="@+id/line1"
-            android:layout_marginTop="8dp"
-            android:id="@+id/line3"
-            android:textSize="18dp"
-            android:textColor="#1C1C1C"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:id="@+id/line5"
-            android:text="• Ou ka chanje mesaj SOS la nan Paramèt yo"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="60dp"
-            android:layout_marginEnd="60dp"
-            android:layout_below="@+id/line3"
-            android:layout_marginTop="5dp"
-            android:textSize="18dp"
-            android:textColor="#1C1C1C"/>
+            android:layout_height="130dp"
+            android:layout_below="@id/ivGreetingsProfile"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/warning" />
+
+            <TextView
+                android:id="@+id/tvGreetings2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="100dp"
+                android:fontFamily="@font/gelasio"
+                android:lineSpacingExtra="2sp"
+                android:text="@string/mesaj_byenvini"
+                android:textColor="#000000"
+                android:textSize="14sp" />
 
 
-        <TextView
-            android:id="@+id/line6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/line3"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="60dp"
-            android:fontFamily="sans-serif"
-            android:text="• Pou mesaj lan ale wap bezwen kat sou telefon ou "
-            android:textColor="#1C1C1C"
-            android:textSize="18dp" />
+        </RelativeLayout>
+
+<!--        <Button-->
+<!--            android:id="@+id/btnKontak"-->
+<!--            style="@style/Widget.Material3.Button.ElevatedButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/rlInstructions"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:backgroundTint="@color/gray_back"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:text="Kontak ijans"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="25sp" />-->
+
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/btnSOS"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/line5"
-            android:layout_marginTop="-30dp"
-            android:layout_marginBottom="0dp"
+            android:layout_height="435dp"
+            android:layout_marginTop="250dp"
+            android:layout_below="@+id/ivGreetingsProfile"
             android:clickable="true"
             android:src="@drawable/btn_sos" />
 

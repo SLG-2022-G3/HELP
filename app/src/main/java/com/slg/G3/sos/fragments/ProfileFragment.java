@@ -1,9 +1,12 @@
 package com.slg.G3.sos.fragments;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,18 +16,23 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.slg.G3.sos.EditProfile;
 import com.slg.G3.sos.LoginActivity;
 import com.slg.G3.sos.R;
 import com.slg.G3.sos.models.User;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,19 +46,19 @@ public class ProfileFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     public static final String TAG ="AccountFragment";
+ 
+
 
     private ParseUser currentUser;
     private ImageView ivProfPic, btnLogout;
-    private TextView tvName, tvDescription, tvPhone, tvEmail;
-    private Button btnEdit;
-    private RelativeLayout rl, btnEMsg,btnShare, btnSettings ;
-    String description, sosmessage, number;
+    private TextView tvName, tvDescription, tvMsg, btnShare;
+    private RelativeLayout btnEMsg, btnSettings ;
+    User user;
 
 
 
     Context context;
 
-    User user = new User();
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -94,69 +102,46 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ivProfPic = view.findViewById(R.id.ivProfilePic);
+
         tvName = view.findViewById(R.id.tvName);
-        tvPhone = view.findViewById(R.id.tvNumber);
-        tvEmail = view.findViewById(R.id.tvEmail);
-        btnEdit = view.findViewById(R.id.btnEdit);
-
-
-        tvDescription = view.findViewById(R.id.tvInfo);
+        tvDescription = view.findViewById(R.id.tvDescription);
 
         ivProfPic = view.findViewById(R.id.ivProfilePic);
-        ParseUser currentUser = ParseUser.getCurrentUser();
-            try {
-                ParseFile userParseFile = (ParseFile) currentUser.getParseFile("profilePicture");
-                Bitmap bmp = BitmapFactory.decodeStream(userParseFile.getDataStream());
-                bmp.setDensity(Bitmap.DENSITY_NONE);
-                //bmp = Bitmap.createBitmap(bmp, 0, 0, 100, 100);
-                ivProfPic.setImageBitmap(bmp);
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-
-
-
         btnLogout = view.findViewById(R.id.btnLogout);
 
-        //tvName.setText(ParseUser.getCurrentUser().getUsername());
-
-//        tvDescription.setText(ParseUser.getCurrentUser().getEmail());
-
-
-
-
-      //  if (parseFile != null) {
-      //      Glide.with(context).load(parseFile.getUrl()).into(ivProfPic);
-      //  }
-
-
-
-
         tvName.setText(ParseUser.getCurrentUser().getUsername());
-        number = user.getTelephone();
-        tvPhone.setText(number);
-        tvEmail.setText(ParseUser.getCurrentUser().getEmail());
+        tvDescription.setText(ParseUser.getCurrentUser().getEmail());
 
-        ParseUser user = ParseUser.getCurrentUser();
-        description = user.get("persoInfo").toString();
-        tvDescription.setText(description);
+        btnShare = view.findViewById(R.id.btnshare);
 
 
-        //queryUser();
-        //tvMsg.setText(userInfo.getMessage());
+
+
+
+
+
+
+        //tvDescription.setText(userInfo.getInfo());
+        //tvMsg.setText(userInfo.getSos());
+
+
+        //Share app
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent shareIntent =   new Intent(android.content.Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT,"Telechaje SOS");
+                String app_url = " Hey, M ap itilize aplikasyon SOS. M ta renmen ou itilize l tou. Telechaje li la: sa a se lyen aplikasyon an";
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,app_url);
+                startActivity(Intent.createChooser(shareIntent, "Share via"));
+            }
+        });
 
 
 
         //User can log out when Dekonekte is clicked
-
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goEditProfileActivity();
-            }
-        });
-
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,25 +154,6 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void goEditProfileActivity() {
-        Intent intent = new Intent(getActivity(), EditProfile.class);
-        startActivity(intent);
-    }
 
-    private void queryUser() {
 
-            ParseQuery<ParseUser> query = ParseQuery.getQuery("User");
-
-            // The query will search for a ParseObject, given its objectId.
-            // When the query finishes running, it will invoke the GetCallback
-            // with either the object, or the exception thrown
-            query.getInBackground("<PARSE_OBJECT_ID>", (object, e) -> {
-                if (e == null) {
-                    //Object was successfully retrieved
-                } else {
-                    // something went wrong
-                    //Toast.makeText(getContext(), user.getInfo(), Toast.LENGTH_SHORT).show();
-                }
-            });
-    }
 }
