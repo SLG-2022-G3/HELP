@@ -98,7 +98,10 @@
             android:layout_marginEnd="8dp"
             android:background="@drawable/input"
             android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:drawableEnd="@drawable/ic_baseline_visibility_off"
             android:drawablePadding="15dp"
+            android:longClickable="false"
+            android:paddingEnd="10dp"
             android:ems="10"
             android:hint="ekri modpas ou"
             android:inputType="textPassword"
@@ -184,6 +187,7 @@
             android:layout_width="96dp"
             android:layout_height="100dp"
             android:src="@drawable/gl"
+            android:clickable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/fabButtonfb"
             app:layout_constraintHorizontal_bias="0.1"
@@ -197,6 +201,7 @@
             android:layout_width="99dp"
             android:layout_height="110dp"
             android:src="@drawable/fb"
+            android:clickable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.944"
@@ -206,5 +211,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </RelativeLayout>

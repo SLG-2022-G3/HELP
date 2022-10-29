@@ -1,12 +1,11 @@
 package com.slg.G3.sos;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Environment;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -24,8 +23,6 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-import java.io.File;
-
 public class SignupActivity extends AppCompatActivity {
 
     public static final String TAG = "SignupActivity";
@@ -37,7 +34,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnSend;
     TextView before;
     ImageView facebook, google;
-    Context context;
+    boolean passwordVisible2;
 
 
 
@@ -59,6 +56,65 @@ public class SignupActivity extends AppCompatActivity {
         before = findViewById(R.id.before);
         facebook = findViewById(R.id.Buttonfb);
         google = findViewById(R.id.ButtonGgle);
+
+        etPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int Right=2;
+                if (event.getAction()==MotionEvent.ACTION_UP){
+                    if (event.getRawX()>= etPassword.getRight()-etPassword.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection = etPassword.getSelectionEnd();
+                        if (passwordVisible2){
+                            // set drawable image here
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_off,0);
+                            // to hide the password
+                            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible2 = false;
+                        }else {
+                            // set drawable image here
+                            etPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_,0);
+                            // to show the password
+                            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible2 = true;
+                        }
+                        etPassword.setSelection(selection);
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        });
+
+        etConfirmPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int Right=2;
+                if (event.getAction()==MotionEvent.ACTION_UP){
+                    if (event.getRawX()>= etConfirmPassword.getRight()-etConfirmPassword.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection = etConfirmPassword.getSelectionEnd();
+                        if (passwordVisible2){
+                            // set drawable image here
+                            etConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_off,0);
+                            // to hide the password
+                            etConfirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible2 = false;
+                        }else {
+                            // set drawable image here
+                            etConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_,0);
+                            // to show the password
+                            etConfirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible2 = true;
+                        }
+                        etConfirmPassword.setSelection(selection);
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        });
+
 
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +150,7 @@ public class SignupActivity extends AppCompatActivity {
                 String confirmPassword = etConfirmPassword.getText().toString();
                 String email = etEmail.getText().toString();
 
-                if (email.isEmpty() || !email.contains("@"))
+                if  (email.isEmpty() || !email.contains("@"))
                 {
                     showError(etEmail, "imel ou an pa valid !");
                 }
@@ -106,20 +162,13 @@ public class SignupActivity extends AppCompatActivity {
                 {
                     showError(etConfirmPassword, "modpas yo pa menm !");
                 }
-               
+                else
 
                 SignUpUser(username,password,confirmPassword,email);
-//                deleteAlldataBase();
 
             }
         });
     }
-
-//    private void deleteAlldataBase() {
-//        this.deleteDatabase("/data/data/com.slg.G3.sos/databases/MyContacts2.db");
-//
-//    }
-
 
     private void showError(EditText user, String s) {
         user.setError(s);
@@ -142,7 +191,6 @@ public class SignupActivity extends AppCompatActivity {
             public void done(ParseException e) {
                 if (e == null) {
                     Toast.makeText(SignupActivity.this, "Yay! ou anrejistre ak siksè!", Toast.LENGTH_SHORT).show();
-
                     goMainActivity();
 
                     // Hooray! Let them use the app now.
