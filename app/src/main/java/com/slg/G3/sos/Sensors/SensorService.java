@@ -120,7 +120,7 @@ public class SensorService extends Service {
                     }).addOnSuccessListener(new OnSuccessListener<Location>() {
                         @Override
                         public void onSuccess(Location location) {
-                            if (location != null){
+                            if (location != null) {
 
                                 //Get the default SmsManager//
                                 SmsManager smsManager = SmsManager.getDefault();
@@ -128,7 +128,7 @@ public class SensorService extends Service {
                                 // get the list of all the contacts in Database
                                 DbHelper dbHelper = new DbHelper(SensorService.this);
                                 SQLiteDatabase db = dbHelper.getWritableDatabase();
-                                String sosMessage = sosPredefinedLocation + "http://maps.google.com/?q=" + location.getLatitude()  + ","+ location.getLongitude();
+                                String sosMessage = sosPredefinedLocation + "http://maps.google.com/?q=" + location.getLatitude() + "," + location.getLongitude();
 
 
                                 Cursor cursor = db.rawQuery("select * from SOSContact", null);
@@ -142,25 +142,24 @@ public class SensorService extends Service {
                                 Toast.makeText(SensorService.this, "SOS la ale. Tanpri pran swen ou annatandan.", Toast.LENGTH_SHORT).show();
 
 
-
-
-                            }else {
-                                // get the list of all the contacts in Database
-                                DbHelper dbHelper = new DbHelper(SensorService.this);
-                                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                                String sosMessage = sosPredefinedNoLocation;
-
-                                    //Get the default SmsManager//
-                                SmsManager smsManager = SmsManager.getDefault();
-
-                                Cursor cursor = db.rawQuery("select * from SOSContact", null);
-                                while (cursor.moveToNext()) {
-                                    String num = cursor.getString(2);
-                                    smsManager.sendTextMessage(num, null, sosMessage, null, null);
-
-                                }
-                                    Toast.makeText(getApplicationContext(), "SOS la ale, san lokalizasyon ou.", Toast.LENGTH_SHORT).show();
-
+//                            } else {
+//                                // get the list of all the contacts in Database
+//                                DbHelper dbHelper = new DbHelper(SensorService.this);
+//                                SQLiteDatabase db = dbHelper.getWritableDatabase();
+//                                String sosMessage = sosPredefinedNoLocation;
+//
+//                                    //Get the default SmsManager//
+//                                SmsManager smsManager = SmsManager.getDefault();
+//
+//                                Cursor cursor = db.rawQuery("select * from SOSContact", null);
+//                                while (cursor.moveToNext()) {
+//                                    String num = cursor.getString(2);
+//                                    smsManager.sendTextMessage(num, null, sosMessage, null, null);
+//
+//                                }
+//                                    Toast.makeText(getApplicationContext(), "SOS la ale, san lokalizasyon ou.", Toast.LENGTH_SHORT).show();
+//
+//                            }
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
